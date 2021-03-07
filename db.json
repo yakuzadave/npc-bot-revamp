@@ -2,7 +2,16 @@
   "commands": [],
   "events": [],
   "skills": {},
-  "players": [],
+  "players": [
+    {
+      "name": "Katharsis",
+      "id": "155159981925203969"
+    },
+    {
+      "name": "NPC-BOT",
+      "id": "422607796815527946"
+    }
+  ],
   "mobs": [],
   "objects": {},
   "weapons": {},
