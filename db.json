@@ -929,6 +929,11 @@
       "type": "category"
     },
     {
+      "name": "ideas",
+      "id": "818279346141003816",
+      "type": "text"
+    },
+    {
       "name": "dm-shit",
       "id": "596687094043115521",
       "type": "text"
@@ -947,6 +952,11 @@
       "name": "holmfirth",
       "id": "554993159986479119",
       "type": "text"
+    },
+    {
+      "name": "our homebrew game",
+      "id": "818278784314769478",
+      "type": "category"
     },
     {
       "name": "Lost Mines of Phandelver",
