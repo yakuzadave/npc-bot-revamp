@@ -3141,6 +3141,26 @@
     {
       "name": "guest+",
       "id": "777699921972297768"
+    },
+    {
+      "name": "@everyone",
+      "id": "793916597093662720"
+    },
+    {
+      "name": "Avrae",
+      "id": "794271156890238998"
+    },
+    {
+      "name": "DM",
+      "id": "794271755573002240"
+    },
+    {
+      "name": "Players",
+      "id": "794271847394705418"
+    },
+    {
+      "name": "NPC-BOT",
+      "id": "831976408901091359"
     }
   ],
   "channels": [
@@ -4028,6 +4048,76 @@
       "name": "Text Channels",
       "id": "623639084669337642",
       "type": "category"
+    },
+    {
+      "name": "Text Channels",
+      "id": "793916597093662721",
+      "type": "category"
+    },
+    {
+      "name": "general",
+      "id": "793916597093662722",
+      "type": "text"
+    },
+    {
+      "name": "Voice Channels",
+      "id": "793916597093662724",
+      "type": "category"
+    },
+    {
+      "name": "Lobby",
+      "id": "793916597093662725",
+      "type": "voice"
+    },
+    {
+      "name": "Gaming",
+      "id": "793916597093662726",
+      "type": "voice"
+    },
+    {
+      "name": "Game Channels",
+      "id": "794270294650257418",
+      "type": "category"
+    },
+    {
+      "name": "heist-ic",
+      "id": "794270355145228288",
+      "type": "text"
+    },
+    {
+      "name": "heist-ooc",
+      "id": "794270533520719912",
+      "type": "text"
+    },
+    {
+      "name": "DM Channels",
+      "id": "794271283155435531",
+      "type": "category"
+    },
+    {
+      "name": "character-creation",
+      "id": "794271316677099570",
+      "type": "text"
+    },
+    {
+      "name": "heist-rolls",
+      "id": "794271381562458132",
+      "type": "text"
+    },
+    {
+      "name": "notes",
+      "id": "794271444254720000",
+      "type": "text"
+    },
+    {
+      "name": "bot-spam",
+      "id": "794271477230862336",
+      "type": "text"
+    },
+    {
+      "name": "notes",
+      "id": "794298874801815562",
+      "type": "text"
     }
   ],
   "members": []
