@@ -5836,34 +5836,6 @@
     },
     {
       "name": "@everyone",
-      "id": "531378014458478603"
-    },
-    {
-      "name": "Avrae",
-      "id": "531378469926469632"
-    },
-    {
-      "name": "Poll Bot",
-      "id": "570334657539735600"
-    },
-    {
-      "name": "Zapier",
-      "id": "606563741877927936"
-    },
-    {
-      "name": "DiscoMush",
-      "id": "691817019867398275"
-    },
-    {
-      "name": "Server Aliaser",
-      "id": "738779756123652197"
-    },
-    {
-      "name": "NPC-BOT",
-      "id": "738809300071350343"
-    },
-    {
-      "name": "@everyone",
       "id": "623639084669337640"
     },
     {
@@ -5933,6 +5905,18 @@
     {
       "name": "NPC-BOT",
       "id": "831976408901091359"
+    },
+    {
+      "name": "@everyone",
+      "id": "856240902950486057"
+    },
+    {
+      "name": "NPC-BOT",
+      "id": "856242715845984267"
+    },
+    {
+      "name": "Avrae",
+      "id": "856242959757213778"
     }
   ],
   "channels": [
@@ -6552,101 +6536,6 @@
       "type": "category"
     },
     {
-      "name": "Text Channels",
-      "id": "531378014995611648",
-      "type": "category"
-    },
-    {
-      "name": "Voice Channels",
-      "id": "531378014995611650",
-      "type": "category"
-    },
-    {
-      "name": "General",
-      "id": "531378014995611651",
-      "type": "voice"
-    },
-    {
-      "name": "welcome",
-      "id": "567086372754817025",
-      "type": "text"
-    },
-    {
-      "name": "wd-dm",
-      "id": "567814405689966617",
-      "type": "text"
-    },
-    {
-      "name": "Notes",
-      "id": "570330271312904212",
-      "type": "category"
-    },
-    {
-      "name": "wuli-player-notes",
-      "id": "570330349121568769",
-      "type": "text"
-    },
-    {
-      "name": "char-creation",
-      "id": "735529840605659148",
-      "type": "text"
-    },
-    {
-      "name": "Main Game Channels",
-      "id": "735530184677130280",
-      "type": "category"
-    },
-    {
-      "name": "wd-in-character",
-      "id": "735530349106430032",
-      "type": "text"
-    },
-    {
-      "name": "that-heavy-channel",
-      "id": "735530408292122794",
-      "type": "text"
-    },
-    {
-      "name": "sheets",
-      "id": "735530444506005584",
-      "type": "text"
-    },
-    {
-      "name": "party-notes",
-      "id": "735530478211432568",
-      "type": "text"
-    },
-    {
-      "name": "utility",
-      "id": "735530534184288308",
-      "type": "category"
-    },
-    {
-      "name": "bot-playground",
-      "id": "735530595505012877",
-      "type": "text"
-    },
-    {
-      "name": "wd-rolling",
-      "id": "735530616539316384",
-      "type": "text"
-    },
-    {
-      "name": "alias-help",
-      "id": "735530652778102834",
-      "type": "text"
-    },
-    {
-      "name": "less-heavy-ooc",
-      "id": "735969748847820843",
-      "type": "text"
-    },
-    {
-      "name": "char-bios",
-      "id": "736992806060687360",
-      "type": "text"
-    },
-    {
       "name": "AmongUs",
       "id": "773589703450165268",
       "type": "category"
@@ -6690,6 +6579,11 @@
       "name": "Projects",
       "id": "692811939373645874",
       "type": "category"
+    },
+    {
+      "name": "z-bbq",
+      "id": "855921620202815550",
+      "type": "text"
     },
     {
       "name": "pbp-ic",
@@ -6777,6 +6671,16 @@
       "type": "text"
     },
     {
+      "name": "referral-codes",
+      "id": "855219352109318175",
+      "type": "text"
+    },
+    {
+      "name": "tech_rants",
+      "id": "855505076260044810",
+      "type": "text"
+    },
+    {
       "name": "impeach-jimmy",
       "id": "636047777758969856",
       "type": "text"
@@ -6792,7 +6696,7 @@
       "type": "text"
     },
     {
-      "name": "gen-pop",
+      "name": "survivors-guilt",
       "id": "623639084669337644",
       "type": "text"
     },
@@ -6889,6 +6793,56 @@
     {
       "name": "notes",
       "id": "794298874801815562",
+      "type": "text"
+    },
+    {
+      "name": "Text Channels",
+      "id": "856240902950486058",
+      "type": "category"
+    },
+    {
+      "name": "general",
+      "id": "856240902950486059",
+      "type": "text"
+    },
+    {
+      "name": "clips-and-highlights",
+      "id": "856240902950486060",
+      "type": "text"
+    },
+    {
+      "name": "Voice Channels",
+      "id": "856240902950486061",
+      "type": "category"
+    },
+    {
+      "name": "Lobby",
+      "id": "856240902950486062",
+      "type": "voice"
+    },
+    {
+      "name": "Gaming",
+      "id": "856240902950486063",
+      "type": "voice"
+    },
+    {
+      "name": "ooc",
+      "id": "856241284528472106",
+      "type": "text"
+    },
+    {
+      "name": "ic",
+      "id": "856241297203003423",
+      "type": "text"
+    },
+    {
+      "name": "char-creation",
+      "id": "856241340652060672",
+      "type": "text"
+    },
+    {
+      "name": "rolls",
+      "id": "856241355997970442",
       "type": "text"
     }
   ],
