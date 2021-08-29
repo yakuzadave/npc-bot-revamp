@@ -101,7 +101,7 @@ app.get("/", function(req, res) {
   
   
   
-  res.sendFile(path.join(__dirname + '/coc_notes.html'));
+  res.sendFile(path.join(__dirname + '/views/coc_notes.html'));
 });
 
 app.get("/commands", function(request, response) {
