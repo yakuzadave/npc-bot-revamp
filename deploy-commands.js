@@ -1,9 +1,12 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientId, guildId, token } = require('./config.json');
+require('dotenv').config()
+
 
 let guildId = "623639084669337640"
+let token = process.env.TOKEN
+let clientId = process.env.CLIENT_ID
 
 
 const commands = [
