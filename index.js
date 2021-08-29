@@ -8,7 +8,6 @@ const fs = require("fs");
 //Express Server and Routes 
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
 const {router} = require('./routes/router.js')
 
 
@@ -94,14 +93,6 @@ for (const file of commandFiles) {
 
 //load the token from .env file
 client.login(process.env.TOKEN);
-
-//add in body-parser
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
-app.use(bodyParser.json());
 
 // Root entry
 app.get("/", function(request, response) {
