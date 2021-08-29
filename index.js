@@ -127,7 +127,10 @@ var listener = app.listen(process.env.PORT, function() {
 });
 
 // export the client and the db
-module.exports.client = client;
-module.exports.express = express;
-module.exports.db = db;
-module.exports.app = app;
+
+module.exports = {
+  client: client,
+  express: express,
+  db: db,
+  app: app
+}
