@@ -45,6 +45,7 @@ db.defaults({
 
 // create the Discord client
 const Discord = require("discord.js");
+const {Intents} = require('discord.js')
 const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
 require("./modules/functions.js")(client);
 client.config = require("./config.js");
