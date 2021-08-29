@@ -1,13 +1,19 @@
 module.exports = {
   name: "interactionCreate",
   description: "client interaction events",
-  event: async (client,interaction) => {
-    if (!interaction.isCommand()) return;
-    const { commandName } = interaction;
-    if (commandName === 'ping') {
-      await interaction.reply('Pong!');
-    } else if (commandName === 'beep') {
-      await interaction.reply('Boop!');
-    }
+  event:  async (client,interaction) => {
+	if (!interaction.isCommand()) return;
+
+	const command = client.commands.get(interaction.commandName);
+
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	} 
+  catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+  }
   }
 };

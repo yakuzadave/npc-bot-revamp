@@ -45,14 +45,14 @@ db.defaults({
 
 // create the Discord client
 const Discord = require("discord.js");
-const {Intents} = require('discord.js')
-const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
+const { Client, Collection, Intents } = require('discord.js');
+const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
 require("./modules/functions.js")(client);
 client.config = require("./config.js");
 client.prefix = "-";
 client.logger = require("./modules/Logger");
 let modules = fs.readdirSync("./modules");
-client.events = new Discord.Collection();
+client.events = new Collection();
 
 const eventFiles = fs
   .readdirSync("./events")
@@ -73,7 +73,7 @@ for (const file of eventFiles) {
 }
 
 
-client.commands = new Discord.Collection();
+client.commands = new Collection();
 client.db = db;
 
 const commandFiles = fs
@@ -84,7 +84,8 @@ for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   
   try {
-    client.commands.set(command.name, command);
+    client.commands.set(command.data.name, command);
+    //client.commands.set(command.name, command);
   }
   
   catch (error) {
