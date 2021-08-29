@@ -16,6 +16,7 @@ const {router} = require('./routes/router.js')
 const axios = require("axios");
 //const dialogflow = require('@google-cloud/dialogflow');
 const uuid = require('uuid');
+const path = require('path')
 
 
 
@@ -95,11 +96,11 @@ for (const file of commandFiles) {
 client.login(process.env.TOKEN);
 
 // Root entry
-app.get("/", function(request, response) {
+app.get("/", function(req, res) {
   
   
   
-  response.send("Live");
+  res.sendFile(path.join(__dirname + '/coc_notes.html'));
 });
 
 app.get("/commands", function(request, response) {

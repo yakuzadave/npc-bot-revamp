@@ -1,0 +1,1726 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>COC Notes</title>
+    <style>
+      /* cspell:disable-file */
+      /* webkit printing magic: print all background colors */
+      html {
+        -webkit-print-color-adjust: exact;
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      @media only screen {
+        body {
+          margin: 2em auto;
+          max-width: 900px;
+          color: rgb(55, 53, 47);
+        }
+      }
+
+      body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+
+      a,
+      a.visited {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+      }
+
+      h1,
+      h2,
+      h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+      }
+
+      h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+      }
+
+      .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+      }
+
+      .callout {
+        border-radius: 3px;
+        padding: 1rem;
+      }
+
+      figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+      }
+
+      figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+      }
+
+      mark {
+        background-color: transparent;
+      }
+
+      .indented {
+        padding-left: 1.5em;
+      }
+
+      hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      @media only print {
+        img {
+          max-height: 100vh;
+          object-fit: contain;
+        }
+      }
+
+      @page {
+        margin: 1in;
+      }
+
+      .collection-content {
+        font-size: 0.875rem;
+      }
+
+      .column-list {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .column {
+        padding: 0 1em;
+      }
+
+      .column:first-child {
+        padding-left: 0;
+      }
+
+      .column:last-child {
+        padding-right: 0;
+      }
+
+      .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding: 0.125rem;
+      }
+
+      .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+      }
+
+      .table_of_contents-indent-2 {
+        margin-left: 3rem;
+      }
+
+      .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+      }
+
+      .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+        border-collapse: collapse;
+      }
+
+      table {
+        border-left: none;
+        border-right: none;
+      }
+
+      th,
+      td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+      }
+
+      th {
+        color: rgba(55, 53, 47, 0.6);
+      }
+
+      ol,
+      ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+      }
+
+      li > ol:first-child,
+      li > ul:first-child {
+        margin-block-start: 0.6em;
+      }
+
+      ul > li {
+        list-style: disc;
+      }
+
+      ul.to-do-list {
+        text-indent: -1.7em;
+      }
+
+      ul.to-do-list > li {
+        list-style: none;
+      }
+
+      .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+      }
+
+      ul.toggle > li {
+        list-style: none;
+      }
+
+      ul {
+        padding-inline-start: 1.7em;
+      }
+
+      ul > li {
+        padding-left: 0.1em;
+      }
+
+      ol {
+        padding-inline-start: 1.6em;
+      }
+
+      ol > li {
+        padding-left: 0.2em;
+      }
+
+      .mono ol {
+        padding-inline-start: 2em;
+      }
+
+      .mono ol > li {
+        text-indent: -0.4em;
+      }
+
+      .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+      }
+
+      /* Indent toggle children */
+      .toggle > li > details {
+        padding-left: 1.7em;
+      }
+
+      .toggle > li > details > summary {
+        margin-left: -1.1em;
+      }
+
+      .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+      }
+
+      .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+      }
+
+      time {
+        opacity: 0.5;
+      }
+
+      .icon {
+        display: inline-block;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+      }
+
+      img.icon {
+        border-radius: 3px;
+      }
+
+      .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+      }
+
+      .user-icon-inner {
+        font-size: 0.8em;
+      }
+
+      .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+      }
+
+      .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 30vh;
+      }
+
+      .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+      }
+
+      .page-header-icon img {
+        border-radius: 3px;
+      }
+
+      .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+      }
+
+      p > .user {
+        opacity: 0.5;
+      }
+
+      td > .user,
+      td > time {
+        white-space: nowrap;
+      }
+
+      input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 0.6em;
+        vertical-align: middle;
+      }
+
+      p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
+
+      .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+      }
+
+      .code,
+      code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+      }
+
+      code {
+        color: #eb5757;
+      }
+
+      .code {
+        padding: 1.5em 1em;
+      }
+
+      .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+      }
+
+      blockquote {
+        font-size: 1.25em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+      }
+
+      .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+      }
+
+      .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+      }
+
+      .bookmark-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+      }
+
+      .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+      }
+
+      .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+      }
+
+      .sans {
+        font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
+          "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      .code {
+        font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono",
+          "Liberation Mono", Courier, monospace;
+      }
+      .serif {
+        font-family: Lyon-Text, Georgia, ui-serif, serif;
+      }
+      .mono {
+        font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+      }
+      .pdf .sans {
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
+          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
+          "Noto Sans CJK JP";
+      }
+      .pdf:lang(zh-CN) .sans {
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
+          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
+          "Noto Sans CJK SC";
+      }
+      .pdf:lang(zh-TW) .sans {
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
+          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
+          "Noto Sans CJK TC";
+      }
+      .pdf:lang(ko-KR) .sans {
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
+          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
+          "Noto Sans CJK KR";
+      }
+      .pdf .code {
+        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
+          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
+          "Noto Color Emoji", "Noto Sans Mono CJK JP";
+      }
+      .pdf:lang(zh-CN) .code {
+        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
+          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
+          "Noto Color Emoji", "Noto Sans Mono CJK SC";
+      }
+      .pdf:lang(zh-TW) .code {
+        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
+          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
+          "Noto Color Emoji", "Noto Sans Mono CJK TC";
+      }
+      .pdf:lang(ko-KR) .code {
+        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
+          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
+          "Noto Color Emoji", "Noto Sans Mono CJK KR";
+      }
+      .pdf .serif {
+        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
+          "Noto Color Emoji", "Noto Serif CJK JP";
+      }
+      .pdf:lang(zh-CN) .serif {
+        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
+          "Noto Color Emoji", "Noto Serif CJK SC";
+      }
+      .pdf:lang(zh-TW) .serif {
+        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
+          "Noto Color Emoji", "Noto Serif CJK TC";
+      }
+      .pdf:lang(ko-KR) .serif {
+        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
+          "Noto Color Emoji", "Noto Serif CJK KR";
+      }
+      .pdf .mono {
+        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
+          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK JP";
+      }
+      .pdf:lang(zh-CN) .mono {
+        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
+          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK SC";
+      }
+      .pdf:lang(zh-TW) .mono {
+        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
+          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK TC";
+      }
+      .pdf:lang(ko-KR) .mono {
+        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
+          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK KR";
+      }
+      .highlight-default {
+      }
+      .highlight-gray {
+        color: rgb(155, 154, 151);
+      }
+      .highlight-brown {
+        color: rgb(100, 71, 58);
+      }
+      .highlight-orange {
+        color: rgb(217, 115, 13);
+      }
+      .highlight-yellow {
+        color: rgb(223, 171, 1);
+      }
+      .highlight-teal {
+        color: rgb(15, 123, 108);
+      }
+      .highlight-blue {
+        color: rgb(11, 110, 153);
+      }
+      .highlight-purple {
+        color: rgb(105, 64, 165);
+      }
+      .highlight-pink {
+        color: rgb(173, 26, 114);
+      }
+      .highlight-red {
+        color: rgb(224, 62, 62);
+      }
+      .highlight-gray_background {
+        background: rgb(235, 236, 237);
+      }
+      .highlight-brown_background {
+        background: rgb(233, 229, 227);
+      }
+      .highlight-orange_background {
+        background: rgb(250, 235, 221);
+      }
+      .highlight-yellow_background {
+        background: rgb(251, 243, 219);
+      }
+      .highlight-teal_background {
+        background: rgb(221, 237, 234);
+      }
+      .highlight-blue_background {
+        background: rgb(221, 235, 241);
+      }
+      .highlight-purple_background {
+        background: rgb(234, 228, 242);
+      }
+      .highlight-pink_background {
+        background: rgb(244, 223, 235);
+      }
+      .highlight-red_background {
+        background: rgb(251, 228, 228);
+      }
+      .block-color-default {
+        color: inherit;
+        fill: inherit;
+      }
+      .block-color-gray {
+        color: rgba(55, 53, 47, 0.6);
+        fill: rgba(55, 53, 47, 0.6);
+      }
+      .block-color-brown {
+        color: rgb(100, 71, 58);
+        fill: rgb(100, 71, 58);
+      }
+      .block-color-orange {
+        color: rgb(217, 115, 13);
+        fill: rgb(217, 115, 13);
+      }
+      .block-color-yellow {
+        color: rgb(223, 171, 1);
+        fill: rgb(223, 171, 1);
+      }
+      .block-color-teal {
+        color: rgb(15, 123, 108);
+        fill: rgb(15, 123, 108);
+      }
+      .block-color-blue {
+        color: rgb(11, 110, 153);
+        fill: rgb(11, 110, 153);
+      }
+      .block-color-purple {
+        color: rgb(105, 64, 165);
+        fill: rgb(105, 64, 165);
+      }
+      .block-color-pink {
+        color: rgb(173, 26, 114);
+        fill: rgb(173, 26, 114);
+      }
+      .block-color-red {
+        color: rgb(224, 62, 62);
+        fill: rgb(224, 62, 62);
+      }
+      .block-color-gray_background {
+        background: rgb(235, 236, 237);
+      }
+      .block-color-brown_background {
+        background: rgb(233, 229, 227);
+      }
+      .block-color-orange_background {
+        background: rgb(250, 235, 221);
+      }
+      .block-color-yellow_background {
+        background: rgb(251, 243, 219);
+      }
+      .block-color-teal_background {
+        background: rgb(221, 237, 234);
+      }
+      .block-color-blue_background {
+        background: rgb(221, 235, 241);
+      }
+      .block-color-purple_background {
+        background: rgb(234, 228, 242);
+      }
+      .block-color-pink_background {
+        background: rgb(244, 223, 235);
+      }
+      .block-color-red_background {
+        background: rgb(251, 228, 228);
+      }
+      .select-value-color-default {
+        background-color: rgba(206, 205, 202, 0.5);
+      }
+      .select-value-color-gray {
+        background-color: rgba(155, 154, 151, 0.4);
+      }
+      .select-value-color-brown {
+        background-color: rgba(140, 46, 0, 0.2);
+      }
+      .select-value-color-orange {
+        background-color: rgba(245, 93, 0, 0.2);
+      }
+      .select-value-color-yellow {
+        background-color: rgba(233, 168, 0, 0.2);
+      }
+      .select-value-color-green {
+        background-color: rgba(0, 135, 107, 0.2);
+      }
+      .select-value-color-blue {
+        background-color: rgba(0, 120, 223, 0.2);
+      }
+      .select-value-color-purple {
+        background-color: rgba(103, 36, 222, 0.2);
+      }
+      .select-value-color-pink {
+        background-color: rgba(221, 0, 129, 0.2);
+      }
+      .select-value-color-red {
+        background-color: rgba(255, 0, 26, 0.2);
+      }
+
+      .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+      }
+
+      .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+      }
+
+      .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+      }
+    </style>
+  </head>
+  <body>
+    <article id="e35c2105-5eb8-4d00-a230-5b368b0506d9" class="page mono">
+      <header>
+        <img
+          class="page-cover-image"
+          src="https://images.unsplash.com/photo-1503019419990-1d961b6301aa?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"
+          style="object-position:center 50%"
+        />
+        <div class="page-header-icon page-header-icon-with-cover">
+          <span class="icon">🐙</span>
+        </div>
+        <h1 class="page-title">COC Notes</h1>
+      </header>
+      <div class="page-body">
+        <div id="47382c40-4052-4058-8e4e-dfd2ae6cd2cb" class="column-list">
+          <div
+            id="b098f857-81f3-40b4-a953-c4627da34c54"
+            style="width:50%"
+            class="column"
+          >
+            <h2 id="39155b14-4685-4d52-9186-a0e6973a3ef5" class="">
+              Session Notes
+            </h2>
+            <figure
+              id="85c3905c-75ed-4361-b563-050692b9cc2f"
+              class="link-to-page"
+            >
+              <a
+                href="COC/05-02-2021%20Session%20Notes%2085c3905c75ed4361b563050692b9cc2f.html"
+                >05-02-2021 Session Notes</a
+              >
+            </figure>
+            <figure
+              id="a94c0516-d81a-49c3-b86a-93965dc66f1c"
+              class="link-to-page"
+            >
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/5-16-2021%20Session%20Notes%20a94c0516d81a49c3b86a93965dc66f1c.html"
+                >5-16-2021 Session Notes</a
+              >
+            </figure>
+            <figure
+              id="42c343f8-5338-4018-99b0-57a349e1cea9"
+              class="link-to-page"
+            >
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/05%2030%202021%20Session%2042c343f85338401899b057a349e1cea9.html"
+                >05/30/2021 Session</a
+              >
+            </figure>
+            <figure
+              id="0c5dbf97-90eb-433c-860e-5e0c4651b1a8"
+              class="link-to-page"
+            >
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/06-27-2021%20Session%200c5dbf9790eb433c860e5e0c4651b1a8.html"
+                >06-27-2021 Session</a
+              >
+            </figure>
+            <figure
+              id="3f20c3f8-e2d0-4a4c-957e-31f1b1571df2"
+              class="link-to-page"
+            >
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/08%2015%202021%203f20c3f8e2d04a4c957e31f1b1571df2.html"
+                >08/15/2021</a
+              >
+            </figure>
+          </div>
+          <div
+            id="5383588e-37b7-47c6-83ed-efaa603d75ba"
+            style="width:50%"
+            class="column"
+          >
+            <h2 id="3b7a1a74-b86f-4568-9cec-99bb1d720a8b" class="">
+              Game Mechanics
+            </h2>
+            <figure
+              id="68bcba8b-6059-4805-afd0-5171358b282b"
+              class="link-to-page"
+            >
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Luck%20Rolls%2068bcba8b60594805afd05171358b282b.html"
+                ><span class="icon">🕋</span>Luck Rolls
+              </a>
+            </figure>
+            <p id="fddd1b2b-5c40-44f5-90c0-7e0be76ee1aa" class=""></p>
+            <p id="7f32d159-dc8c-456e-84fd-3981798be789" class=""></p>
+            <p id="f257f3a2-83e0-4827-8add-e710ab37b31d" class=""></p>
+            <figure id="62b4f11a-2d91-4eae-b295-271686b5857f">
+              <div class="source">
+                <a href="https://dice.adamw.uk/?sound=true&amp;font=serif"
+                  >https://dice.adamw.uk/?sound=true&amp;font=serif</a
+                >
+              </div>
+              <figcaption>
+                This dice roller is hosted at
+                <a href="https://dice.adamw.uk/">https://dice.adamw.uk/</a>. By
+                default, it uses a sans serif font and does not make any sound.
+                For it to make sound, the URL must have the parameter
+                <code>sound=true</code>, e.g.
+                <a href="https://dice.adamw.uk/?sound=true"
+                  >https://dice.adamw.uk/?sound=true</a
+                >. For it to use a serif font, the URL must have the parameter
+                <code>font=serif</code>, e.g.
+                <a href="https://dice.adamw.uk/?font=serif"
+                  >https://dice.adamw.uk/?font=serif</a
+                >. Both can be enabled at once:
+                <a href="https://dice.adamw.uk/?font=serif&amp;sound=true"
+                  >https://dice.adamw.uk/?font=serif&amp;sound=true</a
+                >, as is the case in this embed.
+              </figcaption>
+            </figure>
+            <p id="8916d1bc-0a5f-46d0-b66d-5aae0e6caeb3" class=""></p>
+          </div>
+        </div>
+        <hr id="5224e609-a56f-4dc4-baf5-d5a38e4b0b2a" />
+        <hr id="22a05105-ca05-4f4e-b97e-b6d282aecc61" />
+        <p id="1ef2ba0b-dabc-42ce-b622-ea36efa2369d" class=""></p>
+        <p id="886b8569-4ef4-4e14-9f7d-62204ac2d668" class=""></p>
+        <div id="1223af4a-de0e-457a-9df1-4b5d8d65cdab" class="column-list">
+          <div
+            id="52416ad2-8271-4fd4-b39f-c2525d5364df"
+            style="width:56.25%"
+            class="column"
+          >
+            <h1 id="533b7401-be95-4119-b4f9-11764cb8d181" class="">
+              Oswald Character Sheet
+            </h1>
+            <div
+              id="4dad1967-7933-4f27-b7ff-059ac77b89be"
+              class="collection-content"
+            >
+              <h4 class="collection-title">Oswald Stats</h4>
+              <table class="collection-content">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="icon property-icon"
+                        ><svg
+                          viewBox="0 0 14 14"
+                          style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden"
+                          class="typesTitle"
+                        >
+                          <path
+                            d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"
+                          ></path></svg></span
+                      >Stat Name
+                    </th>
+                    <th>
+                      <span class="icon property-icon"
+                        ><svg
+                          viewBox="0 0 14 14"
+                          style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden"
+                          class="typesNumber"
+                        >
+                          <path
+                            d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"
+                          ></path></svg></span
+                      >Value
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="9d380e62-1dab-41aa-a47f-a2c754af43a2">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Strength%209d380e621dab41aaa47fa2c754af43a2.html"
+                        >Strength</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">60</td>
+                  </tr>
+                  <tr id="67c3e3c1-f12d-41a8-bfb2-81ca2d7249c3">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Constitution%2067c3e3c1f12d41a8bfb281ca2d7249c3.html"
+                        >Constitution</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">60</td>
+                  </tr>
+                  <tr id="f217eef7-fa06-42ac-b9f0-b816649fbb57">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Size%20f217eef7fa0642acb9f0b816649fbb57.html"
+                        >Size</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">65</td>
+                  </tr>
+                  <tr id="e1fb88d6-c31e-4f64-ac78-5cb86cf1f90e">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Dex%20e1fb88d6c31e4f64ac785cb86cf1f90e.html"
+                        >Dex</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">45</td>
+                  </tr>
+                  <tr id="44cb4f98-fcba-428a-b014-2a9e819ff6a8">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/App%2044cb4f98fcba428ab0142a9e819ff6a8.html"
+                        >App</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">25</td>
+                  </tr>
+                  <tr id="f504b1ed-9994-461a-96a4-5aa1090bb250">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Education%20f504b1ed9994461a96a45aa1090bb250.html"
+                        >Education</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">70</td>
+                  </tr>
+                  <tr id="430638c6-d4e8-4a82-b575-47d653c85bf9">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Intelligence%20430638c6d4e84a82b57547d653c85bf9.html"
+                        >Intelligence</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">55</td>
+                  </tr>
+                  <tr id="acb570b6-0dc4-4218-9f53-938e4ae0071c">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Power%20acb570b60dc442189f53938e4ae0071c.html"
+                        >Power</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ">75</td>
+                  </tr>
+                  <tr id="ff410f45-7d8d-4286-aeda-44160e7cf178">
+                    <td class="cell-title">
+                      <a
+                        href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Stats%204dad196779334f27b7ff059ac77b89be/Untitled%20ff410f457d8d4286aeda44160e7cf178.html"
+                        >Untitled</a
+                      >
+                    </td>
+                    <td class="cell-{wFQ"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div
+            id="340e07bd-6c04-408e-92ec-1c55bd3b3d6f"
+            style="width:43.75000000000005%"
+            class="column"
+          >
+            <p id="329a4bfc-b8b8-4fe3-b9bb-d6228a4ce632" class=""></p>
+            <p id="1898ff37-8d17-4b96-87a7-5494de37486e" class=""></p>
+            <p id="e2b77e4a-d38f-4a81-9a22-13211236491d" class=""></p>
+            <figure id="a5512d01-b423-4383-b991-15b5f454cfcf" class="image">
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled.png"
+                ><img
+                  style="width:551px"
+                  src="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled.png"
+              /></a>
+            </figure>
+            <p id="76b5ea5e-0ea0-4068-ae6d-46c264d1dc40" class=""></p>
+            <p id="f43c07c1-f61d-406f-ac1b-0459da1438b1" class=""></p>
+          </div>
+        </div>
+        <hr id="b7814c3f-099d-4ebd-a76d-7b5b3eb189a0" />
+        <p id="fb9923fc-f8b8-49b6-8b2d-b2dfd97ef280" class=""></p>
+        <div
+          id="d603a631-487e-4630-b896-5dc941d1c2ec"
+          class="collection-content"
+        >
+          <h4 class="collection-title">Oswald Skills</h4>
+          <table class="collection-content">
+            <thead>
+              <tr>
+                <th>
+                  <span class="icon property-icon"
+                    ><svg
+                      viewBox="0 0 14 14"
+                      style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden"
+                      class="typesTitle"
+                    >
+                      <path
+                        d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"
+                      ></path></svg></span
+                  >Name
+                </th>
+                <th>
+                  <span class="icon property-icon"
+                    ><svg
+                      viewBox="0 0 14 14"
+                      style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden"
+                      class="typesNumber"
+                    >
+                      <path
+                        d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"
+                      ></path></svg></span
+                  >Value
+                </th>
+                <th>
+                  <span class="icon property-icon"
+                    ><svg
+                      viewBox="0 0 14 14"
+                      style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden"
+                      class="typesFormula"
+                    >
+                      <path
+                        d="M7.77892,7.06304 L4.62218,11.2875 C4.58556,11.3416 4.55285,11.4392 4.5504,11.5052 C4.5504,11.7022 4.7047,11.8619 4.89562,11.8619 L11.1383,11.8619 C11.6139,11.8619 11.9996,12.2598 11.9996,12.7507 L11.9996,13.1111 C11.9996,13.602 11.6139,14 11.1383,14 L1.861927,14 C1.385853,14 1.00011061,13.602 1.00011061,13.1111 L1.00011061,12.6858 C0.99718092,12.4783 1.0523567,12.3098 1.176868,12.1466 L4.39269,7.79888 C4.74816,7.31841 4.74572,6.65139 4.38683,6.17354 L1.400013,2.19436 C1.27306,2.03028 1.216419,1.85993 1.219349,1.65006 L1.219349,0.888889 C1.219349,0.397968 1.605091,0 2.08117,0 L10.91906,0 C11.3946,0 11.7804,0.397968 11.7804,0.888889 L11.7804,1.24925 C11.7804,1.74017 11.3946,2.13814 10.91906,2.13814 L5.13634,2.13814 C4.94542,2.13814 4.79064,2.29801 4.79064,2.49522 C4.79308,2.56049 4.82482,2.65709 4.86095,2.71087 L7.78038,6.68628 C7.8297,6.74847 7.84435,6.7934 7.84142,6.87363 C7.84435,6.95493 7.82921,7.00048 7.77892,7.06304 Z"
+                      ></path></svg></span
+                  >Hard Success
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="26746cc7-809d-48ac-a6c6-4f365c6cd36d">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Accounting%2026746cc7809d48aca6c64f365c6cd36d.html"
+                    >Accounting</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="886799c7-80a3-40e1-bd98-92b1d5602901">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Appraise%20886799c780a340e1bd9892b1d5602901.html"
+                    >Appraise</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="3ee6d918-9c08-448f-9c97-a7e4b31efd1d">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Archaeology%203ee6d9189c08448f9c97a7e4b31efd1d.html"
+                    >Archaeology</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="0c04ea1b-e1c1-4082-a5c7-b1141005fb44">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Art%200c04ea1be1c14082a5c7b1141005fb44.html"
+                    >Art</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="9ac10713-2459-4a3b-bdd5-7d1b2edf4d97">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Hypnosis%209ac1071324594a3bbdd57d1b2edf4d97.html"
+                    >Hypnosis</a
+                  >
+                </td>
+                <td class="cell-?r:e">25</td>
+                <td class="cell-~\\L">12</td>
+              </tr>
+              <tr id="7c17f294-370a-4d20-9079-2b8cabd6c7cc">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Charm%207c17f294370a4d2090792b8cabd6c7cc.html"
+                    >Charm</a
+                  >
+                </td>
+                <td class="cell-?r:e">55</td>
+                <td class="cell-~\\L">27</td>
+              </tr>
+              <tr id="8726f953-9007-4849-834c-22b8dc6f395c">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Climb%208726f95390074849834c22b8dc6f395c.html"
+                    >Climb</a
+                  >
+                </td>
+                <td class="cell-?r:e">20</td>
+                <td class="cell-~\\L">10</td>
+              </tr>
+              <tr id="5e72f2ba-0f97-4c0e-ab63-8b244749814e">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Computer%20Use%205e72f2ba0f974c0eab638b244749814e.html"
+                    >Computer Use</a
+                  >
+                </td>
+                <td class="cell-?r:e">0</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="1e3bc7a7-24f1-41dc-b0ad-0be2625504dd">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Credit%20Use%201e3bc7a724f141dcb0ad0be2625504dd.html"
+                    >Credit Use</a
+                  >
+                </td>
+                <td class="cell-?r:e">30</td>
+                <td class="cell-~\\L">15</td>
+              </tr>
+              <tr id="eb04a766-47b3-421f-a9da-3f416b45ecf7">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Demolitions%20eb04a76647b3421fa9da3f416b45ecf7.html"
+                    >Demolitions</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="d7ceca76-6850-4ea9-a6d3-6fca46d15265">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Disguise%20d7ceca7668504ea9a6d36fca46d15265.html"
+                    >Disguise</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="6c32655a-fa7d-4f27-82de-706a0e69384f">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Diving%206c32655afa7d4f2782de706a0e69384f.html"
+                    >Diving</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="a97c6724-f964-4146-90fe-688ece7c1b45">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Dodge%20(half%20Dex)%20a97c6724f964414690fe688ece7c1b45.html"
+                    >Dodge (half Dex)</a
+                  >
+                </td>
+                <td class="cell-?r:e">22</td>
+                <td class="cell-~\\L">11</td>
+              </tr>
+              <tr id="44d46aab-3f8a-48ad-b9b1-8944a52985f6">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Drive%20Auto%2044d46aab3f8a48adb9b18944a52985f6.html"
+                    >Drive Auto</a
+                  >
+                </td>
+                <td class="cell-?r:e">20</td>
+                <td class="cell-~\\L">10</td>
+              </tr>
+              <tr id="4c0e86cd-834b-4562-8a1a-c9f9321a3253">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Electrical%20Repair%204c0e86cd834b45628a1ac9f9321a3253.html"
+                    >Electrical Repair</a
+                  >
+                </td>
+                <td class="cell-?r:e">10</td>
+                <td class="cell-~\\L">5</td>
+              </tr>
+              <tr id="bc07eb83-3287-43ba-bb7b-06f3d4c0cd33">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Fast%20Talk%20bc07eb83328743babb7b06f3d4c0cd33.html"
+                    >Fast Talk</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="69f38e15-dc43-451f-97b1-9b2c42b30ff0">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Fighting%20(Brawl)%2069f38e15dc43451f97b19b2c42b30ff0.html"
+                    >Fighting (Brawl)</a
+                  >
+                </td>
+                <td class="cell-?r:e">30</td>
+                <td class="cell-~\\L">15</td>
+              </tr>
+              <tr id="c6a9d929-9810-4179-9beb-2494675450df">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Firearms%20(Pistols)%20c6a9d929981041799beb2494675450df.html"
+                    >Firearms (Pistols)</a
+                  >
+                </td>
+                <td class="cell-?r:e">30</td>
+                <td class="cell-~\\L">15</td>
+              </tr>
+              <tr id="ece788b6-934b-4c92-a7e3-c8c527121319">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Firearms%20(Rifle%20and%20Shotguns)%20ece788b6934b4c92a7e3c8c527121319.html"
+                    >Firearms (Rifle and Shotguns)</a
+                  >
+                </td>
+                <td class="cell-?r:e">35</td>
+                <td class="cell-~\\L">17</td>
+              </tr>
+              <tr id="9dfb1ff5-6431-42cd-aaa9-d53f6b6871fc">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Firearms%20(SMG)%209dfb1ff5643142cdaaa9d53f6b6871fc.html"
+                    >Firearms (SMG)</a
+                  >
+                </td>
+                <td class="cell-?r:e">15</td>
+                <td class="cell-~\\L">7</td>
+              </tr>
+              <tr id="b3a28561-73b2-4a1b-b652-993efbbf2d1c">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/First%20Aid%20b3a2856173b24a1bb652993efbbf2d1c.html"
+                    >First Aid</a
+                  >
+                </td>
+                <td class="cell-?r:e">30</td>
+                <td class="cell-~\\L">15</td>
+              </tr>
+              <tr id="5830c184-a1b2-42c4-b453-11c6d5fb751a">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/History%205830c184a1b242c4b45311c6d5fb751a.html"
+                    >History</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="d8029cb5-e2cb-4db2-86c8-4c8156d0760f">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Intimidate%20d8029cb5e2cb4db286c84c8156d0760f.html"
+                    >Intimidate</a
+                  >
+                </td>
+                <td class="cell-?r:e">15</td>
+                <td class="cell-~\\L">7</td>
+              </tr>
+              <tr id="105e52af-6eb7-4cb8-ab6b-94d0f4e9b6e8">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Jump%20105e52af6eb74cb8ab6b94d0f4e9b6e8.html"
+                    >Jump</a
+                  >
+                </td>
+                <td class="cell-?r:e">20</td>
+                <td class="cell-~\\L">10</td>
+              </tr>
+              <tr id="00d23c16-3489-4eaf-9898-db57589cda0b">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Language%2000d23c1634894eaf9898db57589cda0b.html"
+                    >Language</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="9e984a82-deaf-44e6-9295-e9e83085e41f">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/English%209e984a82deaf44e69295e9e83085e41f.html"
+                    >English</a
+                  >
+                </td>
+                <td class="cell-?r:e">70</td>
+                <td class="cell-~\\L">35</td>
+              </tr>
+              <tr id="cecccf75-2838-436f-9350-4c576d5b8b50">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Law%20cecccf752838436f93504c576d5b8b50.html"
+                    >Law</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="b61dff06-36ad-4522-9cbd-d904d018bb08">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Library%20Use%20b61dff0636ad45229cbdd904d018bb08.html"
+                    >Library Use</a
+                  >
+                </td>
+                <td class="cell-?r:e">70</td>
+                <td class="cell-~\\L">35</td>
+              </tr>
+              <tr id="ddbf8cdb-4fb0-4e82-94a7-b7622696727e">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Listen%20ddbf8cdb4fb04e8294a7b7622696727e.html"
+                    >Listen</a
+                  >
+                </td>
+                <td class="cell-?r:e">35</td>
+                <td class="cell-~\\L">17</td>
+              </tr>
+              <tr id="afef3531-0ef5-45ab-a18c-90105e91c9e4">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Locksmith%20afef35310ef545aba18c90105e91c9e4.html"
+                    >Locksmith</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="1803500f-9f39-4309-92c5-64aa3a6eeeee">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Mech%20Repair%201803500f9f39430992c564aa3a6eeeee.html"
+                    >Mech Repair</a
+                  >
+                </td>
+                <td class="cell-?r:e">10</td>
+                <td class="cell-~\\L">5</td>
+              </tr>
+              <tr id="34d84949-dae2-44e3-969e-f786b3facb98">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Medicine%2034d84949dae244e3969ef786b3facb98.html"
+                    >Medicine</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="2d3cf604-052e-4046-9ddb-52153d8fbe65">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Natural%20World%202d3cf604052e40469ddb52153d8fbe65.html"
+                    >Natural World</a
+                  >
+                </td>
+                <td class="cell-?r:e">10</td>
+                <td class="cell-~\\L">5</td>
+              </tr>
+              <tr id="a98a146b-2d1e-4540-932c-638d11ce6c37">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Navigate%20a98a146b2d1e4540932c638d11ce6c37.html"
+                    >Navigate</a
+                  >
+                </td>
+                <td class="cell-?r:e">10</td>
+                <td class="cell-~\\L">5</td>
+              </tr>
+              <tr id="5706cb67-d38d-457a-9099-86065c5a0d4a">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Occult%205706cb67d38d457a909986065c5a0d4a.html"
+                    >Occult</a
+                  >
+                </td>
+                <td class="cell-?r:e">65</td>
+                <td class="cell-~\\L">32</td>
+              </tr>
+              <tr id="2084ad1b-4729-4de2-9995-3a4ba20c3e09">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Operate%20Heavy%20Machine%202084ad1b47294de299953a4ba20c3e09.html"
+                    >Operate Heavy Machine</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="60bce862-de4d-438d-b69e-911acbd2838f">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Persuade%2060bce862de4d438db69e911acbd2838f.html"
+                    >Persuade</a
+                  >
+                </td>
+                <td class="cell-?r:e">55</td>
+                <td class="cell-~\\L">27</td>
+              </tr>
+              <tr id="d287b4f5-07c5-4934-a974-c4b083d670ab">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Pilot%20d287b4f507c54934a974c4b083d670ab.html"
+                    >Pilot</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="b7ce56f5-e077-4a77-b3b3-9265ae08f306">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Psychoanalysis%20b7ce56f5e0774a77b3b39265ae08f306.html"
+                    >Psychoanalysis</a
+                  >
+                </td>
+                <td class="cell-?r:e">66</td>
+                <td class="cell-~\\L">33</td>
+              </tr>
+              <tr id="cfc2c51d-ecfa-467f-b160-7d1cb4f8b607">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Psychology%20cfc2c51decfa467fb1607d1cb4f8b607.html"
+                    >Psychology</a
+                  >
+                </td>
+                <td class="cell-?r:e">50</td>
+                <td class="cell-~\\L">25</td>
+              </tr>
+              <tr id="c7141b56-7b6a-4901-84ff-ceb7465584f5">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Read%20Lips%20c7141b567b6a490184ffceb7465584f5.html"
+                    >Read Lips</a
+                  >
+                </td>
+                <td class="cell-?r:e">1</td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+              <tr id="dce7f630-9a4e-490f-8b9b-153a1d253271">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Ride%20dce7f6309a4e490f8b9b153a1d253271.html"
+                    >Ride</a
+                  >
+                </td>
+                <td class="cell-?r:e">5</td>
+                <td class="cell-~\\L">2</td>
+              </tr>
+              <tr id="1c88bda2-5caf-4ff6-9541-10aa05202ed1">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Astronomy%201c88bda25caf4ff6954110aa05202ed1.html"
+                    >Astronomy</a
+                  >
+                </td>
+                <td class="cell-?r:e">46</td>
+                <td class="cell-~\\L">23</td>
+              </tr>
+              <tr id="53ed6330-5e3a-440e-bb3f-ca385dc861af">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Slight%20of%20Hand%2053ed63305e3a440ebb3fca385dc861af.html"
+                    >Slight of Hand</a
+                  >
+                </td>
+                <td class="cell-?r:e">10</td>
+                <td class="cell-~\\L">5</td>
+              </tr>
+              <tr id="4c8e7b86-b838-4341-9b5c-9bdd53e2e912">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Spot%20Hidden%204c8e7b86b83843419b5c9bdd53e2e912.html"
+                    >Spot Hidden</a
+                  >
+                </td>
+                <td class="cell-?r:e">40</td>
+                <td class="cell-~\\L">20</td>
+              </tr>
+              <tr id="fa7f4e2e-e9c5-4e46-8c4a-1523876aacf3">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Stealth%20fa7f4e2ee9c54e468c4a1523876aacf3.html"
+                    >Stealth</a
+                  >
+                </td>
+                <td class="cell-?r:e">20</td>
+                <td class="cell-~\\L">10</td>
+              </tr>
+              <tr id="e7ad6c98-a099-4a41-8c65-079c6b941f85">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Survival%20e7ad6c98a0994a418c65079c6b941f85.html"
+                    >Survival</a
+                  >
+                </td>
+                <td class="cell-?r:e">10</td>
+                <td class="cell-~\\L">5</td>
+              </tr>
+              <tr id="198640f9-b930-4da5-9bc1-9675159ee29c">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Swim%20198640f9b9304da59bc19675159ee29c.html"
+                    >Swim</a
+                  >
+                </td>
+                <td class="cell-?r:e">20</td>
+                <td class="cell-~\\L">10</td>
+              </tr>
+              <tr id="5ab6fddb-1073-4404-82e1-36daff52662a">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Throw%205ab6fddb1073440482e136daff52662a.html"
+                    >Throw</a
+                  >
+                </td>
+                <td class="cell-?r:e">20</td>
+                <td class="cell-~\\L">10</td>
+              </tr>
+              <tr id="d0004ee0-2d82-44b2-9a69-ceb2dafff082">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Track%20d0004ee02d8244b29a69ceb2dafff082.html"
+                    >Track</a
+                  >
+                </td>
+                <td class="cell-?r:e">10</td>
+                <td class="cell-~\\L">5</td>
+              </tr>
+              <tr id="3a074afa-4062-4505-863a-ae5b314b9259">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Divination%203a074afa40624505863aae5b314b9259.html"
+                    >Divination</a
+                  >
+                </td>
+                <td class="cell-?r:e">65</td>
+                <td class="cell-~\\L">32</td>
+              </tr>
+              <tr id="26b5e042-074a-465b-8741-c48a82681b7a">
+                <td class="cell-title">
+                  <a
+                    href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Oswald%20Skills%20d603a631487e4630b8965dc941d1c2ec/Untitled%2026b5e042074a465b8741c48a82681b7a.html"
+                    >Untitled</a
+                  >
+                </td>
+                <td class="cell-?r:e"></td>
+                <td class="cell-~\\L">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr id="43a038c9-e88e-4169-9482-9b8bfe5a2c1c" />
+        <p id="41df1381-fc09-4d52-af6b-a31bb18a3546" class=""></p>
+        <h2 id="ba42288d-7ec1-44ec-ab8a-36549f4d51ec" class="">Inventory</h2>
+        <hr id="421e211c-f4e1-47cd-ad21-fb7ca4d2df44" />
+        <div id="283d93c1-caad-46f0-a4cb-a8e10d99f635" class="column-list">
+          <div
+            id="9892d716-e0da-4476-888d-aafde7449cfa"
+            style="width:33.333333333333336%"
+            class="column"
+          >
+            <figure id="f8ac0567-4bd6-437c-90e2-18583a67f3a5" class="image">
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%201.png"
+                ><img
+                  style="width:336px"
+                  src="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%201.png"
+              /></a>
+            </figure>
+          </div>
+          <div
+            id="56926346-8df2-4e54-9b3d-9c7a0b9c3199"
+            style="width:33.33333333333333%"
+            class="column"
+          >
+            <figure id="0da781b3-543a-4e7e-8818-2ae30cb4e140" class="image">
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%202.png"
+                ><img
+                  style="width:384px"
+                  src="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%202.png"
+              /></a>
+            </figure>
+            <p id="d956c08e-1219-4bd2-8e54-a76e894e444a" class=""></p>
+          </div>
+          <div
+            id="d945d51c-a297-440d-a991-bb3abf99c983"
+            style="width:33.333333333333336%"
+            class="column"
+          >
+            <figure id="7db741d6-efc4-43dd-9dac-dc14c86f206e" class="image">
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%203.png"
+                ><img
+                  style="width:600px"
+                  src="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%203.png"
+              /></a>
+            </figure>
+          </div>
+        </div>
+        <hr id="5245624e-18f2-4502-8097-ae1dc0452c0e" />
+        <p id="17a816e7-6964-40e2-9fbb-16b2bc4ce4ce" class=""></p>
+        <ul id="22f84a18-72ce-4d91-ac25-14100d054fad" class="bulleted-list">
+          <li>Sapper</li>
+        </ul>
+        <ul id="a3187e08-f3a4-4231-a50b-72fd44d2eafd" class="bulleted-list">
+          <li>Knife</li>
+        </ul>
+        <ul id="202692d1-de04-4591-8bdf-0e329cabe6f4" class="bulleted-list">
+          <li>7.65 Luger: 1D8</li>
+        </ul>
+        <ul id="5dcbdc07-c7de-4845-a73e-c4d738a1112f" class="bulleted-list">
+          <li>Sap * Poor 1d4 x2 -- 3 B S</li>
+        </ul>
+        <ul id="1f5dd9b0-6bde-497a-91c7-6f2c8b320669" class="bulleted-list">
+          <li>Knife, Hunting Poor 1d4+1d3+1 19-20/x2 10 2½ P T</li>
+        </ul>
+        <ul id="ab5783fb-26c3-40f1-b978-91267fbc67ec" class="bulleted-list">
+          <li>Unarmed, - - 1d3+1d4+1</li>
+        </ul>
+        <ul id="b8143121-c141-4229-9c18-ad45a249ec62" class="toggle">
+          <li>
+            <details open=""
+              ><summary>Books</summary>
+              <p id="e9348128-01c5-45d3-b5f1-2bad8271153d" class="">
+                Selections
+              </p>
+              <p id="9a2e67e9-d95c-410c-89da-b373c5b6062e" class="">
+                Life as a god
+              </p>
+              <p id="99e9e2ea-a593-4aad-83b8-29440ab60f87" class="">
+                Necotic manuscripts (8 sanity loss, fear of seagulls, learned
+                the spell <mark class="highlight-red">Contact Winged One</mark>)
+              </p></details
+            >
+          </li>
+        </ul>
+        <hr id="fd8b6ea6-8771-44b7-a66c-eada87869147" />
+        <p id="f9e2ecc1-2c2b-4215-969d-01267b5c52f9" class=""></p>
+        <p id="0f069fe6-5536-4e68-bfd6-6bf08d076879" class=""></p>
+        <div id="1934310f-dc5b-447e-8ce9-1c6d6caf46ca" class="column-list">
+          <div
+            id="67de28f4-db10-4524-8db6-61e57ca635a5"
+            style="width:33.333333333333336%"
+            class="column"
+          >
+            <p id="98d73ab2-7a35-4b1f-ac43-aa19378d59a4" class=""></p>
+            <figure id="de37d090-7c09-41f3-8c8f-6b47a3aa6fad" class="image">
+              <a
+                href="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%204.png"
+                ><img
+                  style="width:528px"
+                  src="COC%20Notes%20e35c21055eb84d00a2305b368b0506d9/Untitled%204.png"
+              /></a>
+            </figure>
+          </div>
+          <div
+            id="b910fb1e-fccf-4f1a-8491-6f55fc64db92"
+            style="width:33.33333333333333%"
+            class="column"
+          >
+            <p id="f0feabaf-f59c-4c46-8add-365ffa551977" class=""></p>
+            <h2 id="9bfd3607-e4ae-4742-ba9d-f3f4e7ff4bfd" class="">Talents</h2>
+            <ul id="d81ef827-bd0f-4cf9-8f44-0bcefb0b32d4" class="bulleted-list">
+              <li>Psychic Power</li>
+            </ul>
+            <ul id="7b02d50a-29f6-4188-99b8-f5f59ba2465e" class="bulleted-list">
+              <li>Mythos Knowledge</li>
+            </ul>
+            <p id="b823cecd-4003-4773-852f-70373330e967" class=""></p>
+            <hr id="cb0b4f00-7ec9-444f-9740-232a3e2e05f0" />
+            <p id="0c56d54b-74e2-4484-9b1c-8b53e67f6ffd" class=""></p>
+          </div>
+          <div
+            id="273a26ed-16ab-4594-bad5-471450de75ff"
+            style="width:33.33333333333334%"
+            class="column"
+          >
+            <p id="68e66854-4de8-422a-9e4e-40c88be05a63" class=""></p>
+            <h2 id="2c1aaa79-f968-4eed-b21a-bad629cefcd8" class="">Details</h2>
+            <ul id="e51dea69-0af5-43ff-be4c-86543c3f79f2" class="bulleted-list">
+              <li>
+                Spending level: 10
+                <ul
+                  id="d4ec903d-0e87-4256-9604-19ca69eff5f8"
+                  class="bulleted-list"
+                >
+                  <li>Cash: 60.00</li>
+                </ul>
+                <ul
+                  id="a6c381c2-57cb-47c4-92da-7720e6272bff"
+                  class="bulleted-list"
+                >
+                  <li>Assets: 1500.00</li>
+                </ul>
+              </li>
+            </ul>
+            <hr id="560d90d1-5b6c-40fa-8e7a-83459759f9cb" />
+          </div>
+        </div>
+        <p id="783d29bb-4dd3-400e-900a-d8afcd274a1e" class=""></p>
+      </div>
+    </article>
+  </body>
+</html>
