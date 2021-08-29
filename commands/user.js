@@ -2,9 +2,10 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('args')
+		.setName('user')
 		.setDescription('Use for testing args'),
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+
 	},
 };

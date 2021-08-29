@@ -1,7 +1,4 @@
-const {
-  client,
-  db
-} = require('../index.js')
+const {client,} = require('../index.js')
 
 module.exports = {
   name: "ready",
