@@ -11,7 +11,13 @@ module.exports = {
     client.db.set('roles', []).write()
     client.db.set('channels', []).write()
     client.db.set('members', []).write()
+    client.db.set('guilds', []).write()
     client.guilds.cache.each(g => {
+      
+      let guildObj = {
+        'guild_name': g.name,
+        'guild_id' : g.id
+      }
 
       //console.log(g)
       let roles = g.roles.cache
@@ -44,6 +50,7 @@ module.exports = {
       })
       db.get('roles').push(roleMap).write()
       db.get('channels').push(channelMap).write()
+      db.get('guilds').push(guildObj).write()
 
 
     })

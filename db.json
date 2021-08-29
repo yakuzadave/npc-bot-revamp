@@ -1210,5 +1210,27 @@
       "type": "GUILD_TEXT"
     }
   ],
-  "members": []
+  "members": [],
+  "guilds": [
+    {
+      "guild_name": "The Inn Between",
+      "guild_id": "465953978841169920"
+    },
+    {
+      "guild_name": "Happy Tree Friends",
+      "guild_id": "512585194151215104"
+    },
+    {
+      "guild_name": "Crit Fail",
+      "guild_id": "623639084669337640"
+    },
+    {
+      "guild_name": "Waterdeep Misfits",
+      "guild_id": "793916597093662720"
+    },
+    {
+      "guild_name": "Luna One-Shot",
+      "guild_id": "856240902950486057"
+    }
+  ]
 }
