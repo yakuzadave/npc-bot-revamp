@@ -1674,12 +1674,6 @@
       "type": "GUILD_CATEGORY"
     },
     {
-      "name": "Data bullshit",
-      "id": "882717702588891227",
-      "type": "GUILD_PUBLIC_THREAD",
-      "memberCouny": 4
-    },
-    {
       "name": "Text Channels",
       "id": "793916597093662721",
       "type": "GUILD_CATEGORY"
