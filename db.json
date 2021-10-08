@@ -3213,228 +3213,8 @@
   ],
   "channels": [
     {
-      "name": "book-club",
-      "id": "493974286718074890",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "textstation-ai",
-      "id": "514543904851361792",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "suggestions",
-      "id": "470115523431104522",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "toa",
-      "id": "553712801080803348",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "announcements",
-      "id": "533156376399052810",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "misfits-meta",
-      "id": "739235103791644753",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "weave-ooc",
-      "id": "607356447411535882",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-misfits-and-mayhem",
-      "id": "465956820343717898",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "5e Games",
-      "id": "465957066943627267",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "upon-the-icebound-ooc",
-      "id": "533476750336983040",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-bastion-of-broken-souls",
-      "id": "471065267531939861",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "fighting-pits",
-      "id": "469621242320912384",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "vampire-characters",
-      "id": "487423236053663744",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "guantlet-rp",
-      "id": "477608132466704405",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "strongholds-and-settlements",
-      "id": "587059317036023858",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "clarent-wellsping-ooc",
-      "id": "533476557117849610",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "vtm5-shadows-on-the-sun",
-      "id": "621920016006119434",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "saltmarsh-ooc-asssss",
-      "id": "581137085860151337",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "admin-bot-playground",
-      "id": "563247856278831104",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "welcome",
-      "id": "465994731999199240",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "textstation-ooc-chat",
-      "id": "514543851701141519",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "thriller_ooc",
-      "id": "520079529503621130",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "consortium",
-      "id": "465954417531813898",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "thriller_night",
-      "id": "520079465989275649",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "common-avrae-commands",
-      "id": "563150969714769926",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "papa-wuli",
-      "id": "695392969385312358",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "alias-help",
-      "id": "478390219482333199",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "sheet-collection",
-      "id": "578279505173676033",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "heist",
-      "id": "598297448955510861",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-cos",
-      "id": "465956346546880513",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-coi",
-      "id": "465956491330060308",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "clarent-wellsping",
-      "id": "533476422589612041",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "general-chat",
-      "id": "468555097379569674",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "wsc",
-      "id": "695393177577979954",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "skt",
-      "id": "590150044876013591",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "misfits-meta-chat",
-      "id": "735542837579350076",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "administrative",
-      "id": "470115600023158814",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "ooc-heist",
-      "id": "553269520890855424",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "coi",
-      "id": "465956965571362826",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "wsc-characters",
-      "id": "695393644345032746",
-      "type": "GUILD_TEXT"
-    },
-    {
       "name": "lfg-and-lfp",
       "id": "469620386057945094",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "requests",
-      "id": "532329995608129546",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "bastion-of-broken-souls",
-      "id": "471065298209079325",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "steam-nerds",
-      "id": "596504850779602945",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "katharsis",
-      "id": "695393094962511895",
       "type": "GUILD_TEXT"
     },
     {
@@ -3443,48 +3223,8 @@
       "type": "GUILD_TEXT"
     },
     {
-      "name": "cos",
-      "id": "465956943333294095",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "grumpy-bear",
-      "id": "695393128403959819",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "dice-rolls",
-      "id": "695393433082265610",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-pirates-of-the-planes",
-      "id": "465956551631306753",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "textstation-alerts",
-      "id": "514543878041501707",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "weave",
-      "id": "607356337386684467",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "dm-tools",
-      "id": "478664617351184394",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "misfits-and-mayhem",
-      "id": "465957022773411842",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-toa",
-      "id": "553712664098897921",
+      "name": "consortium",
+      "id": "465954417531813898",
       "type": "GUILD_TEXT"
     },
     {
@@ -3493,73 +3233,8 @@
       "type": "GUILD_TEXT"
     },
     {
-      "name": "dm-chat",
-      "id": "465981658126876672",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "catz-and-other-pets-i-guess",
-      "id": "476428238852194307",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-wsc",
-      "id": "695393346595717120",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "RP stuff",
-      "id": "469622577573134363",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "textstation-arrivals",
-      "id": "527683810788114432",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "achievement-suggestions",
-      "id": "553047897453887488",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "just-ryan",
-      "id": "695392551808663712",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "rules-and-policies",
-      "id": "561201915237629992",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "the-inn-between",
-      "id": "465994270445273088",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "upon-the-icebound",
-      "id": "533476695944986647",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "Text Channels",
-      "id": "465953978841169921",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "empire voice",
-      "id": "480469181024960513",
-      "type": "GUILD_VOICE"
-    },
-    {
-      "name": "roll-for-shit",
-      "id": "470113322788716545",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "lets-bitch-about-got-and-other-spoiler-ey-shit",
-      "id": "628777684733919263",
+      "name": "general-chat",
+      "id": "468555097379569674",
       "type": "GUILD_TEXT"
     },
     {
@@ -3568,78 +3243,8 @@
       "type": "GUILD_TEXT"
     },
     {
-      "name": "map-making-resources",
-      "id": "575413524830879746",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "skt-ooc",
-      "id": "590150265836142593",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "Bryan is too lazy to navigate",
-      "id": "516646103160979483",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "WSC",
-      "id": "695385967862874222",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "pirates-of-the-planes",
-      "id": "465956996177199124",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "vampire-2-ooc",
-      "id": "587700118476685361",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ooc-strongholds-and-settlements",
-      "id": "587682432094961718",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ghosts_of_saltmarsh",
-      "id": "581136655709110294",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "Other Games",
-      "id": "476762280172847104",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "Space Station Shenanigans",
-      "id": "514543757069385729",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "faerun-fubar",
-      "id": "606707641712115741",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "dm-rolls",
-      "id": "700309101548273666",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "textstation-info",
-      "id": "533179320642961418",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "parakeet",
-      "id": "695393062225969363",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "ask-a-dm",
-      "id": "465957323941085185",
+      "name": "ooc-bastion-of-broken-souls",
+      "id": "471065267531939861",
       "type": "GUILD_TEXT"
     },
     {
@@ -3648,98 +3253,403 @@
       "type": "GUILD_TEXT"
     },
     {
+      "name": "ooc-coi",
+      "id": "465956491330060308",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "misfits-meta-chat",
+      "id": "735542837579350076",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "heist",
+      "id": "598297448955510861",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "lets-bitch-about-got-and-other-spoiler-ey-shit",
+      "id": "628777684733919263",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "requests",
+      "id": "532329995608129546",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "upon-the-icebound",
+      "id": "533476695944986647",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "admin-bot-playground",
+      "id": "563247856278831104",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "wsc",
+      "id": "695393177577979954",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "faerun-fubar",
+      "id": "606707641712115741",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "RP stuff",
+      "id": "469622577573134363",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "announcements",
+      "id": "533156376399052810",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Other Games",
+      "id": "476762280172847104",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "ooc-misfits-and-mayhem",
+      "id": "465956820343717898",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "empire voice",
+      "id": "480469181024960513",
+      "type": "GUILD_VOICE"
+    },
+    {
+      "name": "skt-ooc",
+      "id": "590150265836142593",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "vtm5-shadows-on-the-sun",
+      "id": "621920016006119434",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "rules-and-policies",
+      "id": "561201915237629992",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "textstation-arrivals",
+      "id": "527683810788114432",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "welcome",
+      "id": "465994731999199240",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "administrative",
+      "id": "470115600023158814",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "vampire-2-ooc",
+      "id": "587700118476685361",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "toa",
+      "id": "553712801080803348",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "weave-ooc",
+      "id": "607356447411535882",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "suggestions",
+      "id": "470115523431104522",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "dm-chat",
+      "id": "465981658126876672",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "katharsis",
+      "id": "695393094962511895",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "bastion-of-broken-souls",
+      "id": "471065298209079325",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ooc-pirates-of-the-planes",
+      "id": "465956551631306753",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ooc-cos",
+      "id": "465956346546880513",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "misfits-meta",
+      "id": "739235103791644753",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ooc-toa",
+      "id": "553712664098897921",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "papa-wuli",
+      "id": "695392969385312358",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "5e Games",
+      "id": "465957066943627267",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "ooc-heist",
+      "id": "553269520890855424",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "catz-and-other-pets-i-guess",
+      "id": "476428238852194307",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ghosts_of_saltmarsh",
+      "id": "581136655709110294",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "clarent-wellsping-ooc",
+      "id": "533476557117849610",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "dm-tools",
+      "id": "478664617351184394",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "just-ryan",
+      "id": "695392551808663712",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "sheet-collection",
+      "id": "578279505173676033",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "weave",
+      "id": "607356337386684467",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "clarent-wellsping",
+      "id": "533476422589612041",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "pirates-of-the-planes",
+      "id": "465956996177199124",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "skt",
+      "id": "590150044876013591",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ooc-wsc",
+      "id": "695393346595717120",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Bryan is too lazy to navigate",
+      "id": "516646103160979483",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "ooc-strongholds-and-settlements",
+      "id": "587682432094961718",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "strongholds-and-settlements",
+      "id": "587059317036023858",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "cos",
+      "id": "465956943333294095",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "common-avrae-commands",
+      "id": "563150969714769926",
+      "type": "GUILD_TEXT"
+    },
+    {
       "name": "book-of-lost-spells",
       "id": "538048210707546133",
       "type": "GUILD_TEXT"
     },
     {
+      "name": "guantlet-rp",
+      "id": "477608132466704405",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ask-a-dm",
+      "id": "465957323941085185",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "alias-help",
+      "id": "478390219482333199",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "textstation-ai",
+      "id": "514543904851361792",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "textstation-alerts",
+      "id": "514543878041501707",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "textstation-info",
+      "id": "533179320642961418",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "fighting-pits",
+      "id": "469621242320912384",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Space Station Shenanigans",
+      "id": "514543757069385729",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "coi",
+      "id": "465956965571362826",
+      "type": "GUILD_TEXT"
+    },
+    {
       "name": "Text Channels",
-      "id": "512585194151215105",
+      "id": "465953978841169921",
       "type": "GUILD_CATEGORY"
     },
     {
-      "name": "stolen-vanguard-tactics",
-      "id": "785896945779867668",
+      "name": "misfits-and-mayhem",
+      "id": "465957022773411842",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "character-sheet",
-      "id": "596687169675067403",
+      "name": "book-club",
+      "id": "493974286718074890",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "memes",
-      "id": "512585194151215106",
+      "name": "the-inn-between",
+      "id": "465994270445273088",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "division",
-      "id": "711887351860822056",
+      "name": "thriller_night",
+      "id": "520079465989275649",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "ooc",
-      "id": "558348381228105728",
+      "name": "thriller_ooc",
+      "id": "520079529503621130",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "in-character",
-      "id": "523273696144523264",
+      "name": "wsc-characters",
+      "id": "695393644345032746",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "Discworld",
-      "id": "558348351586828321",
+      "name": "upon-the-icebound-ooc",
+      "id": "533476750336983040",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "textstation-ooc-chat",
+      "id": "514543851701141519",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "achievement-suggestions",
+      "id": "553047897453887488",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "parakeet",
+      "id": "695393062225969363",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "WSC",
+      "id": "695385967862874222",
       "type": "GUILD_CATEGORY"
     },
     {
-      "name": "Voice Channels",
-      "id": "512585194151215107",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "voice-text",
-      "id": "716672333955334175",
+      "name": "grumpy-bear",
+      "id": "695393128403959819",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "ooc",
-      "id": "596685171428818975",
+      "name": "vampire-characters",
+      "id": "487423236053663744",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "Coms",
-      "id": "512585194151215108",
-      "type": "GUILD_VOICE"
-    },
-    {
-      "name": "rpgs",
-      "id": "794253364657258578",
+      "name": "dice-rolls",
+      "id": "695393433082265610",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "eve",
-      "id": "585800528873783296",
+      "name": "roll-for-shit",
+      "id": "470113322788716545",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "Eve",
-      "id": "569528207653601280",
-      "type": "GUILD_VOICE"
-    },
-    {
-      "name": "Coms 2.0 return of the coms",
-      "id": "569528105958375436",
-      "type": "GUILD_VOICE"
-    },
-    {
-      "name": "bots",
-      "id": "512635927886168105",
+      "name": "dm-rolls",
+      "id": "700309101548273666",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "rdr2",
-      "id": "512585443678748683",
+      "name": "saltmarsh-ooc-asssss",
+      "id": "581137085860151337",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "map-making-resources",
+      "id": "575413524830879746",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "steam-nerds",
+      "id": "596504850779602945",
       "type": "GUILD_TEXT"
     },
     {
@@ -3748,33 +3658,33 @@
       "type": "GUILD_TEXT"
     },
     {
+      "name": "roll-for-shit",
+      "id": "523273741505921024",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Coms",
+      "id": "512585194151215108",
+      "type": "GUILD_VOICE"
+    },
+    {
+      "name": "voice-text",
+      "id": "716672333955334175",
+      "type": "GUILD_TEXT"
+    },
+    {
       "name": "Heroes of Holmfirth",
       "id": "523272979161808956",
       "type": "GUILD_CATEGORY"
     },
     {
-      "name": "borderlands",
-      "id": "569527371057725500",
-      "type": "GUILD_TEXT"
+      "name": "Eve",
+      "id": "569528207653601280",
+      "type": "GUILD_VOICE"
     },
     {
-      "name": "commands",
-      "id": "528729128191393792",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "character-sheets",
-      "id": "523312847623553039",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "monster-import",
-      "id": "567245354773381141",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "warhammer-40k",
-      "id": "512585341870407690",
+      "name": "ooc",
+      "id": "596685171428818975",
       "type": "GUILD_TEXT"
     },
     {
@@ -3783,23 +3693,8 @@
       "type": "GUILD_TEXT"
     },
     {
-      "name": "ooc",
-      "id": "523273124150509589",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "niches",
-      "id": "512692792729010187",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "ideas",
-      "id": "818279346141003816",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "dm-shit",
-      "id": "596687094043115521",
+      "name": "warhammer-40k",
+      "id": "512585341870407690",
       "type": "GUILD_TEXT"
     },
     {
@@ -3808,14 +3703,69 @@
       "type": "GUILD_TEXT"
     },
     {
-      "name": "roll-for-shit",
-      "id": "523273741505921024",
+      "name": "niches",
+      "id": "512692792729010187",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "dm-shit",
+      "id": "596687094043115521",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "holmfirth",
-      "id": "554993159986479119",
+      "name": "monster-import",
+      "id": "567245354773381141",
       "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ooc",
+      "id": "523273124150509589",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "ideas",
+      "id": "818279346141003816",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "in-character",
+      "id": "523273696144523264",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Voice Channels",
+      "id": "512585194151215107",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "ooc",
+      "id": "558348381228105728",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "character-sheet",
+      "id": "596687169675067403",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "bots",
+      "id": "512635927886168105",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "borderlands",
+      "id": "569527371057725500",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "stolen-vanguard-tactics",
+      "id": "785896945779867668",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Text Channels",
+      "id": "512585194151215105",
+      "type": "GUILD_CATEGORY"
     },
     {
       "name": "our homebrew game",
@@ -3823,43 +3773,88 @@
       "type": "GUILD_CATEGORY"
     },
     {
+      "name": "rdr2",
+      "id": "512585443678748683",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "division",
+      "id": "711887351860822056",
+      "type": "GUILD_TEXT"
+    },
+    {
       "name": "Lost Mines of Phandelver",
       "id": "596685104152313858",
       "type": "GUILD_CATEGORY"
     },
     {
-      "name": "AmongUs",
-      "id": "773589703450165268",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "Voice Channels",
-      "id": "623639084669337646",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "other-games",
-      "id": "625048885294792714",
+      "name": "holmfirth",
+      "id": "554993159986479119",
       "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Discworld",
+      "id": "558348351586828321",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "character-sheets",
+      "id": "523312847623553039",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "rpgs",
+      "id": "794253364657258578",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "commands",
+      "id": "528729128191393792",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "eve",
+      "id": "585800528873783296",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Coms 2.0 return of the coms",
+      "id": "569528105958375436",
+      "type": "GUILD_VOICE"
+    },
+    {
+      "name": "memes",
+      "id": "512585194151215106",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "5e",
+      "id": "623640203424169994",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "5e-notes",
+      "id": "623685405241507850",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "z-bbq",
+      "id": "855921620202815550",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "General",
+      "id": "623639084669337648",
+      "type": "GUILD_VOICE"
+    },
+    {
+      "name": "Text Channels",
+      "id": "623639084669337642",
+      "type": "GUILD_CATEGORY"
     },
     {
       "name": "dm-stuff",
       "id": "773323207767097395",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "character-creation",
-      "id": "623640124344762378",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "scheduling",
-      "id": "800939372434030592",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "project-planning",
-      "id": "692813044836991036",
       "type": "GUILD_TEXT"
     },
     {
@@ -3868,24 +3863,89 @@
       "type": "GUILD_TEXT"
     },
     {
+      "name": "Voice Channels",
+      "id": "623639084669337646",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "sf-characters",
+      "id": "633014502937329675",
+      "type": "GUILD_TEXT"
+    },
+    {
       "name": "Projects",
       "id": "692811939373645874",
       "type": "GUILD_CATEGORY"
     },
     {
-      "name": "z-bbq",
-      "id": "855921620202815550",
+      "name": "AmongUs",
+      "id": "773589703450165268",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "tech_rants",
+      "id": "855505076260044810",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "pbp-ic",
-      "id": "692202090558390273",
+      "name": "referral-codes",
+      "id": "855219352109318175",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "reference-and-tools",
-      "id": "623650802959122433",
+      "name": "survivors-guilt",
+      "id": "623639084669337644",
       "type": "GUILD_TEXT"
+    },
+    {
+      "name": "StarFinder",
+      "id": "633014223303082045",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "political",
+      "id": "777685731124576287",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "apollo-events",
+      "id": "773264676695572481",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "games",
+      "id": "773955849558687764",
+      "type": "GUILD_CATEGORY"
+    },
+    {
+      "name": "bot-playground",
+      "id": "623673287909572629",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "au-general",
+      "id": "773589811612352546",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "scheduling",
+      "id": "800939372434030592",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "announcements",
+      "id": "623677366643982346",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "public",
+      "id": "761846183634403359",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Unrailed",
+      "id": "773589660660006943",
+      "type": "GUILD_CATEGORY"
     },
     {
       "name": "rolls",
@@ -3898,113 +3958,13 @@
       "type": "GUILD_TEXT"
     },
     {
-      "name": "Unrailed",
-      "id": "770772246263365632",
-      "type": "GUILD_VOICE"
-    },
-    {
-      "name": "bot-playground",
-      "id": "623673287909572629",
+      "name": "other-games",
+      "id": "625048885294792714",
       "type": "GUILD_TEXT"
     },
     {
-      "name": "General",
-      "id": "623639084669337648",
-      "type": "GUILD_VOICE"
-    },
-    {
-      "name": "apollo-events",
-      "id": "773264676695572481",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "announcements",
-      "id": "623677366643982346",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "sf-characters",
-      "id": "633014502937329675",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "AoE2",
-      "id": "778768040094859335",
-      "type": "GUILD_VOICE"
-    },
-    {
-      "name": "games",
-      "id": "773955849558687764",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "spoiler-bastards",
-      "id": "788487762126700594",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "political",
-      "id": "777685731124576287",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "public",
-      "id": "761846183634403359",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "5e-notes",
-      "id": "623685405241507850",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "au-general",
-      "id": "773589811612352546",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "referral-codes",
-      "id": "855219352109318175",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "tech_rants",
-      "id": "855505076260044810",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "impeach-jimmy",
-      "id": "636047777758969856",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "StarFinder",
-      "id": "633014223303082045",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "pbp-ooc",
-      "id": "692202179007610891",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "survivors-guilt",
-      "id": "623639084669337644",
-      "type": "GUILD_TEXT"
-    },
-    {
-      "name": "5e",
-      "id": "623640203424169994",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "Unrailed",
-      "id": "773589660660006943",
-      "type": "GUILD_CATEGORY"
-    },
-    {
-      "name": "sf-notes",
-      "id": "633014297043402763",
+      "name": "reference-and-tools",
+      "id": "623650802959122433",
       "type": "GUILD_TEXT"
     },
     {
@@ -4013,9 +3973,49 @@
       "type": "GUILD_TEXT"
     },
     {
-      "name": "Text Channels",
-      "id": "623639084669337642",
-      "type": "GUILD_CATEGORY"
+      "name": "pbp-ooc",
+      "id": "692202179007610891",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "AoE2",
+      "id": "778768040094859335",
+      "type": "GUILD_VOICE"
+    },
+    {
+      "name": "impeach-jimmy",
+      "id": "636047777758969856",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "project-planning",
+      "id": "692813044836991036",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "character-creation",
+      "id": "623640124344762378",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "Unrailed",
+      "id": "770772246263365632",
+      "type": "GUILD_VOICE"
+    },
+    {
+      "name": "sf-notes",
+      "id": "633014297043402763",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "spoiler-bastards",
+      "id": "788487762126700594",
+      "type": "GUILD_TEXT"
+    },
+    {
+      "name": "pbp-ic",
+      "id": "692202090558390273",
+      "type": "GUILD_TEXT"
     },
     {
       "name": "Text Channels",
