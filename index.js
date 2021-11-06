@@ -20,6 +20,18 @@ const Filesync = require("lowdb/adapters/FileSync");
 const adapter = new Filesync("db.json");
 const low = require("lowdb");
 const db = low(adapter);
+
+
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://katharsis:<password> @realmcluster.haw7d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+
 db.defaults({
   commands: [],
   events: [],
