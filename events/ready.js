@@ -6,10 +6,10 @@ module.exports = {
   description: "Event emitted when Discord client is ready",
   event: function (client, message) {
     client.logger.log("Client is ready")
-    client.db.set('roles', []).write()
-    client.db.set('channels', []).write()
-    client.db.set('members', []).write()
-    client.db.set('guilds', []).write()
+    db.set('roles', []).write()
+    db.set('channels', []).write()
+    db.set('members', []).write()
+    db.set('guilds', []).write()
     client.guilds.cache.each(g => {
       
       let guildObj = {
@@ -53,9 +53,9 @@ module.exports = {
 
     })
     let flatRoles = client.db.get('roles').flattenDeep().value()
-    client.db.set('roles', flatRoles).write()
+    db.set('roles', flatRoles).write()
     let flatChannels = client.db.get('channels').flattenDeep().value()
-    client.db.set('channels', flatChannels).write()
+    db.set('channels', flatChannels).write()
 
   }
 
