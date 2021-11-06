@@ -4,34 +4,29 @@
 require("dotenv").config();
 const fs = require("fs");
 
-//Express Server and Routes
+
+//Express Server and Routes 
 const express = require("express");
 const app = express();
-const { router } = require("./routes/router.js");
+const {router} = require('./routes/router.js')
+
+
 
 // Utility
 const axios = require("axios");
 //const dialogflow = require('@google-cloud/dialogflow');
-const uuid = require("uuid");
-const path = require("path");
+const uuid = require('uuid');
+const path = require('path')
+
+
+
+
 
 //Load lowdb and set defaults  (this is a working exampe and may need to change later)
 const Filesync = require("lowdb/adapters/FileSync");
 const adapter = new Filesync("db.json");
 const low = require("lowdb");
 const db = low(adapter);
-
-
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://katharsis:<password> @realmcluster.haw7d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
-
-
 db.defaults({
   commands: [],
   events: [],
@@ -50,10 +45,8 @@ db.defaults({
 
 // create the Discord client
 const Discord = require("discord.js");
-const { Client, Collection, Intents } = require("discord.js");
-const client = new Client({
-  intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
-});
+const { Client, Collection, Intents } = require('discord.js');
+const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
 require("./modules/functions.js")(client);
 client.config = require("./config.js");
 client.prefix = "-";
@@ -65,18 +58,23 @@ const eventFiles = fs
   .readdirSync("./events")
   .filter(file => file.endsWith(".js"));
 
+
 for (const file of eventFiles) {
   const clientEvent = require(`./events/${file}`);
-
+  
   try {
     client.on(clientEvent.name, clientEvent.event.bind(null, client));
     console.log(`Event loaded ${clientEvent.name}`);
-  } catch (error) {
+  }
+  
+  catch (error) {
     console.log(`${file} failed to load`);
   }
 }
 
+
 client.commands = new Collection();
+client.db = db;
 
 const commandFiles = fs
   .readdirSync("./commands")
@@ -84,21 +82,27 @@ const commandFiles = fs
 
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
-
+  
   try {
     client.commands.set(command.data.name, command);
     //client.commands.set(command.name, command);
-  } catch (error) {
+  }
+  
+  catch (error) {
     console.log(`${command.name} failed to load`);
   }
 }
+
 
 //load the token from .env file
 client.login(process.env.TOKEN);
 
 // Root entry
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/coc_notes.html"));
+  
+  
+  
+  res.sendFile(path.join(__dirname + '/views/coc_notes.html'));
 });
 
 app.get("/commands", function(request, response) {
@@ -112,11 +116,12 @@ app.post("/flow", function(request, response) {
 });
 
 app.post("/save", function(request, response) {
-  db.get("events")
-    .push(request.body)
-    .write();
+  db.get("events").push(request.body).write()
   response.send("Success");
 });
+
+
+
 
 //add listener
 var listener = app.listen(process.env.PORT, function() {
@@ -128,6 +133,6 @@ var listener = app.listen(process.env.PORT, function() {
 module.exports = {
   client: client,
   express: express,
-  app: app,
-  db: db
-};
+  db: db,
+  app: app
+}
