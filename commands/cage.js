@@ -2,10 +2,11 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('server')
-		.setDescription('Use for testing args'),
+		.setName('cage')
+		.setDescription('Nicolas Cage-isms'),
 	async execute(interaction) {
-		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
+    
+		//await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
     
 	},
 };
