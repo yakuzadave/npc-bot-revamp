@@ -49,9 +49,10 @@ db.defaults({
 }).write();
 
 // create the Discord client
+
 const Discord = require("discord.js");
 const { Client, Collection, Intents } = require("discord.js");
-const client = new Client({
+const mongo = new Client({
   intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
 });
 require("./modules/functions.js")(client);
