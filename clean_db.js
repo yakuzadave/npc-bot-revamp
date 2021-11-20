@@ -13,7 +13,13 @@ console.log(`There are ${unique_players.length} unique members in the DB`)
 
 let res = []
 
-let unique_player_obj = unique_players.map(unique_player => db.get)
+let unique_player_obj = unique_players.map(unique_player => db.get('players').filter(player => player['name']== unique_player).value()[0])
+
+console.log(unique_player_obj)
+
+
+db.remove('players').write()
+db.set('players', unique_player_obj).write()
 
 
 
