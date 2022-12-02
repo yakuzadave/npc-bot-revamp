@@ -7,7 +7,8 @@ import chalk from 'chalk'
 // const moment = require("moment");
 import moment from 'moment'
 
-export let log = (content, type = "log") => {
+const logger = {}
+logger.log = (content, type = "log") => {
   const timestamp = `[${moment().format("YYYY-MM-DD HH:mm:ss")}]:`;
   switch (type) {
     case "log": {
@@ -47,12 +48,16 @@ export let log = (content, type = "log") => {
   }
 };
 
-export let error = (...args) => {
+
+
+ logger.error = (...args) => {
   return this.log(...args, "error");
 };
 
-export let warn = (...args) => this.log(...args, "warn");
+logger.warn = (...args) => this.log(...args, "warn");
 
-export let debug = (...args) => this.log(...args, "debug");
+logger.debug = (...args) => this.log(...args, "debug");
 
-export let cmd = (...args) => this.log(...args, "cmd");
+logger.cmd = (...args) => this.log(...args, "cmd");
+
+export default logger
