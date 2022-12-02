@@ -76,13 +76,12 @@ client.db = db
 client.commands = new Collection()
 let client_events = []
 client_events.push(ready)
-Promise.allSettled(client_events).then(res => res.forEach(item => console.log(item)))
-//client.on('ready', async(res) => )
+// Promise.allSettled(client_events).then(res => res.map(item => item['value']).forEach(item=> client.events.push(0)))
 
 
 
-//load the token from .env file
-client.login(process.env.TOKEN);
-console.log("Logged into Discord")
+// //load the token from .env file
+// client.login(process.env.TOKEN);
+// console.log("Logged into Discord")
 
-export default client
+// export default client
