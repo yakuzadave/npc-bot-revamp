@@ -4,7 +4,8 @@ Logger class for easy and aesthetically pleasing console logging
 // const chalk = require("chalk");
 
 import chalk from 'chalk'
-const moment = require("moment");
+// const moment = require("moment");
+import moment from 'moment'
 
 module.exports.log = (content, type = "log") => {
   const timestamp = `[${moment().format("YYYY-MM-DD HH:mm:ss")}]:`;

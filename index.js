@@ -5,13 +5,14 @@ import dotenv from "dotenv"
 import fs from 'fs'
 import express from "express"
 import axios from 'axios'
-import {} from 'uuid'
+const uuid = import('uuid')
 
 import path from 'path'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
+const logger = import("./modules/Logger")
 
 
 //import {router} from './routes/router.js'
@@ -46,7 +47,7 @@ const file = join(__dirname, 'db.json')
 const adapter = new JSONFile(file)
 const db = new Low(adapter)
 // const db = low(adapter);
-db.defaults({
+db.data || {
   commands: [],
   events: [],
   skills: {},
@@ -60,9 +61,9 @@ db.defaults({
   time: 0,
   locations: {},
   count: 0
-}).write();
+}
 
-const { Client, GatewayIntentBits, Collection, Intents } = require('discord.js');
+import { Client, GatewayIntentBits, Collection } from 'discord.js'
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // create the Discord client
@@ -73,7 +74,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 //require("./modules/functions.js")(client);
 //client.config = require("./config.js");
 // client.prefix = "-";
-client.logger = require("./modules/Logger");
+client.logger = logger
 //let modules = fs.readdirSync("./modules");
 client.events = new Collection();
 client.db = db
@@ -85,7 +86,7 @@ const eventFiles = fs
 
 
 for (const file of eventFiles) {
-  const clientEvent = require(`./events/${file}`);
+  const clientEvent = import(`./events/${file}`);
   
   try {
     client.on(clientEvent.name, clientEvent.event.bind(null, client));
@@ -106,7 +107,7 @@ const commandFiles = fs
   .filter(file => file.endsWith(".js"));
 
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const command = import(`./commands/${file}`);
   
   try {
     client.commands.set(command.data.name, command);
@@ -155,6 +156,4 @@ client.login(process.env.TOKEN);
 
 // export the client and the db
 
-module.exports = {
-  client: client
-}
+export default {client, Logger}
