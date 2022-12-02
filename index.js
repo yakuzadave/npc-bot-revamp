@@ -85,8 +85,9 @@ const eventFiles = fs
   .filter(file => file.endsWith(".js"));
 
 
-for (const file of eventFiles) {
-  const clientEvent = import(`./events/${file}`);
+// for (const file of eventFiles) {
+eventFiles.forEach(async (file) => {
+  const clientEvent = await import(`./events/${file}`);
   
   try {
     client.on(clientEvent.name, clientEvent.event.bind(null, client));
