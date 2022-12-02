@@ -1,30 +1,45 @@
 const {client} = import('../index.js')
 
-export let ready_event =  {
-  name: "ready",
-  description: "Event emitted when Discord client is ready",
-  event: function (client, message) {
-    client.logger.log("Client is ready")
-    client.db.set('roles', []).write()
-    client.db.set('channels', []).write()
-    client.db.set('members', []).write()
-    client.db.set('guilds', []).write()
-    client.guilds.cache.each(g => {
-      
-      let guildObj = {
-        'guild_name': g.name,
-        'guild_id' : g.id
-      }
 
-      //console.log(g)
-      let roles = g.roles.cache
-      let channels = g.channels.cache
-      // let {
-      //   db
-      // } = require('../index.js')
+
+const ready_event_prep = async function ready_event(client, message){
+  client.logger.log("Client is ready")
+  client.logger.log("Client is ready")
+  client.db.set('roles', []).write()
+  client.db.set('channels', []).write()
+  client.db.set('members', []).write()
+  client.db.set('guilds', []).write()
+  client.guilds.cache.each(async g => {
+    let guildObj = {
+      'guild_name': await g.name,
+        'guild_id' : await g.id
+      
+      }
+      console.log(await g)
+      let roles = await g.roles.cache
+      let channels = await g.channels.cache
+    
+  })
+}
+
+let ready_event = {
+  name: "ready",
+  description: "Event emits when Discord client is ready",
+}
+
+export let ready = ready_event
+  
+  {
+ 
+  event: function (client, message) {
+
+
+
+
+
       let roleArray = []
       let memberArray = []
-      let channelArray = []
+      let channemitlArray = []
       roles.each(r => roleArray.push(r))
       channels.each(r => channelArray.push(r))
       let roleMap = roleArray.map(o => {
@@ -45,9 +60,6 @@ export let ready_event =  {
         return obj
 
       })
-      // db.get('roles').push(roleMap).write()
-      // db.get('channels').push(channelMap).write()
-      // db.get('guilds').push(guildObj).write()
 
 
     })
