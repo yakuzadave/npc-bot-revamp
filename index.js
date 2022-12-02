@@ -74,7 +74,10 @@ client.logger = Logger
 client.events = new Collection();
 client.db = db
 client.commands = new Collection()
-client.on('ready', ready)
+let client_events = []
+client_events.push(ready)
+Promise.allSettled(client_events).then(res => res.forEach(item => console.log(item)))
+//client.on('ready', async(res) => )
 
 
 

@@ -4,7 +4,7 @@ const client = import ('../index.js')
 
 
 
-const ready_event_prep = async function ready_event(client, message){
+const ready= async function ready_event(client, message){
   console.log("Client is ready")
 
   await client.logger.log("Client is ready")
@@ -40,13 +40,8 @@ const ready_event_prep = async function ready_event(client, message){
   })
 }
 
-let ready_event = {
-  name: "ready",
-  description: "Event emits when Discord client is ready",
-  event: ready_event_prep
-}
 
-export default client
+export default ready
   
 //   {
  
