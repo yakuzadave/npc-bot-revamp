@@ -47,92 +47,93 @@ db.defaults({
 const Discord = require("discord.js");
 const { Client, Collection, Intents } = require('discord.js');
 const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
-require("./modules/functions.js")(client);
-client.config = require("./config.js");
-client.prefix = "-";
-client.logger = require("./modules/Logger");
-let modules = fs.readdirSync("./modules");
-client.events = new Collection();
 
-const eventFiles = fs
-  .readdirSync("./events")
-  .filter(file => file.endsWith(".js"));
+// require("./modules/functions.js")(client);
+// client.config = require("./config.js");
+// client.prefix = "-";
+// client.logger = require("./modules/Logger");
+// let modules = fs.readdirSync("./modules");
+// client.events = new Collection();
+
+// const eventFiles = fs
+//   .readdirSync("./events")
+//   .filter(file => file.endsWith(".js"));
 
 
-for (const file of eventFiles) {
-  const clientEvent = require(`./events/${file}`);
+// for (const file of eventFiles) {
+//   const clientEvent = require(`./events/${file}`);
   
-  try {
-    client.on(clientEvent.name, clientEvent.event.bind(null, client));
-    console.log(`Event loaded ${clientEvent.name}`);
-  }
+//   try {
+//     client.on(clientEvent.name, clientEvent.event.bind(null, client));
+//     console.log(`Event loaded ${clientEvent.name}`);
+//   }
   
-  catch (error) {
-    console.log(`${file} failed to load`);
-  }
-}
+//   catch (error) {
+//     console.log(`${file} failed to load`);
+//   }
+// }
 
 
-client.commands = new Collection();
-client.db = db;
+// client.commands = new Collection();
+// client.db = db;
 
-const commandFiles = fs
-  .readdirSync("./commands")
-  .filter(file => file.endsWith(".js"));
+// const commandFiles = fs
+//   .readdirSync("./commands")
+//   .filter(file => file.endsWith(".js"));
 
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+// for (const file of commandFiles) {
+//   const command = require(`./commands/${file}`);
   
-  try {
-    client.commands.set(command.data.name, command);
-    //client.commands.set(command.name, command);
-  }
+//   try {
+//     client.commands.set(command.data.name, command);
+//     //client.commands.set(command.name, command);
+//   }
   
-  catch (error) {
-    console.log(`${command.name} failed to load`);
-  }
-}
+//   catch (error) {
+//     console.log(`${command.name} failed to load`);
+//   }
+// }
 
 
-//load the token from .env file
-client.login(process.env.TOKEN);
+// //load the token from .env file
+// client.login(process.env.TOKEN);
 
-// Root entry
-app.get("/", function(req, res) {
+// // Root entry
+// app.get("/", function(req, res) {
   
   
   
-  res.sendFile(path.join(__dirname + '/views/coc_notes.html'));
-});
+//   res.sendFile(path.join(__dirname + '/views/coc_notes.html'));
+// });
 
-app.get("/commands", function(request, response) {
-  let commands = db.get("commands").value();
-  response.send(commands);
-});
+// app.get("/commands", function(request, response) {
+//   let commands = db.get("commands").value();
+//   response.send(commands);
+// });
 
-app.post("/flow", function(request, response) {
-  let commands = db.get("commands").value();
-  response.send(commands);
-});
+// app.post("/flow", function(request, response) {
+//   let commands = db.get("commands").value();
+//   response.send(commands);
+// });
 
-app.post("/save", function(request, response) {
-  db.get("events").push(request.body).write()
-  response.send("Success");
-});
-
-
+// app.post("/save", function(request, response) {
+//   db.get("events").push(request.body).write()
+//   response.send("Success");
+// });
 
 
-//add listener
-var listener = app.listen(process.env.PORT, function() {
-  console.log(`Your app is listening on port ${listener.address().port}`);
-});
 
-// export the client and the db
 
-module.exports = {
-  client: client,
-  express: express,
-  db: db,
-  app: app
-}
+// //add listener
+// var listener = app.listen(process.env.PORT, function() {
+//   console.log(`Your app is listening on port ${listener.address().port}`);
+// });
+
+// // export the client and the db
+
+// module.exports = {
+//   client: client,
+//   express: express,
+//   db: db,
+//   app: app
+// }

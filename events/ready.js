@@ -19,9 +19,9 @@ module.exports = {
       //console.log(g)
       let roles = g.roles.cache
       let channels = g.channels.cache
-      let {
-        db
-      } = require('../index.js')
+      // let {
+      //   db
+      // } = require('../index.js')
       let roleArray = []
       let memberArray = []
       let channelArray = []
@@ -45,9 +45,9 @@ module.exports = {
         return obj
 
       })
-      db.get('roles').push(roleMap).write()
-      db.get('channels').push(channelMap).write()
-      db.get('guilds').push(guildObj).write()
+      // db.get('roles').push(roleMap).write()
+      // db.get('channels').push(channelMap).write()
+      // db.get('guilds').push(guildObj).write()
 
 
     })
