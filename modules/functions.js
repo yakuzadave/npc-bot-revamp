@@ -1,4 +1,4 @@
-module.exports = client => {
+export default client => {
   const d20 = require("d20");
 
   client.roll = async dice => {

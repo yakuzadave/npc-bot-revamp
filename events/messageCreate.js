@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: "message",
   description: "client message event",
   event: function(client, message) {

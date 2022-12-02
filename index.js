@@ -12,7 +12,7 @@ import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
-const logger = import("./modules/Logger")
+const logger = import("./modules/Logger.js")
 
 
 //import {router} from './routes/router.js'
@@ -156,4 +156,4 @@ client.login(process.env.TOKEN);
 
 // export the client and the db
 
-export default {client, Logger}
+export default client

@@ -1,6 +1,6 @@
-const {client,} = require('../index.js')
+const {client} = import('../index.js')
 
-module.exports = {
+export default {
   name: "ready",
   description: "Event emitted when Discord client is ready",
   event: function (client, message) {

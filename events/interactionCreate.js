@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: "interactionCreate",
   description: "client interaction events",
   event:  async (client,interaction) => {
