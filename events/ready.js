@@ -1,6 +1,6 @@
 const {client} = import('../index.js')
 
-export default {
+export let ready_event =  {
   name: "ready",
   description: "Event emitted when Discord client is ready",
   event: function (client, message) {
