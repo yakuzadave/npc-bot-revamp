@@ -1,7 +1,9 @@
 /*
 Logger class for easy and aesthetically pleasing console logging 
 */
-const chalk = require("chalk");
+// const chalk = require("chalk");
+
+import chalk from 'chalk'
 const moment = require("moment");
 
 module.exports.log = (content, type = "log") => {

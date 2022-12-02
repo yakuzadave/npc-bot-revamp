@@ -43,60 +43,65 @@ db.defaults({
   count: 0
 }).write();
 
+const { Client, GatewayIntentBits, Collection, Intents } = require('discord.js');
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
 // create the Discord client
-const Discord = require("discord.js");
-const { Client, Collection, Intents } = require('discord.js');
-const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
+// const Discord = require("discord.js");
+// const { Client, Collection, Intents } = require('discord.js');
+// const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
 
-// require("./modules/functions.js")(client);
-// client.config = require("./config.js");
+//require("./modules/functions.js")(client);
+//client.config = require("./config.js");
 // client.prefix = "-";
-// client.logger = require("./modules/Logger");
-// let modules = fs.readdirSync("./modules");
-// client.events = new Collection();
+client.logger = require("./modules/Logger");
+//let modules = fs.readdirSync("./modules");
+client.events = new Collection();
+client.db = db
+client.commands = new Collection()
 
-// const eventFiles = fs
-//   .readdirSync("./events")
-//   .filter(file => file.endsWith(".js"));
+const eventFiles = fs
+  .readdirSync("./events")
+  .filter(file => file.endsWith(".js"));
 
 
-// for (const file of eventFiles) {
-//   const clientEvent = require(`./events/${file}`);
+for (const file of eventFiles) {
+  const clientEvent = require(`./events/${file}`);
   
-//   try {
-//     client.on(clientEvent.name, clientEvent.event.bind(null, client));
-//     console.log(`Event loaded ${clientEvent.name}`);
-//   }
+  try {
+    client.on(clientEvent.name, clientEvent.event.bind(null, client));
+    console.log(`Event loaded ${clientEvent.name}`);
+  }
   
-//   catch (error) {
-//     console.log(`${file} failed to load`);
-//   }
-// }
+  catch (error) {
+    console.log(`${file} failed to load`);
+  }
+}
 
 
-// client.commands = new Collection();
-// client.db = db;
 
-// const commandFiles = fs
-//   .readdirSync("./commands")
-//   .filter(file => file.endsWith(".js"));
 
-// for (const file of commandFiles) {
-//   const command = require(`./commands/${file}`);
+
+const commandFiles = fs
+  .readdirSync("./commands")
+  .filter(file => file.endsWith(".js"));
+
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
   
-//   try {
-//     client.commands.set(command.data.name, command);
-//     //client.commands.set(command.name, command);
-//   }
+  try {
+    client.commands.set(command.data.name, command);
+    //client.commands.set(command.name, command);
+  }
   
-//   catch (error) {
-//     console.log(`${command.name} failed to load`);
-//   }
-// }
+  catch (error) {
+    console.log(`${command.name} failed to load`);
+  }
+}
 
 
-// //load the token from .env file
-// client.login(process.env.TOKEN);
+//load the token from .env file
+client.login(process.env.TOKEN);
 
 // // Root entry
 // app.get("/", function(req, res) {
@@ -129,11 +134,8 @@ const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Inte
 //   console.log(`Your app is listening on port ${listener.address().port}`);
 // });
 
-// // export the client and the db
+// export the client and the db
 
-// module.exports = {
-//   client: client,
-//   express: express,
-//   db: db,
-//   app: app
-// }
+module.exports = {
+  client: client
+}
