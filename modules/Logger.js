@@ -60,4 +60,4 @@ logger.debug = (...args) => this.log(...args, "debug");
 
 logger.cmd = (...args) => this.log(...args, "cmd");
 
-export default logger
+export let Logger = logger

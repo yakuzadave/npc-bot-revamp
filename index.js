@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url'
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
 import {ready} from './events/ready.js'
-const logger = import("./modules/Logger.js")
+const {Logger} = import("./modules/Logger.js")
 
 
 
@@ -69,7 +69,7 @@ import { Client, GatewayIntentBits, Collection } from 'discord.js'
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 
-client.logger = logger
+client.logger = Logger
 //let modules = fs.readdirSync("./modules");
 client.events = new Collection();
 client.db = db
