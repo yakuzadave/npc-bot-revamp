@@ -26,7 +26,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // import Environment Variables
 dotenv.config();
-const 
+const token = process.env.TOKEN
 
 
 
@@ -50,10 +50,25 @@ db.data || {
   count: 0
 }
 
-client.events = new Collection();
-client.db = db
+
+
 client.commands = new Collection()
 
+let login = Promise.resolve(client.login(token)).then(res => {
+  console.log("Logged into Discord")
+  client.db = db
+  client.events = new Collection();
+  console.log(db)
+  client.on("ready", ()=> {
+    console.log("Discord Client is now ready")
+  })
+  
+  
+})
+
+
+
+export default client
 
 
 
@@ -62,8 +77,5 @@ client.commands = new Collection()
 
 
 
-// //load the token from .env file
-// 
-// console.log("Logged into Discord")
 
-// export default client
+
