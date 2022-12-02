@@ -6,49 +6,34 @@ import fs from 'fs'
 import express from "express"
 import axios from 'axios'
 const uuid = import('uuid')
-
+import { Client, GatewayIntentBits, Collection, Events } from 'discord.js'
 import path from 'path'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
+
+
 const ready =  import('./events/ready.js')
 const {Logger} = import("./modules/Logger.js")
-
-
-
-//import {router} from './routes/router.js'
-dotenv.config();
-
-
-
-//Express Server and Routes 
-// const express = require("express");
-const app = express();
-// const {router} = require('./routes/router.js')
-
-
-
-// Utility
-// const axios = require("axios");
-//const dialogflow = require('@google-cloud/dialogflow');
-// const uuid = require('uuid');
-// const path = require('path')
-
-
-
-
-
-//Load lowdb and set defaults  (this is a working exampe and may need to change later)
-// const Filesync = require("lowdb/adapters/FileSync");
-// const adapter = new Filesync("db.json");
-// const low = require("lowdb");
-
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const file = join(__dirname, 'db.json')
 const adapter = new JSONFile(file)
 const db = new Low(adapter)
-// const db = low(adapter);
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+
+// import Environment Variables
+dotenv.config();
+const 
+
+
+
+
+
+
+// db defaults
 db.data || {
   commands: [],
   events: [],
@@ -65,23 +50,20 @@ db.data || {
   count: 0
 }
 
-import { Client, GatewayIntentBits, Collection } from 'discord.js'
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
-
-client.logger = Logger
-//let modules = fs.readdirSync("./modules");
 client.events = new Collection();
 client.db = db
 client.commands = new Collection()
-let client_events = []
-client_events.push(ready)
-// Promise.allSettled(client_events).then(res => res.map(item => item['value']).forEach(item=> client.events.push(0)))
+
+
+
+
+
+
 
 
 
 // //load the token from .env file
-// client.login(process.env.TOKEN);
+// 
 // console.log("Logged into Discord")
 
 // export default client
