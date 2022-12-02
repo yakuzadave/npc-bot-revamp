@@ -12,7 +12,7 @@ import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
-import {ready} from './events/ready.js'
+const ready =  import('./events/ready.js')
 const {Logger} = import("./modules/Logger.js")
 
 
@@ -74,9 +74,8 @@ client.logger = Logger
 client.events = new Collection();
 client.db = db
 client.commands = new Collection()
+client.on('ready', ready)
 
-console.log(ready)
-client.on('ready', ready['event'])
 
 
 //load the token from .env file

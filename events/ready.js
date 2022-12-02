@@ -1,15 +1,18 @@
-const {client} = import('../index.js')
+const client = import ('../index.js')
+
+
 
 
 
 const ready_event_prep = async function ready_event(client, message){
-  client.logger.log("Client is ready")
-  client.logger.log("Client is ready")
-  client.db.set('roles', []).write()
-  client.db.set('channels', []).write()
-  client.db.set('members', []).write()
-  client.db.set('guilds', []).write()
-  client.guilds.cache.each(async g => {
+  console.log("Client is ready")
+
+  await client.logger.log("Client is ready")
+  await client.db.set('roles', []).write()
+  await client.db.set('channels', []).write()
+  await client.db.set('members', []).write()
+  await client.db.set('guilds', []).write()
+  await client.guilds.cache.each(async g => {
     let guildObj = {
       'guild_name': await g.name,
       'guild_id' : await g.id
@@ -43,7 +46,7 @@ let ready_event = {
   event: ready_event_prep
 }
 
-export let ready = ready_event
+export default client
   
 //   {
  
