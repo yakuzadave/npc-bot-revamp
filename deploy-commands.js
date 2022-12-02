@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const fs = require('fs')
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
+import { SlashCommandBuilder } from '@discordjs/builders'
+import fs from 'fs'
+import { REST } from '@discordjs/rest'
+import {Routes } from 'discord-api-types/v9'
 require('dotenv').config()
 
 

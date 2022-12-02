@@ -1,6 +1,8 @@
 // Add in Deps for the bot
 
 // Configs
+import moment from "moment";
+import chalk from "chalk";
 import dotenv from "dotenv";
 import fs from "fs";
 import express from "express";
@@ -28,13 +30,13 @@ const token = process.env.TOKEN;
 
 client.commands = new Collection();
 
-let login = Promise.resolve(client.login(token)).then(async(res) => {
+let login = Promise.resolve(client.login(token)).then(async (res) => {
   console.log("Logged into Discord");
-  await db.read()
+  await db.read();
   client.events = new Collection();
   if (db.data == null) {
     // db defaults
-    db.data ={
+    db.data = {
       commands: [],
       events: [],
       skills: {},
@@ -49,6 +51,7 @@ let login = Promise.resolve(client.login(token)).then(async(res) => {
       locations: {},
       count: 0,
     };
+    await db.write()
   }
   console.log(db);
   client.db = db;
