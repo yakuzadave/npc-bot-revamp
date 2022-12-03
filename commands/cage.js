@@ -8,6 +8,7 @@ export const cage = (message, args, client) => {
     
   })
   .addInteraction(async (message) => { 
-    await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
+    await message.reply(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
   })
 };
+
