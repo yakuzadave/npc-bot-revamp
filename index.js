@@ -42,7 +42,7 @@ dotenv.config();
 const token = process.env.TOKEN;
 
 client.commands = new Collection();
-command_list.forEach(command => )
+command_list.forEach(command => client.commands.set(command.name, command ))
 
 let login = Promise.resolve(client.login(token)).then(async (res) => {
   console.log("Logged into Discord");
@@ -69,9 +69,23 @@ let login = Promise.resolve(client.login(token)).then(async (res) => {
   }
   console.log(db);
   client.db = db;
+  
+  // Fire ready event
   client.on("ready", () => {
     console.log("Discord Client is now ready");
   });
+  
+  // Interaction Events
+  client.on(Events.InteractionCreate, interaction => {
+    console.log(interaction)
+    if (!interaction.isChatInputCommand()) return; 
+  })
+  
+  client.on("message", message => {
+    console.log(message)
+  })
+  
+  
 });
 
 export default client;
