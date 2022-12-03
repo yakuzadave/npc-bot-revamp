@@ -13,21 +13,24 @@ let clientId = process.env.CLIENT_ID
 //const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-let commands = commandFiles.map( async (file) => {
+let commands = Promise.all(commandFiles.map( async (file) => {
 	const command = await import(`./commands/${file}`);
 	//commands.push(command.data.toJSON());
   let command_string = await JSON.stringify(command)
   console.log("command_string: ", command_string)
   let command_json = await JSON.parse(command_string)
   console.log("command_json: ", command_json)
+  
+  command_json = await command_json[`${file}`].data.toJSON()
   return command_json
-})
+}))
 
 const rest = new REST({ version: '10'})
 console.log(rest)
 //rest.setToken(token)
 
-let deploy_tokens = async (commands, rest, Routes, token) => {
+let deploy_tokens = async (res, rest, Routes, token) => {
+  let commands = await res.map(command => command.value)
   try {
     rest.setToken(token)
     console.log(`Starting refresh of ${commands.length} commands`)
@@ -41,4 +44,5 @@ let deploy_tokens = async (commands, rest, Routes, token) => {
   }
 }
 
-deploy_tokens(commands, rest, Routes, token)
+Promise.allSettled(commands)
+.then(re)
