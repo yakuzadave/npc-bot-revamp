@@ -1,12 +1,13 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 
-export default {
-	data: new SlashCommandBuilder()
-		.setName('cage')
-		.setDescription('Nicolas Cage-isms'),
-	async execute(interaction) {
+export const cage = (message, args, client) => {
+	let data = new SlashCommandBuilder()
+  .setName('cage')
+  .setDescription('Nicolas Cage-isms')
+  .addAction(message => {
     
-		//await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
-    
-	},
+  })
+  .addInteraction(async (message) => { 
+    await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
+  })
 };
