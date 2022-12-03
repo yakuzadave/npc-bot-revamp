@@ -6,7 +6,7 @@ import chalk from "chalk";
 import dotenv from "dotenv";
 //import fs from "fs";
 const path = import.meta.url.split('?')[1];
-const fs = (await import('fs')).default;
+const fs = async () => (import('fs')).default;
 import express from "express";
 import axios from "axios";
 const uuid = import("uuid");
@@ -26,7 +26,12 @@ const db = new Low(adapter);
 
 
 import db_data from './db_old.json'
-console.log(db_data)
+//console.log(db_data)
+
+// load commands
+let command_list = []
+import {cage} from './commands/cage.js'
+command_list.push(cage)
 
 
 
@@ -37,6 +42,7 @@ dotenv.config();
 const token = process.env.TOKEN;
 
 client.commands = new Collection();
+command_list.forEach(command => )
 
 let login = Promise.resolve(client.login(token)).then(async (res) => {
   console.log("Logged into Discord");

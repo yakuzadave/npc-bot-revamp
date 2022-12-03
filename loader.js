@@ -14,11 +14,12 @@ export async function load(url, context, defaultLoad) {
   }
 
   const content = (await readFile(new URL(url))).toString();
-  const json = url.endsWith('.json') ? content : JSON.stringify(content)
+  const js = url.endsWith('.js') ? content : JSON.stringify(content)
 
   return {
     format: 'module',
-    source: `export default ${json};`,
+    source: `export default ${js};`,
+    //source: `export default ${json};`,
     shortCircuit: true,
   };
 }
