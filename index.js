@@ -22,6 +22,12 @@ const file = join(__dirname, "db.json");
 const adapter = new JSONFile(file);
 const db = new Low(adapter);
 
+
+import db_data from './db_old.json'
+console.log(db_data)
+
+
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // import Environment Variables
