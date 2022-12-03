@@ -4,12 +4,14 @@
 import moment from "moment";
 import chalk from "chalk";
 import dotenv from "dotenv";
-import fs from "fs";
+//import fs from "fs";
+const path = import.meta.url.split('?')[1];
+const fs = (await import('fs')).default;
 import express from "express";
 import axios from "axios";
 const uuid = import("uuid");
 import { Client, GatewayIntentBits, Collection, Events } from "discord.js";
-import path from "path";
+
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
