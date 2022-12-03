@@ -16,8 +16,11 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 let commands = commandFiles.map( async (file) => {
 	const command = await import(`./commands/${file}`);
 	//commands.push(command.data.toJSON());
-  // console.log(JSON.stringify(command))
-  return JSON.stringify(command)
+  let command_string = await JSON.stringify(command)
+  console.log("command_string: ", command_string)
+  let command_json = await JSON.parse(command_string)
+  console.log("command_json: ", command_json)
+  return command_json
 })
 
 const rest = new REST({ version: '10'})
