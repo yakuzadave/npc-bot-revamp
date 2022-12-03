@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 
-export default {
+export const server =  {
 	data: new SlashCommandBuilder()
 		.setName('server')
 		.setDescription('Use for testing args'),
