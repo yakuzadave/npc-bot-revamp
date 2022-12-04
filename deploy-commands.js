@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import fs from 'node:fs'
-import { REST, Routes } from 'discord.js'
-// import {Routes } from 'discord-api-types/v9'
+import { REST } from 'discord.js'
+import {Routes } from 'discord-api-types/v10'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -37,13 +37,13 @@ let deploy_tokens = async (commands, rest, Routes, token) => {
   //let commands = await res.map(command => command.value)
   try {
     await rest.setToken(token)
-    console.log(await commands)
-    console.log(`Starting refresh of ${commands.length} commands`)
+    
+    console.log(`Starting refresh of ${await commands.length} commands`)
     const data = await rest.put(
       Routes.applicationGuildCommands(clientId, guildId),
-      {body: commands},
+      {body: await commands},
     );
-    console.log(`Successfully reloaded ${data.length} commands`)
+    console.log(`Successfully reloaded ${await data.length} commands`)
   } catch (error) {
     console.error(error);
   }
