@@ -14,7 +14,7 @@ let clientId = process.env.CLIENT_ID
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 let commands = commandFiles.map( async (file) => {
-	const {command} = await import(`./commands/${file}`);
+	let {command} = await import(`./commands/${file}`);
 	//commands.push(command.data.toJSON());
 //   let command_string = await JSON.stringify(command)
 //   console.log("command_string: ", command_string)
@@ -22,10 +22,11 @@ let commands = commandFiles.map( async (file) => {
 //   console.log("command_json: ", await command_json)
   
 //   let command_data = await Object.values(command_json)
+  command = command.data.toJSON()
   
   console.log(command)
   
-  return command.data
+  return command
 })
 
 const rest = new REST({ version: '10'})
@@ -35,7 +36,8 @@ const rest = new REST({ version: '10'})
 let deploy_tokens = async (commands, rest, Routes, token) => {
   //let commands = await res.map(command => command.value)
   try {
-    rest.setToken(token)
+    await rest.setToken(token)
+    console.log(await commands)
     console.log(`Starting refresh of ${commands.length} commands`)
     const data = await rest.put(
       Routes.applicationGuildCommands(clientId, guildId),
@@ -47,12 +49,7 @@ let deploy_tokens = async (commands, rest, Routes, token) => {
   }
 }
 
-console.log("all_commands:", commands)
-let command_list = []
-Promise.allSettled(commands)
-  .then(res => res.value)
-  .then(res => command_list.push(res))
-  .then(res => console.log(res))
-  .then(res => deploy_tokens(commands, rest, Routes, token))
+//console.log("all_commands:", commands)
+deploy_tokens(commands, rest, Routes, token)
 
 
