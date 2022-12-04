@@ -44,48 +44,48 @@ const token = process.env.TOKEN;
 client.commands = new Collection();
 //command_list.forEach(command => client.commands.set(command.name, command ))
 
-let login = Promise.resolve(client.login(token)).then(async (res) => {
-  console.log("Logged into Discord");
-  await db.read();
-  client.events = new Collection();
-  if (db.data == null) {
-    // db defaults
-    db.data = {
-      commands: [],
-      events: [],
-      skills: {},
-      players: [],
-      mobs: [],
-      objects: {},
-      weapons: {},
-      armor: {},
-      ships: {},
-      resources: {},
-      time: 0,
-      locations: {},
-      count: 0,
-    };
-    await db.write()
-  }
-  console.log(db);
-  client.db = db;
+// let login = Promise.resolve(client.login(token)).then(async (res) => {
+//   console.log("Logged into Discord");
+//   await db.read();
+//   client.events = new Collection();
+//   if (db.data == null) {
+//     // db defaults
+//     db.data = {
+//       commands: [],
+//       events: [],
+//       skills: {},
+//       players: [],
+//       mobs: [],
+//       objects: {},
+//       weapons: {},
+//       armor: {},
+//       ships: {},
+//       resources: {},
+//       time: 0,
+//       locations: {},
+//       count: 0,
+//     };
+//     await db.write()
+//   }
+//   console.log(db);
+//   client.db = db;
   
-  // Fire ready event
-  client.on("ready", () => {
-    console.log("Discord Client is now ready");
-  });
+//   // Fire ready event
+//   client.on("ready", () => {
+//     console.log("Discord Client is now ready");
+//   });
   
-  // Interaction Events
-  client.on(Events.InteractionCreate, interaction => {
-    console.log(interaction)
-    if (!interaction.isChatInputCommand()) return; 
-  })
+//   // Interaction Events
+//   client.on(Events.InteractionCreate, interaction => {
+//     console.log(interaction)
+//     if (!interaction.isChatInputCommand()) return; 
+//   })
   
-  client.on("message", message => {
-    console.log(message)
-  })
+//   client.on("message", message => {
+//     console.log(message)
+//   })
   
   
-});
+// });
 
 export default client;
