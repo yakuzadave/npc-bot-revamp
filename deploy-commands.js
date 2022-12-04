@@ -16,22 +16,24 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 let commands = commandFiles.map( async (file) => {
 	const command = await import(`./commands/${file}`);
 	//commands.push(command.data.toJSON());
-  let command_string = await JSON.stringify(command)
-  console.log("command_string: ", command_string)
-  let command_json = await JSON.parse(command_string)
-  console.log("command_json: ", await command_json)
+//   let command_string = await JSON.stringify(command)
+//   console.log("command_string: ", command_string)
+//   let command_json = await JSON.parse(command_string)
+//   console.log("command_json: ", await command_json)
   
-  let command_data = await Object.values(command_json)
+//   let command_data = await Object.values(command_json)
   
-  return command_data
+  console.log(command)
+  
+  return command
 })
 
 const rest = new REST({ version: '10'})
 //console.log(rest)
 //rest.setToken(token)
 
-let deploy_tokens = async (res, rest, Routes, token) => {
-  let commands = await res.map(command => command.value)
+let deploy_tokens = async (commands, rest, Routes, token) => {
+  //let commands = await res.map(command => command.value)
   try {
     rest.setToken(token)
     console.log(`Starting refresh of ${commands.length} commands`)
@@ -46,3 +48,11 @@ let deploy_tokens = async (res, rest, Routes, token) => {
 }
 
 console.log("all_commands:", commands)
+let command_list = []
+Promise.allSettled(commands)
+  .then(res => res.value)
+  .then(res => res.default)
+  .then(res => command_list.append(res))
+  .then(res => console.log(res))
+deploy_tokens(commands, rest, Routes, token)
+
