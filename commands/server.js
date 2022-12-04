@@ -1,10 +1,10 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 
-export default  {
+export const command =  {
 	data: new SlashCommandBuilder()
 		.setName('server')
 		.setDescription('Use for testing args'),
-	execute: async (interaction) =>{
+	async execute (interaction) {
 		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
     
 	},
