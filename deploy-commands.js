@@ -14,14 +14,16 @@ let clientId = process.env.CLIENT_ID
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 let commands = commandFiles.map( async (file) => {
-	const command = await JSON.parse(JSON.stringify(import(`./commands/${file}`)));
+	const command = await import(`./commands/${file}`);
 	//commands.push(command.data.toJSON());
-  //let command_string = await JSON.stringify(command)
-  //console.log("command_string: ", command_string)
-  let command_json = await Object(command).values()
+  let command_string = await JSON.stringify(command)
+  console.log("command_string: ", command_string)
+  let command_json = await JSON.parse(command_string)
   console.log("command_json: ", await command_json)
   
-  return command_json
+  let command_data = await Object.values(command_json)
+  
+  return command_data
 })
 
 const rest = new REST({ version: '10'})

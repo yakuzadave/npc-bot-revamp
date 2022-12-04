@@ -1,10 +1,11 @@
-import { SlashCommandBuilder } from '@discordjs/builders'
+import { SlashCommandBuilder, CommandInteraction, Collection, PermissionResolvable, Message, AutocompleteInteraction } from 'discord.js'
 
-export const ping =  {
+
+export default {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong!'),
-	async execute(interaction) {
+	execute: async (interaction) => {
 		await interaction.reply('Pong!');
 	},
 };
