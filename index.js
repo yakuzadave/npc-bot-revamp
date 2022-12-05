@@ -33,8 +33,8 @@ import db_data from './db_old.json'
 //console.log(db_data)
 
 // load commands
-import {ping, server, user} from './commands.js'
-let command_list = [ping, server, user]
+import {ping, server, user, fetch} from './commands.js'
+let command_list = [ping, server, user, fetch]
 console.log("Loaded command files: ", command_list)
 
 
