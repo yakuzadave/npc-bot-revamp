@@ -54,10 +54,17 @@ const rest = new REST({ version: '10' }).setToken(token);
 const registerCommand = async(command_data_list, rest, Routes) => {
   try{
     await rest
-    await command_data_list.forEach(async (command) => console.log(await command))
+    command_data_list = await command_data_list.map(async (command) => {
+      let res = await command
+      console.log("Command: ", await res)
+      return res
+    })
     await console.log('Started refreshing application (/) commands.');
     let req = command_data_list.map( async(command) => await rest.put(Routes.applicationCommands(client), { body: await command }) )
-    console.log(req)
+    Promise.allSettled(req)
+      .then(res => res.map(r => r.value))
+      .then(res => res.forEach(r => console.log(r)))
+      .then(res =>  console.log("All commands registered"))
     
   } catch(e){
     console.log("An error has been encountered: ", e)
@@ -72,55 +79,67 @@ registerCommand(command_data_list, rest, Routes)
 
 
 
-// client.commands = new Collection();
-// const discord_command_list = command_list.map(async (command) => {
-//   let set_command = await client.commands.set(command.name, command )
-//   return set_command
-// })
+client.commands = new Collection();
+const discord_command_list = command_list.map(async (command) => {
+  let set_command = await client.commands.set(command.name, command )
+  return set_command
+})
 
 
-// let login = Promise.resolve(client.login(token)).then(async (res) => {
-//   console.log("Logged into Discord");
-//   await db.read();
-//   client.events = new Collection();
-//   if (db.data == null) {
-//     // db defaults
-//     db.data = {
-//       commands: [],
-//       events: [],
-//       skills: {},
-//       players: [],
-//       mobs: [],
-//       objects: {},
-//       weapons: {},
-//       armor: {},
-//       ships: {},
-//       resources: {},
-//       time: 0,
-//       locations: {},
-//       count: 0,
-//     };
-//     await db.write()
-//   }
-//   console.log(db);
-//   client.db = db;
+let login = Promise.resolve(client.login(token)).then(async (res) => {
+  console.log("Logged into Discord");
+  await db.read();
+  client.events = new Collection();
+  if (db.data == null) {
+    // db defaults
+    db.data = {
+      commands: [],
+      events: [],
+      skills: {},
+      players: [],
+      mobs: [],
+      objects: {},
+      weapons: {},
+      armor: {},
+      ships: {},
+      resources: {},
+      time: 0,
+      locations: {},
+      count: 0,
+    };
+    await db.write()
+  }
+  console.log(db);
+  client.db = db;
   
-//   // Fire ready event
-//   client.on("ready", () => {
-//     console.log("Discord Client is now ready");
-//   });
+  // Fire ready event
+  client.on("ready", () => {
+    console.log("Discord Client is now ready");
+  });
   
-//   // Interaction Events
-//   client.on(Events.InteractionCreate, interaction => {
-//     console.log(interaction)
-//     if (!interaction.isChatInputCommand()) return; 
-//   })
+  // Interaction Events
+  client.on(Events.InteractionCreate, async interaction => {
+    console.log(interaction)
+    if (!interaction.isChatInputCommand()) return;
+    const command = interaction.client.commands.get(interaction.commandName);
+    
+    if (!command) {
+      console.error(`No command matching ${interaction.commandName} was found.`);
+      return;
+    }
+    try {
+      await command.execute(interaction);
+    } catch (error) {
+      console.error(error);
+      await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+    }
+  })
   
-//   client.on("message", message => {
-//     console.log(message)
-//   })
+  client.on("message", message => {
+    console.log(message)
+  })
   
   
-// });
+});
 
 export default client;
