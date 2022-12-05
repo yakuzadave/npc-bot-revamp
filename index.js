@@ -46,24 +46,35 @@ dotenv.config();
 const token = process.env.TOKEN;
 const client_id = process.env.CLIENT_ID
 
-client.commands = new Collection();
-command_list.forEach(command => client.commands.set(command.name, command ))
+
+const command_data_list = command_list.map(command => command.data.toJSON())
+
 const rest = new REST({ version: '10' }).setToken(token);
 
-const registerCommand = async(command, rest=rest, Routes=Routes) => {
+const registerCommand = async(command, rest, Routes) => {
   try{
+    await rest
     console.log('Started refreshing application (/) commands.');
-    await rest.put(Routes.applicationCommands(client), { body: command_list });
-    
+    let req = await rest.put(Routes.applicationCommands(client), { body: command });
+    console.log(req)
     
   } catch(e){
-    console.log
+    console.log("An error has been encountered: ", e)
     
   }
   
 }
 
-// command_list.for
+command_data_list.forEach(command => command.then(res))
+registerCommand(command_data_list, rest, Routes)
+
+
+client.commands = new Collection();
+const discord_command_list = command_list.map(async (command) => {
+  let set_command = await client.commands.set(command.name, command )
+  return set_command
+})
+
 
 let login = Promise.resolve(client.login(token)).then(async (res) => {
   console.log("Logged into Discord");
