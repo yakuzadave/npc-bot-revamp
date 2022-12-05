@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, CommandInteraction, Collection } from 'discord.js'
-import axios
+import axios from 'axios'
 
 
 export const ping = {

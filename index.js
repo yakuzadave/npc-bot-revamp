@@ -19,7 +19,7 @@ import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 
-const ready = import("./events/ready.js");
+// const ready = import("./events/ready.js");
 const { Logger } = import("./modules/Logger.js");
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const file = join(__dirname, "db.json");
