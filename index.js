@@ -12,7 +12,7 @@ const fs = async () => (import('fs')).default;
 import express from "express";
 import axios from "axios";
 const uuid = import("uuid");
-import { Client, GatewayIntentBits, Collection, Events } from "discord.js";
+import { Client, GatewayIntentBits, Collection, Events,  REST, Routes } from "discord.js";
 
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -44,52 +44,69 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 // import Environment Variables
 dotenv.config();
 const token = process.env.TOKEN;
+const client_id = process.env.CLIENT_ID
 
 client.commands = new Collection();
 command_list.forEach(command => client.commands.set(command.name, command ))
+const rest = new REST({ version: '10' }).setToken(token);
 
-// let login = Promise.resolve(client.login(token)).then(async (res) => {
-//   console.log("Logged into Discord");
-//   await db.read();
-//   client.events = new Collection();
-//   if (db.data == null) {
-//     // db defaults
-//     db.data = {
-//       commands: [],
-//       events: [],
-//       skills: {},
-//       players: [],
-//       mobs: [],
-//       objects: {},
-//       weapons: {},
-//       armor: {},
-//       ships: {},
-//       resources: {},
-//       time: 0,
-//       locations: {},
-//       count: 0,
-//     };
-//     await db.write()
-//   }
-//   console.log(db);
-//   client.db = db;
+const registerCommand = async(command, rest=rest, Routes=Routes) => {
+  try{
+    console.log('Started refreshing application (/) commands.');
+    await rest.put(Routes.applicationCommands(client), { body: command_list });
+    
+    
+  } catch(e){
+    console.log
+    
+  }
   
-//   // Fire ready event
-//   client.on("ready", () => {
-//     console.log("Discord Client is now ready");
-//   });
+}
+
+// command_list.for
+
+let login = Promise.resolve(client.login(token)).then(async (res) => {
+  console.log("Logged into Discord");
+  await db.read();
+  client.events = new Collection();
+  if (db.data == null) {
+    // db defaults
+    db.data = {
+      commands: [],
+      events: [],
+      skills: {},
+      players: [],
+      mobs: [],
+      objects: {},
+      weapons: {},
+      armor: {},
+      ships: {},
+      resources: {},
+      time: 0,
+      locations: {},
+      count: 0,
+    };
+    await db.write()
+  }
+  console.log(db);
+  client.db = db;
   
-//   // Interaction Events
-//   client.on(Events.InteractionCreate, interaction => {
-//     console.log(interaction)
-//     if (!interaction.isChatInputCommand()) return; 
-//   })
+  // Fire ready event
+  client.on("ready", () => {
+    console.log("Discord Client is now ready");
+  });
   
-//   client.on("message", message => {
-//     console.log(message)
-//   })
+  // Interaction Events
+  client.on(Events.InteractionCreate, interaction => {
+    console.log(interaction)
+    if (!interaction.isChatInputCommand()) return; 
+  })
+  
+  client.on("message", message => {
+    console.log(message)
+  })
   
   
-// });
+});
 
 export default client;
