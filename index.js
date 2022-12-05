@@ -31,10 +31,11 @@ import db_data from './db_old.json'
 //console.log(db_data)
 
 // load commands
-let command_list = []
-//import {cage} from './commands/cage.js'
+import {ping, server, user} from './commands.js'
+let command_list = [ping, server, user]
+console.log("Loaded command files: ", command_list)
 
-//command_list.push(cage)
+
 
 
 
@@ -45,7 +46,7 @@ dotenv.config();
 const token = process.env.TOKEN;
 
 client.commands = new Collection();
-//command_list.forEach(command => client.commands.set(command.name, command ))
+command_list.forEach(command => client.commands.set(command.name, command ))
 
 // let login = Promise.resolve(client.login(token)).then(async (res) => {
 //   console.log("Logged into Discord");

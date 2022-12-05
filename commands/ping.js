@@ -9,3 +9,10 @@ export const command = {
 		await interaction.reply('Pong!');
 	},
 };
+
+export const server = {
+  data: new SlashCommandBuilder()
+    .setName('server')
+    .setDescription('Return server information.')
+  async execute (interaction.reply)
+}
