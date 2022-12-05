@@ -79,17 +79,28 @@ registerCommand(command_data_list, rest, Routes)
 
 
 
-client.commands = new Collection();
-const discord_command_list = command_list.map(async (command) => {
-  let set_command = await client.commands.set(command.name, command )
-  return set_command
-})
+
+
 
 
 let login = Promise.resolve(client.login(token)).then(async (res) => {
   console.log("Logged into Discord");
   await db.read();
   client.events = new Collection();
+  client.commands = new Collection();
+  const discord_command_list = command_list.map(async (command) => {
+    let set_command = await client.commands.set(command.data.name, command )
+    return set_command
+  })
+  
+  await console.log("Loading commands into discord client")
+  
+  await discord_command_list.forEach(async command => console.log(await command))
+  
+  await console.log(`${await discord_command_list.length} commmands loaded`)
+  
+
+  
   if (db.data == null) {
     // db defaults
     db.data = {

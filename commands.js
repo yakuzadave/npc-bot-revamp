@@ -1,4 +1,5 @@
 import { SlashCommandBuilder, CommandInteraction, Collection } from 'discord.js'
+import axios
 
 
 export const ping = {
@@ -27,5 +28,14 @@ export const user = {
     .setDescription('Provides you with user info from the Discord server.'),
   async execute (interaction) {
     	await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+  }
+}
+
+export const fetch = {
+  data: new SlashCommandBuilder()
+    .setName('fetch')
+    .setDescription('Refresh the Necromunda Data'),
+  async execute (interaction) {
+    	//await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
   }
 }
