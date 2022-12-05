@@ -3,7 +3,7 @@ import { URL } from 'url';
 import { readFile } from 'fs/promises';
 
 function isAllowedURL(url) {
-  return ['.html', '.htm', '.md', '.css', '.svg', '.json'].some(x => {
+  return ['.html', '.htm', '.md', '.css', '.svg', '.json',].some(x => {
     return url.endsWith(x);
   });
 }
@@ -14,11 +14,11 @@ export async function load(url, context, defaultLoad) {
   }
 
   const content = (await readFile(new URL(url))).toString();
-  const js = url.endsWith('.js') ? content : JSON.stringify(content)
+  const json = url.endsWith('.json') ? content : JSON.stringify(content)
 
   return {
     format: 'module',
-    source: `export default ${js};`,
+    source: `export default ${json};`,
     //source: `export default ${json};`,
     shortCircuit: true,
   };

@@ -5,6 +5,8 @@ import moment from "moment";
 import chalk from "chalk";
 import dotenv from "dotenv";
 //import fs from "fs";
+import { URL } from 'url';
+import { readFile } from 'fs/promises';
 const path = import.meta.url.split('?')[1];
 const fs = async () => (import('fs')).default;
 import express from "express";
@@ -31,6 +33,7 @@ import db_data from './db_old.json'
 // load commands
 let command_list = []
 //import {cage} from './commands/cage.js'
+
 //command_list.push(cage)
 
 
