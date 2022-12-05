@@ -36,6 +36,13 @@ export const fetch = {
     .setName('fetch')
     .setDescription('Refresh the Necromunda Data'),
   async execute (interaction) {
-    	//await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+    try{
+      let req = await axios.get("https://yaktribe.games/underhive/json/gang/342438.json")
+      console.log(req)
+      interaction.reply("Fetching Necromunda data now.")
+    } catch (e) {
+      console.error(e)
+      interaction.reply("There was an error when trying to fetch the data.  Please take a look at the bot logs for more information")
+    }
   }
 }
