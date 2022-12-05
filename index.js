@@ -19,13 +19,15 @@ import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 
+
 // const ready = import("./events/ready.js");
 const { Logger } = import("./modules/Logger.js");
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const file = join(__dirname, "db.json");
 const adapter = new JSONFile(file);
 const db = new Low(adapter);
-
+const timers = import('node:timers/promises')
+const wait = timers.setTimeout
 
 import db_data from './db_old.json'
 //console.log(db_data)
@@ -63,7 +65,7 @@ const registerCommand = async(command_data_list, rest, Routes) => {
     let req = command_data_list.map( async(command) => await rest.put(Routes.applicationCommands(client), { body: await command }) )
     Promise.allSettled(req)
       .then(res => res.map(r => r.value))
-      .then(res => res.forEach(r => console.log(r)))
+      .then(res => console.log(res))
       .then(res =>  console.log("All commands registered"))
     
   } catch(e){
