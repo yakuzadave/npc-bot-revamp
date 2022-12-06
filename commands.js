@@ -213,12 +213,6 @@ export const gangers = {
             .setDescription("What is your Ganger name?")
             .setRequired(true)
         )
-        .addStringOption((option) =>
-          option
-            .setName("query")
-            .setDescription("Optional query you can use to search")
-            .setRequired(false)
-        )
         .addBooleanOption((option) =>
           option
             .setName("ephemeral")
@@ -346,7 +340,7 @@ export const gangers = {
       if (subcommand == "get") {
         console.log(command_options);
 
-        let query = await command_options.getString("query");
+        //let query = await command_options.getString("query");
 
         console.log(ephemeral);
 
@@ -528,9 +522,14 @@ export const injury = {
         .setName("dice")
         .setDescription("The ganger to roll an injury for")
         .setRequired(true)
-    ),
+  )
+    .addBooleanOption((option) =>option.setName("ephemeral").setDescription("Should the response be ephemeral?").setRequired(false)),
   async execute(interaction, client) {
     const dice = interaction.options.getInteger("dice");
+    let ephemeral = false
+    if (! interaction.options.getBoolean("ephemeral")) {
+      ephemeral = interaction.options.getBoolean("ephemeral")
+    }
     const rolls = d20.roll(`${dice}d6`, true);
     const roll_string = rolls.toString();
     // Create a mapping to return different strings based on the roll result
@@ -667,7 +666,7 @@ export const ammo = {
     await interaction.reply({
       content: "Here are the results of your ammo roll.",
       embeds: [responseEmbed],
-      ephemeral: await true,
+      ephemeral: false,
     });
   },
 };
