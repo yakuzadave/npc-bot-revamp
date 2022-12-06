@@ -59,20 +59,32 @@ export const fetch = {
   }
 }
 
-export const gangList = {
+export const ganglist = {
   data: new SlashCommandBuilder()
-  .setName('gangList')
-  .setDescription('Gets the Gang Info for Necromunda and displays a summary'), 
+    .setName('ganglist')
+    .setDescription('Gets the Gang Info for Necromunda and displays a summary'), 
   async execute (interaction, client) {
     await interaction.reply({content: "Getting Necromunda gang information", ephemeral: true})
     let ganger_data = client.db.data['gangers']
     try{
       let gang_name = ganger_data.map(gang => gang['Gang Name'])
-      let gang_strings = gang_name.join(',')
-      await interaction.followUp({content: "Looks like the fo"})
+      let unique_gangs = [...new Set(gang_name)];
+      let gang_strings = unique_gangs.join(',')
+      
+      await interaction.followUp({content: `Looks like the following gangs are availible: \n ${gang_strings}`, ephemeral: true})
     } catch(e){
       console.error(e)
     }
     
   }
 }
+
+const ganger = {
+  data: new SlashCommandBuilder()
+    .setName('ganger')
+    .setDescription("Query Necromunda Ganger info "),
+  async execute (interaction, client) {
+    await interaction.reply({content: "Getting the ganger info", ephemeral: true})
+  }
+}
+
