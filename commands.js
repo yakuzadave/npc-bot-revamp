@@ -140,10 +140,10 @@ export const gangs = {
     if (subcommand == "ganginfo") {
       console.log(command_options);
       let gang_target = await command_options.getString("name");
-      await interaction.reply({
-        content: `Getting results for ${gang_target}`,
-        emphemeral: true
-      });
+      // await interaction.reply({
+      //   content: `Getting results for ${gang_target}`,
+      //   emphemeral: true
+      // });
       let ganger_data = await client.db.data["gangers"];
       let gang_list = client.db.data["gangs"];
 
@@ -161,16 +161,18 @@ export const gangs = {
           
         })
         
-        console.log(matched);
-        const responseEmbed = {
-          'title' : "Ganger List", 
-          'color' : "0x0099FF",
-          "description" : "Matched list of Necromunda Gangers",
-          "fields" : formatted
+        console.log(formatted);
+//         const responseEmbed = {
+//           'title' : "Ganger List", 
+//           'color' : "0x0099FF",
+//           "description" : "Matched list of Necromunda Gangers",
+//           "fields" : formatted
           
-        }
+//         }
+        const responseEmbed = new EmbedBuilder()
+        responseEmbed.setTitle
 
-        await interaction.followUp({embeds: responseEmbed, content: "Looks like we have a match", ephemeral: true})
+        await interaction.reply({embeds: [responseEmbed], content: "Looks like we have a match", ephemeral: true})
         
         
         
