@@ -128,10 +128,16 @@ export const gangs = {
         client.db.data["gangs"] = unique_gangs;
         let gang_strings = unique_gangs.join(",");
 
-        await interaction.followUp({
-          content: `Looks like the following gangs are availible: \n ${gang_strings}`,
-          ephemeral: true,
-        });
+        // await interaction.followUp({
+        //   content: `Looks like the following gangs are availible: \n ${gang_strings}`,
+        //   ephemeral: true,
+        // });
+        
+        const responseEmbed = new EmbedBuilder()
+        responseEmbed.setTitle("Gang List")
+        responseEmbed.setDescription("A List of Gangers for your Necromunda Ganger")
+        formatted.forEach(field => responseEmbed.addFields(field))
+        
         client.db.write();
       } catch (e) {
         console.error(e);
@@ -155,7 +161,7 @@ export const gangs = {
         let formatted = matched.map(ganger => {
           let obj = {}
           obj['name'] = ganger["Name"]
-          obj['value'] = `Type: ${ganger['Type']}\nStatus: ${ganger['Status']}`
+          obj['value'] = `**Type:** ${ganger['Type']}\n**Status:** ${ganger['Status']}\n`
           obj['inline'] = true
           return obj
           
@@ -170,7 +176,9 @@ export const gangs = {
           
 //         }
         const responseEmbed = new EmbedBuilder()
-        responseEmbed.setTitle
+        responseEmbed.setTitle("Ganger List")
+        responseEmbed.setDescription("A List of Gangers for your Necromunda Ganger")
+        formatted.forEach(field => responseEmbed.addFields(field))
 
         await interaction.reply({embeds: [responseEmbed], content: "Looks like we have a match", ephemeral: true})
         
