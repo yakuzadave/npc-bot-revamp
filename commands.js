@@ -2,6 +2,7 @@ import {
   SlashCommandBuilder,
   CommandInteraction,
   Collection,
+  EmbedBuilder,
 } from "discord.js";
 import axios from "axios";
 import lodash from "lodash";
@@ -101,15 +102,17 @@ export const gangs = {
         .setName("ganglist")
         .setDescription("Get the list of availible Necromunda Gangs")
     )
-    .addSubcommand(subcommand => subcommand
-                  .setName('ganginfo')
-                  .setDescription('Get information about your Necromunda Gang')
-                  .addStringOption(option => option
-                                  .setName('name')
-                                  .setDescription('The name of the gang you are querying for')
-                                  .setRequired(true)
-                                  )
-                  ),
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName("ganginfo")
+        .setDescription("Get information about your Necromunda Gang")
+        .addStringOption((option) =>
+          option
+            .setName("name")
+            .setDescription("The name of the gang you are querying for")
+            .setRequired(true)
+        )
+    ),
   async execute(interaction, client) {
     let command_options = await interaction.options;
     let subcommand = command_options.getSubcommand();
@@ -134,23 +137,22 @@ export const gangs = {
         console.error(e);
       }
     }
-    if(subcommand == 'ganginfo'){
-      console.log(command_options)
-      let gang_target = command_options.getString('name')
-      
+    if (subcommand == "ganginfo") {
+      console.log(command_options);
+      let gang_target = await command_options.getString("name");
+      await interaction.reply({
+        content: `Getting results for ${gang_target}`,
+      });
+      let ganger_data = await client.db.data["gangers"];
+      let gang_list = client.db.data["gangs"];
+
+      if (gang_list.includes(gang_target)) {
+        let matched = ganger_data.filter(
+          (ganger) => ganger["Gang Name"] == gang_target
+        );
+        console.log(matched);
+        
+      }
     }
-  },
-};
-
-export const ganger = {
-  data: new SlashCommandBuilder()
-    .setName("ganger")
-    .setDescription("Query Necromunda Ganger info "),
-
-  async execute(interaction, client) {
-    await interaction.reply({
-      content: "Getting the ganger info",
-      ephemeral: true,
-    });
   },
 };
