@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 import axios from "axios";
 import lodash from "lodash";
+import d20 from "d20";
 
 export const ping = {
   data: new SlashCommandBuilder()
@@ -243,7 +244,6 @@ export const gangers = {
       //   (ganger) => ganger["Name"].toLowerCase() == ganger_target
       // );
 
-      
       // Use the filter() method with a regular expression to return all ganger objects
       // in the ganger_data array whose Name property contains the ganger_target string
       let matched = ganger_data.filter((ganger) => {
@@ -409,5 +409,66 @@ export const gangers = {
         }
       }
     }
+  },
+};
+
+export const injury = {
+  data: new SlashCommandBuilder()
+    .setName("injury")
+    .setDescription("Rolls an injury for a ganger")
+    .addIntegerOption((option) =>
+      option
+        .setName("dice")
+        .setDescription("The ganger to roll an injury for")
+        .setRequired(true)
+    ),
+  async execute(interaction, client) {
+    const dice = interaction.options.getInteger("dice");
+    const roll = d20.roll(`${dice}d6`, true);
+    const roll_string = roll.toString();
+    console.log(roll);
+    const responseEmbed = new EmbedBuilder();
+    responseEmbed.setTitle(`Injury Roll`);
+    responseEmbed.setDescription(`Rolling ${dice}d6 for injury`);
+    responseEmbed.addFields({
+      name: "Roll",
+      value: `${roll_string}`,
+      inline: true,
+    });
+    await interaction.reply({
+      content: "Here are the results of your injury roll.",
+      embeds: [responseEmbed],
+      ephemeral: await true,
+    });
+  },
+};
+
+export const ammo = {
+  data: new SlashCommandBuilder()
+    .setName("ammo")
+    .setDescription("Rolls ammo for a ganger")
+    .addIntegerOption((option) =>
+      option
+        .setName("dice")
+        .setDescription("The ganger to roll ammo for")
+        .setRequired(true)
+    ),
+  async execute(interaction, client) {
+    const dice = interaction.options.getInteger("dice");
+    const roll = d20.roll(`${dice}d6, true`);
+    console.log(roll);
+    const responseEmbed = new EmbedBuilder();
+    responseEmbed.setTitle(`Ammo Roll`);
+    responseEmbed.setDescription(`Rolling ${dice}d6 for ammo`);
+    responseEmbed.addFields({
+      name: "Roll",
+      value: `${roll}`,
+      inline: true,
+    });
+    await interaction.reply({
+      content: "Here are the results of your ammo roll.",
+      embeds: [responseEmbed],
+      ephemeral: await true,
+    });
   },
 };
