@@ -55,7 +55,8 @@
     "bufferutil": "^4.0.7",
     "utf-8-validate": "^5.0.10",
     "pixi.js": "^7.0.4",
-    "canvas": "^2.10.2"
+    "canvas": "^2.10.2",
+    "@napi-rs/canvas": "^0.1.30"
   },
   "type": "module",
   "engines": {
