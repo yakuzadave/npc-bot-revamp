@@ -251,12 +251,12 @@ export const gangers = {
               { name: "Ballistics Skill", value: "Ballistics Skill" },
               { name: "Weapon Skill", value: "Weapon Skill" }
             )
-            .addBooleanOption((option) =>
-              option
-                .setName("ephemeral")
-                .setDescription("Whether or not to show the results publicly")
-                .setRequired(false)
-            )
+        )
+        .addBooleanOption((option) =>
+          option
+            .setName("ephemeral")
+            .setDescription("Whether or not to show the results publicly")
+            .setRequired(false)
         )
     ),
   async execute(interaction, client) {
@@ -268,10 +268,10 @@ export const gangers = {
         .getString("name")
         .toString()
         .toLowerCase();
-      let ephemeral = false
+      let ephemeral = false;
 
       if (command_options.getBoolean("ephemeral")) {
-        ephemeral = await command_options.getBoolean("ephemeral")
+        ephemeral = await command_options.getBoolean("ephemeral");
       }
 
       let ganger_data = await client.db.data["gangers"];
@@ -338,7 +338,7 @@ export const gangers = {
           await interaction.reply({
             content: "Here are your results",
             embeds: [responseEmbed],
-            ephemeral: true,
+            ephemeral: ephemeral,
           });
         }
       }
@@ -347,7 +347,7 @@ export const gangers = {
         console.log(command_options);
 
         let query = await command_options.getString("query");
-        
+
         console.log(ephemeral);
 
         // let matched = ganger_data.filter(
