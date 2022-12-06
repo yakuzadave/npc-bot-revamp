@@ -225,31 +225,120 @@ export const gangers = {
             .setDescription("Whether or not to show the results publicly")
             .setRequired(false)
         )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName("hit")
+        .setDescription("Make an attack with your Ganger")
+        .addStringOption((option) =>
+          option
+            .setName("name")
+            .setDescription("What is your Ganger name?")
+            .setRequired(true)
+        )
+        .addIntegerOption((option) =>
+          option
+            .setName("dice")
+            .setDescription("The ganger to roll an injury for")
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName("skill")
+            .setDescription("What skill are you using? BS or WS")
+            .setRequired(true)
+            .addChoices(
+              { name: "Ballistic Skill", value: "BS" },
+              { name: "Weapon Skill", value: "WS" }
+            )
+        )
     ),
   async execute(interaction, client) {
     let command_options = await interaction.options;
     let subcommand = await command_options.getSubcommand();
 
-    if (subcommand == "get") {
-      console.log(command_options);
+    if (subcommand == "hit" || subcommand == "get") {
       let ganger_target = await command_options
         .getString("name")
         .toString()
         .toLowerCase();
+      let ganger_data = await client.db.data["gangers"];
+      let matched = awaganger_data.filter((ganger) => {
+        let regex = new RegExp(`.*${ganger_target}.*`, "i");
+        return regex.test(ganger["Name"]);
+      });
+    }
+
+    if (subcommand == "hit") {
+      if (matched.length > 0) {
+        let match_ganger = matched[0];
+        console.log(match_ganger);
+        let skill = await command_options.getString("skill");
+        let skill_value = parseInt(match_ganger[skill]);
+        // let roll = d20.roll(`1d20`, true);
+        const rolls = d20.roll(`${dice}d6`, true);
+        let roll_string = rolls.toString();
+        const results = rolls.map((roll) => {
+          if (roll >= skill_value) {
+            return "Hit";
+          } else {
+            return "Miss";
+          }
+        });
+
+        // Log the results and a summary of the counts
+        console.log("Roll Results:", results);
+
+        const summary = {
+          "Hit": 0,
+          "Miss": 0,
+        };
+        results.forEach((result) => {
+          if (result in summary) {
+            summary[result]++;
+          }
+        });
+
+        console.log("Summary:", summary);
+        const responseEmbed = new EmbedBuilder();
+        responseEmbed.setTitle(`Hit Roll`);
+        responseEmbed.setDescription(`Rolling ${dice}d6 for to see if you hit`);
+        responseEmbed.addFields({
+          name: "Roll",
+          value: `${roll_string}`,
+          inline: true,
+        });
+        responseEmbed.addFields({
+          name: "Hit",
+          value: `${summary["Hit"]}`,
+          inline: true,
+        });
+        responseEmbed.addFields({
+          name: "Miss",
+          value: `${summary["Miss"]}`,
+          inline: true,
+        });
+        
+        await interaction.reply({content: "Here are your results", embeds: [responseEmbed], ephemeral: true});
+
+
+
+      }
+    }
+
+    if (subcommand == "get") {
+      console.log(command_options);
+
       let query = await command_options.getString("query");
       let ephemeral = await command_options.getBoolean("ephemeral");
       console.log(ephemeral);
-      let ganger_data = await client.db.data["gangers"];
+
       // let matched = ganger_data.filter(
       //   (ganger) => ganger["Name"].toLowerCase() == ganger_target
       // );
 
       // Use the filter() method with a regular expression to return all ganger objects
       // in the ganger_data array whose Name property contains the ganger_target string
-      let matched = ganger_data.filter((ganger) => {
-        let regex = new RegExp(`.*${ganger_target}.*`, "i");
-        return regex.test(ganger["Name"]);
-      });
 
       if (matched.length > 0) {
         let match_ganger = matched[0];
