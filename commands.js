@@ -99,12 +99,12 @@ export const gangs = {
     .setDescription("Gets the Gang Info for Necromunda")
     .addSubcommand((subcommand) =>
       subcommand
-        .setName("ganglist")
+        .setName("list")
         .setDescription("Get the list of availible Necromunda Gangs")
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName("ganginfo")
+        .setName("info")
         .setDescription("Get information about your Necromunda Gang")
         .addStringOption((option) =>
           option
@@ -116,7 +116,7 @@ export const gangs = {
   async execute(interaction, client) {
     let command_options = await interaction.options;
     let subcommand = command_options.getSubcommand();
-    if (subcommand == "ganglist") {
+    if (subcommand == "list") {
       await interaction.reply({
         content: "Getting Necromunda gang information",
         ephemeral: true,
@@ -132,18 +132,31 @@ export const gangs = {
         //   content: `Looks like the following gangs are availible: \n ${gang_strings}`,
         //   ephemeral: true,
         // });
-        
-        const responseEmbed = new EmbedBuilder()
-        responseEmbed.setTitle("Gang List")
-        responseEmbed.setDescription("A List of Gangers for your Necromunda Ganger")
-        formatted.forEach(field => responseEmbed.addFields(field))
-        
+        let formatted = unique_gangs.map((gang) => {
+          let obj = {};
+          obj["name"] = "Gang Name";
+          obj["value"] = gang;
+          obj["inline"] = false;
+          return obj;
+        });
+        const responseEmbed = new EmbedBuilder();
+        responseEmbed.setTitle("Gang List");
+        responseEmbed.setDescription(
+          "A List of Gangs that are availible for Necromunda"
+        );
+        formatted.forEach((field) => responseEmbed.addFields(field));
+        interaction.followUp({
+          embeds: [responseEmbed],
+          content: "Here is your list of gangs",
+          ephemeral: true,
+        });
+
         client.db.write();
       } catch (e) {
         console.error(e);
       }
     }
-    if (subcommand == "ganginfo") {
+    if (subcommand == "info") {
       console.log(command_options);
       let gang_target = await command_options.getString("name");
       // await interaction.reply({
@@ -157,33 +170,37 @@ export const gangs = {
         let matched = ganger_data.filter(
           (ganger) => ganger["Gang Name"] == gang_target
         );
-        
-        let formatted = matched.map(ganger => {
-          let obj = {}
-          obj['name'] = ganger["Name"]
-          obj['value'] = `**Type:** ${ganger['Type']}\n**Status:** ${ganger['Status']}\n`
-          obj['inline'] = true
-          return obj
-          
-        })
-        
-        console.log(formatted);
-//         const responseEmbed = {
-//           'title' : "Ganger List", 
-//           'color' : "0x0099FF",
-//           "description" : "Matched list of Necromunda Gangers",
-//           "fields" : formatted
-          
-//         }
-        const responseEmbed = new EmbedBuilder()
-        responseEmbed.setTitle("Ganger List")
-        responseEmbed.setDescription("A List of Gangers for your Necromunda Ganger")
-        formatted.forEach(field => responseEmbed.addFields(field))
 
-        await interaction.reply({embeds: [responseEmbed], content: "Looks like we have a match", ephemeral: true})
-        
-        
-        
+        let formatted = matched.map((ganger) => {
+          let obj = {};
+          obj["name"] = ganger["Name"];
+          obj[
+            "value"
+          ] = `**Type:** ${ganger["Type"]}\n**Status:** ${ganger["Status"]}\n`;
+          obj["inline"] = false;
+          return obj;
+        });
+
+        console.log(formatted);
+        //         const responseEmbed = {
+        //           'title' : "Ganger List",
+        //           'color' : "0x0099FF",
+        //           "description" : "Matched list of Necromunda Gangers",
+        //           "fields" : formatted
+
+        //         }
+        const responseEmbed = new EmbedBuilder();
+        responseEmbed.setTitle("Ganger List");
+        responseEmbed.setDescription(
+          "A List of Gangers for your Necromunda Ganger"
+        );
+        formatted.forEach((field) => responseEmbed.addFields(field));
+
+        await interaction.reply({
+          embeds: [responseEmbed],
+          content: "Looks like we have a match",
+          ephemeral: true,
+        });
       }
     }
   },
