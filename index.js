@@ -42,10 +42,12 @@ import db_data from "./db_old.json";
 // load commands
 import { ping, server, user, fetch } from "./commands.js";
 let command_list = [ping, server, user, fetch];
-console.log("Loaded command files: ", command_list);
-let invoke_register = false;
-const command_data_list = command_list.map((command) => command.data.toJSON());
+console.log("Loaded command files");
+// let invoke_register = false;
+let invoke_register = true;
 
+const command_data_list = command_list.map((command) => command.data.toJSON());
+wait(1000)
 
 
 
@@ -65,21 +67,18 @@ const registerCommand = async (command_data_list, rest, Routes) => {
     await rest;
     command_data_list = await command_data_list.map(async (command) => {
       let res = await command;
-      
       console.log("Command: ", await res);
       return res;
     });
     await console.log("Started refreshing application (/) commands.");
     let req = command_data_list.map(
       async (command) =>
-        await rest.put(Routes.applicationCommands(client), {
+        await rest.put(Routes.applicationCommands(client_id), {
           body: await command,
         })
     );
-    Promise.allSettled(req)
-      .then((res) => res.map((r) => r.value))
-      .then((res) => console.log(res))
-      .then((res) => console.log("All commands registered"));
+    
+    console.log(req)
   } catch (e) {
     console.log("An error has been encountered: ", e);
   }
@@ -117,12 +116,13 @@ const init_db = async (client, db) => {
     await db.write();
     await db.read();
     client.db = db;
-    console.log("LowDB added as Discord DB: ", client.db)
+    console.log("LowDB added as Discord DB")
     return client;
   } else {
     await db.read();
     console.log(db);
     client.db = db;
+    console.log("LowDB added as Discord DB")
     return client;
   }
 };
@@ -170,7 +170,7 @@ const discord_init = async (client) => {
 
 console.log(command_data_list);
 if (invoke_register == true) {
-  registerCommand(command_data_list, rest, Routes);
+  registerCommand(command_list, rest, Routes);
 }
 
 if (typeof client.commands == 'undefined'){
@@ -180,6 +180,7 @@ if (typeof client.commands == 'undefined'){
 
 init_db(client, db)
 
+wait(1000)
 discord_init(client)
 
 
