@@ -150,6 +150,7 @@ let login = Promise.resolve(client.login(token)).then(async (res) => {
   
   client.on("message", message => {
     console.log(message)
+    
   })
   
   
