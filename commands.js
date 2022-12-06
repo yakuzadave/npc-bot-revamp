@@ -218,11 +218,13 @@ export const gangers = {
             .setDescription("Optional query you can use to search")
             .setRequired(false)
         )
-        .addBooleanOption((option) => option
-          .setName("ephemeral")
-          .setDescription("Whether or not to show the results publicly")
-          .setRequired(false)
-        )),
+        .addBooleanOption((option) =>
+          option
+            .setName("ephemeral")
+            .setDescription("Whether or not to show the results publicly")
+            .setRequired(false)
+        )
+    ),
   async execute(interaction, client) {
     let command_options = await interaction.options;
     let subcommand = await command_options.getSubcommand();
@@ -234,8 +236,8 @@ export const gangers = {
         .toString()
         .toLowerCase();
       let query = await command_options.getString("query");
-      let ephemeral = await command_options.getBoolean("ephemeral");
-      console.log(show);
+      let ephemeral = await command_options.getBoolean("ephemeral")
+      console.log(ephemeral);
       let ganger_data = client.db.data["gangers"];
       let matched = ganger_data.filter(
         (ganger) => ganger["Name"].toLowerCase() == ganger_target
