@@ -248,8 +248,14 @@ export const gangers = {
             .setDescription("What skill are you using? BS or WS")
             .setRequired(true)
             .addChoices(
-              { name: "Ballistic Skill", value: "BS" },
-              { name: "Weapon Skill", value: "WS" }
+              { name: "Ballistics Skill", value: "Ballistics Skill" },
+              { name: "Weapon Skill", value: "Weapon Skill" }
+            )
+            .addBooleanOption((option) =>
+              option
+                .setName("ephemeral")
+                .setDescription("Whether or not to show the results publicly")
+                .setRequired(false)
             )
         )
     ),
@@ -262,6 +268,12 @@ export const gangers = {
         .getString("name")
         .toString()
         .toLowerCase();
+      let ephemeral = false
+
+      if (command_options.getBoolean("ephemeral")) {
+        ephemeral = await command_options.getBoolean("ephemeral")
+      }
+
       let ganger_data = await client.db.data["gangers"];
       let matched = await ganger_data.filter((ganger) => {
         let regex = new RegExp(`.*${ganger_target}.*`, "i");
@@ -274,8 +286,11 @@ export const gangers = {
           let skill = await command_options.getString("skill");
           let skill_value = parseInt(match_ganger[skill]);
 
+          console.log("Skill Value:", skill_value);
+
           let dice = await command_options.getInteger("dice");
           const rolls = d20.roll(`${dice}d6`, true);
+          console.log("Rolls:", rolls);
           let roll_string = rolls.toString();
           const results = rolls.map((roll) => {
             if (parseInt(roll) >= skill_value) {
@@ -332,7 +347,7 @@ export const gangers = {
         console.log(command_options);
 
         let query = await command_options.getString("query");
-        let ephemeral = await command_options.getBoolean("ephemeral");
+        
         console.log(ephemeral);
 
         // let matched = ganger_data.filter(
