@@ -46,7 +46,8 @@ export const fetch = {
       
       // let ganger_data = await JSON.stringify(req.data)
       client.db.data['gangers'] = req.data
-      client.db.write()
+      await client.db.write()
+      await interaction.followUp({ content: 'Ganger data fetched and written to db', ephemeral: true });
       
       
       return req.data

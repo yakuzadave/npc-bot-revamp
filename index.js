@@ -25,6 +25,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
+import lodash from 'lodash'
 
 // const ready = import("./events/ready.js");
 const { Logger } = import("./modules/Logger.js");
@@ -103,7 +104,7 @@ const discord_addCommands = async (client, command_list) => {
 };
 
 const init_db = async (client, db) => {
-  if (db.data == null) {
+  if (typeof db.data == 'undefined' ) {
     db.data = {
       commands: [],
       events: [],
