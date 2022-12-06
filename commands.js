@@ -278,7 +278,7 @@ export const gangers = {
           const rolls = d20.roll(`${dice}d6`, true);
           let roll_string = rolls.toString();
           const results = rolls.map((roll) => {
-            if (roll >= skill_value) {
+            if (parseInt(roll) >= skill_value) {
               return "Hit";
             } else {
               return "Miss";
