@@ -1,5 +1,6 @@
 import { SlashCommandBuilder, CommandInteraction, Collection } from 'discord.js'
 import axios from 'axios'
+import lodash from 'lodash'
 
 
 export const ping = {
@@ -55,5 +56,23 @@ export const fetch = {
       console.error(e)
       //interaction.reply("There was an error when trying to fetch the data.  Please take a look at the bot logs for more information")
     }
+  }
+}
+
+export const gangList = {
+  data: new SlashCommandBuilder()
+  .setName('gangList')
+  .setDescription('Gets the Gang Info for Necromunda and displays a summary'), 
+  async execute (interaction, client) {
+    await interaction.reply({content: "Getting Necromunda gang information", ephemeral: true})
+    let ganger_data = client.db.data['gangers']
+    try{
+      let gang_name = ganger_data.map(gang => gang['Gang Name'])
+      let gang_strings = gang_name.join(',')
+      await interaction.followUp({content: "Looks like the fo"})
+    } catch(e){
+      console.error(e)
+    }
+    
   }
 }
