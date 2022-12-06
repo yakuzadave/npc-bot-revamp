@@ -85,6 +85,7 @@ export const ganger = {
   data: new SlashCommandBuilder()
     .setName('ganger')
     .setDescription("Query Necromunda Ganger info "),
+    
   async execute (interaction, client) {
     await interaction.reply({content: "Getting the ganger info", ephemeral: true})
   }
