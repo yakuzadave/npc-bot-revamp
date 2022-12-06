@@ -230,7 +230,15 @@ export const gangers = {
     
     if(subcommand == 'get'){
       console.log(command_options)
-      let ganger_target = await ;
+      let ganger_target = await (command_options.getString("name").toString().toLowerCase());
+      let ganger_data = client.db.data['gangers']
+      let matched = ganger_data.filter(ganger => (ganger["Name"]).toLowerCase() == ganger_target)
+      if (matched.length > 0){
+        let match_ganger = matched[0]
+        // console
+      }
+      
+      
       
     }
     
