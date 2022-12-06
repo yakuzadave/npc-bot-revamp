@@ -440,12 +440,15 @@ export const injury = {
     // Log the results and a summary of the counts
     console.log("Roll Results:", results);
 
-    const summary = {};
+    const summary = {
+      "Flesh Wound": 0,
+      "Serious Injury": 0,
+      "Out of Action": 0,
+
+    };
     results.forEach((result) => {
       if (result in summary) {
         summary[result]++;
-      } else {
-        summary[result] = 0;
       }
     });
 
