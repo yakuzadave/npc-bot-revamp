@@ -205,3 +205,35 @@ export const gangs = {
     }
   },
 };
+
+export const gangers = {
+  data: new SlashCommandBuilder()
+    .setName('ganger')
+    .setDescription("Commands for your Necromunda Gangers")
+    .addSubcommand(subcommand => subcommand
+                  .setName("get")
+                  .setDescription('Get the details of one of your Necromunda Gangers')
+                  .addStringOption(option => option
+                                  .setName("name")
+                                  .setDescription('What is your Ganger name?')
+                                  .setRequired(true)
+                                  )
+                  .addStringOption(option => option
+                                  .setName('query')
+                                  .setDescription('Optional query you can use to search')
+                                  .setRequired(false)
+                                  )
+                  ),
+  async execute(interaction, client) {
+    let command_options = await interaction.options;
+    let subcommand = await command_options.getSubcommand();
+    
+    if(subcommand == 'get'){
+      console.log(command_options)
+      let ganger_target = await ;
+      
+    }
+    
+  }
+  
+}
