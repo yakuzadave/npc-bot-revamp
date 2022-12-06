@@ -208,40 +208,46 @@ export const gangs = {
 
 export const gangers = {
   data: new SlashCommandBuilder()
-    .setName('ganger')
+    .setName("ganger")
     .setDescription("Commands for your Necromunda Gangers")
-    .addSubcommand(subcommand => subcommand
-                  .setName("get")
-                  .setDescription('Get the details of one of your Necromunda Gangers')
-                  .addStringOption(option => option
-                                  .setName("name")
-                                  .setDescription('What is your Ganger name?')
-                                  .setRequired(true)
-                                  )
-                  .addStringOption(option => option
-                                  .setName('query')
-                                  .setDescription('Optional query you can use to search')
-                                  .setRequired(false)
-                                  )
-                  ),
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName("get")
+        .setDescription("Get the details of one of your Necromunda Gangers")
+        .addStringOption((option) =>
+          option
+            .setName("name")
+            .setDescription("What is your Ganger name?")
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName("query")
+            .setDescription("Optional query you can use to search")
+            .setRequired(false)
+        )
+    ),
   async execute(interaction, client) {
     let command_options = await interaction.options;
     let subcommand = await command_options.getSubcommand();
-    
-    if(subcommand == 'get'){
-      console.log(command_options)
-      let ganger_target = await (command_options.getString("name").toString().toLowerCase());
-      let ganger_data = client.db.data['gangers']
-      let matched = ganger_data.filter(ganger => (ganger["Name"]).toLowerCase() == ganger_target)
-      if (matched.length > 0){
-        let match_ganger = matched[0]
-        // console
+
+    if (subcommand == "get") {
+      console.log(command_options);
+      let ganger_target = await command_options
+        .getString("name")
+        .toString()
+        .toLowerCase();
+      let ganger_data = client.db.data["gangers"];
+      let matched = ganger_data.filter(
+        (ganger) => ganger["Name"].toLowerCase() == ganger_target
+      );
+      if (matched.length > 0) {
+        let match_ganger = matched[0];
+        console.log(match_ganger)
+        
+        
+        
       }
-      
-      
-      
     }
-    
-  }
-  
-}
+  },
+};

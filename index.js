@@ -25,7 +25,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
-import lodash from 'lodash'
+import lodash from "lodash";
 
 // const ready = import("./events/ready.js");
 const { Logger } = import("./modules/Logger.js");
@@ -33,58 +33,50 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const file = join(__dirname, "db.json");
 const adapter = new JSONFile(file);
 const db = new Low(adapter);
-import {setTimeout} from "node:timers/promises"
+import { setTimeout } from "node:timers/promises";
 const wait = setTimeout;
-console.log("wait: ", wait)
+console.log("wait: ", wait);
 
 import db_data from "./db_old.json";
-//console.log(db_data)
 
 // load commands
 import { ping, info, fetch, gangs } from "./commands.js";
-let command_list = [ping,info, fetch, gangs];
+let command_list = [ping, info, fetch, gangs];
 console.log("Loaded command files");
 // let invoke_register = false;
 let invoke_register = true;
-
-
-
-
 
 // import Environment Variables
 dotenv.config();
 const token = process.env.TOKEN;
 
-
 // init Discord Client
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const rest = new REST({ version: "10" }).setToken(token);
 
-
 // Register Slash Commands Function
 const registerCommand = async (command_data_list, rest, Routes) => {
-  
   try {
     await rest;
     await console.log("Started refreshing application (/) commands.");
     const client_id = await process.env.CLIENT_ID;
-    const command_data = await command_data_list.map((command) => command.data.toJSON())
-    wait(2000)
-    console.log(await command_data)
-    let req = await rest.put(Routes.applicationCommands(client_id), {body: command_data})
+    const command_data = await command_data_list.map((command) =>
+      command.data.toJSON()
+    );
+    wait(2000);
+    console.log(await command_data);
+    let req = await rest.put(Routes.applicationCommands(client_id), {
+      body: command_data,
+    });
     // let req = command_data_list.map(
     //   async (command) =>
     //     await rest.put(Routes.applicationCommands(client_id), {
     //       body: await command_data,
     //     })
     // );
-    
-    console.log(await req)
-    console.log("Discord Command registration complete")
-    
-  
-    
-    
+
+    console.log(await req);
+    console.log("Discord Command registration complete");
   } catch (e) {
     console.log("An error has been encountered: ", e);
   }
@@ -97,13 +89,13 @@ const discord_addCommands = async (client, command_list) => {
   let discord_command_list = command_list.forEach(
     async (command) => await client.commands.set(command.data.name, command)
   );
-  
-  await wait(3000)
+
+  await wait(3000);
   return client;
 };
 
 const init_db = async (client, db) => {
-  if (typeof db.data == 'undefined' ) {
+  if (typeof db.data == "undefined") {
     db.data = {
       commands: [],
       events: [],
@@ -122,17 +114,16 @@ const init_db = async (client, db) => {
     await db.write();
     await db.read();
     client.db = db;
-    console.log("LowDB added as Discord DB")
+    console.log("LowDB added as Discord DB");
     return client;
   } else {
     await db.read();
     console.log(db);
     client.db = db;
-    console.log("LowDB added as Discord DB")
+    console.log("LowDB added as Discord DB");
     return client;
   }
 };
-
 
 const discord_init = async (client) => {
   let login_req = await client.login(token);
@@ -169,27 +160,21 @@ const discord_init = async (client) => {
   client.on(Events.MessageCreate, (message, client) => {
     console.log(message);
   });
-  
-  return client
-};
 
+  return client;
+};
 
 if (invoke_register == true) {
   registerCommand(command_list, rest, Routes);
 }
 
-if (typeof client.commands == 'undefined'){
-  
-  discord_addCommands(client, command_list)
+if (typeof client.commands == "undefined") {
+  discord_addCommands(client, command_list);
 }
 
-init_db(client, db)
+init_db(client, db);
 
-wait(1000)
-discord_init(client)
-
-
-
-
+wait(1000);
+discord_init(client);
 
 export default client;
