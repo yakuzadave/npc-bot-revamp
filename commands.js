@@ -27,6 +27,21 @@ export const info = {
                  .setDescription('Info about the server')),
   async execute(interaction, client ) {
     await interaction.reply({content: "Getting info", ephemeral: true})
+    let command_options = await interaction.options
+    let subcommand = command_options.getSubcommand()
+    
+    
+    console.log("Options: ", command_options )
+    console.log("subcommand: ", subcommand)
+    
+    if(subcommand == 'user'){
+      let subcommand_options = interaction.options.
+      
+      console.log(subcommand_options)
+      
+    }
+    
+    
     
   }
   
