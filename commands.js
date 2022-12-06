@@ -151,10 +151,22 @@ export const gangs = {
           (ganger) => ganger["Gang Name"] == gang_target
         );
         
+        let formatted = matched.map(ganger => {
+          let obj = {}
+          obj['name'] = ganger["Name"]
+          obj['value'] = `Type: ${ganger['Type']}\nStatus: ${ganger['Status']}`
+          obj['inline'] = true
+          
+        })
+        
         console.log(matched);
         const responseEmbed = new EmbedBuilder().setTitle('Ganger List');
-        responseEmbed.setColor(0x0099FF)
-        responseEmbed
+        await responseEmbed.setColor(0x0099FF)
+        await responseEmbed.setDescription('Matched list of Necromunda Gangers')
+        await responseEmbed.addFields(formatted.join(','))
+        await interaction.followUp({embeds: responseEmbed, content: "Looks like we have a match", ephemeral: true})
+        
+        
         
       }
     }
