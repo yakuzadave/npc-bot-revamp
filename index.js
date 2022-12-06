@@ -32,8 +32,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const file = join(__dirname, "db.json");
 const adapter = new JSONFile(file);
 const db = new Low(adapter);
-const timers = import("node:timers/promises");
-const wait = timers.setTimeout;
+import {setTimeout} from "node:timers/promises"
+const wait = setTimeout;
+console.log("wait: ", wait)
 
 import db_data from "./db_old.json";
 //console.log(db_data)
@@ -43,23 +44,28 @@ import { ping, server, user, fetch } from "./commands.js";
 let command_list = [ping, server, user, fetch];
 console.log("Loaded command files: ", command_list);
 let invoke_register = false;
+const command_data_list = command_list.map((command) => command.data.toJSON());
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+
 
 // import Environment Variables
 dotenv.config();
 const token = process.env.TOKEN;
 const client_id = process.env.CLIENT_ID;
 
-const command_data_list = command_list.map((command) => command.data.toJSON());
-
+// init Discord Client
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const rest = new REST({ version: "10" }).setToken(token);
 
+
+// Register Slash Commands Function
 const registerCommand = async (command_data_list, rest, Routes) => {
   try {
     await rest;
     command_data_list = await command_data_list.map(async (command) => {
       let res = await command;
+      
       console.log("Command: ", await res);
       return res;
     });
@@ -79,6 +85,7 @@ const registerCommand = async (command_data_list, rest, Routes) => {
   }
 };
 
+// Load Discord Commands Function
 const discord_addCommands = async (client, command_list) => {
   console.log(`Adding ${command_list.length} commands to Discord Client.`);
   client.commands = new Collection();
@@ -109,8 +116,8 @@ const init_db = async (client, db) => {
     };
     await db.write();
     await db.read();
-    console.log(db);
     client.db = db;
+    console.log("LowDB added as Discord DB: ", client.db)
     return client;
   } else {
     await db.read();
@@ -123,7 +130,7 @@ const init_db = async (client, db) => {
 
 const discord_init = async (client) => {
   let login_req = await client.login(token);
-  login_req.then((res) => console.log(res));
+  //console.log(await login_req)
 
   client.events = new Collection();
 
@@ -166,13 +173,14 @@ if (invoke_register == true) {
   registerCommand(command_data_list, rest, Routes);
 }
 
-if (client.commands.lengeth == 0){
-  client = discord_addCommands(client, command_list)
+if (typeof client.commands == 'undefined'){
+  
+  discord_addCommands(client, command_list)
 }
 
-client = init_db(client, db)
+init_db(client, db)
 
-client = discord_init(client)
+discord_init(client)
 
 
 
