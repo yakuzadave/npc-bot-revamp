@@ -32,7 +32,7 @@ export const info = {
       subcommand.setName("server").setDescription("Info about the server")
     ),
   async execute(interaction, client) {
-    //await interaction.reply({content: "Getting info", ephemeral: true})
+
     let command_options = await interaction.options;
     let subcommand = command_options.getSubcommand();
 
@@ -182,13 +182,6 @@ export const gangs = {
         });
 
         console.log(formatted);
-        //         const responseEmbed = {
-        //           'title' : "Ganger List",
-        //           'color' : "0x0099FF",
-        //           "description" : "Matched list of Necromunda Gangers",
-        //           "fields" : formatted
-
-        //         }
         const responseEmbed = new EmbedBuilder();
         responseEmbed.setTitle("Ganger List");
         responseEmbed.setDescription(
@@ -243,70 +236,156 @@ export const gangers = {
       );
       if (matched.length > 0) {
         let match_ganger = matched[0];
-        console.log(match_ganger)
+        console.log(match_ganger);
         const responseEmbed = new EmbedBuilder();
-        responseEmbed.setTitle(`${match_ganger["Name"]} Stats`);
-        responseEmbed.setDescription(
-          `Stats for ${match_ganger["Name"]}`
-        );
-        
+        await responseEmbed.setTitle(`${match_ganger["Name"]} Stats`);
+        await responseEmbed.setDescription(`Stats for ${match_ganger["Name"]}`);
+
         // Add in Ganger Stats from the matched entry in the DB
-        responseEmbed.addFields({"name": "Status", "value": `${match_ganger["Status"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Type", "value": `${match_ganger["Type"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Type", "value": `${match_ganger["Type"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Movement", "value": `${match_ganger["Movement"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Weapon Skill", "value": `${match_ganger["Weapon Skill"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Ballistics Skill", "value": `${match_ganger["Ballistics Skill"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Strength", "value": `${match_ganger["Strength"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Toughness", "value": `${match_ganger["Toughness"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Wounds", "value": `${match_ganger["Wounds"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Initative", "value": `${match_ganger["Initative"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Attacks", "value": `${match_ganger["Attacks"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Leadership", "value": `${match_ganger["Leadership"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Cool", "value": `${match_ganger["Cool"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Will", "value": `${match_ganger["Will"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Intelligence", "value": `${match_ganger["Intelligence"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Cost", "value": `${match_ganger["Cost"]}`, "inline": false})
-        responseEmbed.addFields({"name": "XP", "value": `${match_ganger["XP"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Kills", "value": `${match_ganger["Kills"]}`, "inline": false})
-        responseEmbed.addFields({"name": "Advance Count", "value": `${match_ganger["Advance Count"]}`, "inline": false})
-        
+        responseEmbed.addFields({
+          name: "Status",
+          value: `${match_ganger["Status"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Type",
+          value: `${match_ganger["Type"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Type",
+          value: `${match_ganger["Type"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Movement",
+          value: `${match_ganger["Movement"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Weapon Skill",
+          value: `${match_ganger["Weapon Skill"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Ballistics Skill",
+          value: `${match_ganger["Ballistics Skill"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Strength",
+          value: `${match_ganger["Strength"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Toughness",
+          value: `${match_ganger["Toughness"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Wounds",
+          value: `${match_ganger["Wounds"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Initative",
+          value: `${match_ganger["Initative"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Attacks",
+          value: `${match_ganger["Attacks"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Leadership",
+          value: `${match_ganger["Leadership"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Cool",
+          value: `${match_ganger["Cool"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Will",
+          value: `${match_ganger["Will"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Intelligence",
+          value: `${match_ganger["Intelligence"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Cost",
+          value: `${match_ganger["Cost"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "XP",
+          value: `${match_ganger["XP"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Kills",
+          value: `${match_ganger["Kills"]}`,
+          inline: false,
+        });
+        responseEmbed.addFields({
+          name: "Advance Count",
+          value: `${match_ganger["Advance Count"]}`,
+          inline: false,
+        });
+
         // Respond back with the base stats
-        interaction.reply({content: "Here are the stats for yoour matched ganger.", embeds: [responseEmbed], ephemeral: true})
-        
+        await interaction.reply({
+          content: "Here are the stats for yoour matched ganger.",
+          embeds: [responseEmbed],
+          ephemeral: true,
+        });
+
         // Respond with Skills if the ganger has any
-        if (match_ganger['Skills'].length > 0){
-          const gangerSkills = new EmbedBuilder()
-          gangerSkills.setTitle(`Ganger Skills`)
-          gangerSkills.setDescription(`A list of current ganger skills for ${match_ganger["Name"]}`)
-          
-          let skills_list = match_ganger["Skills"].map(skill => {
-            let obj = {}
-            obj['name'] = "Skill"
-            obj['value'] = skill
-            obj['inline'] = false
-            return obj
-          })
-          
-          skills_list.forEach(skill => gangerSkills.addFields(skill))
-          interaction.followUp({content: "Here is a list of skills for your ganger:", embeds: [gangerSkills], ephemeral: true})
-          
+        if (match_ganger["Skills"].length > 0) {
+          const gangerSkills = new EmbedBuilder();
+          gangerSkills.setTitle(`Ganger Skills`);
+          gangerSkills.setDescription(
+            `A list of current ganger skills for ${match_ganger["Name"]}`
+          );
+
+          let skills_list = match_ganger["Skills"].map((skill) => {
+            let obj = {};
+            obj["name"] = "Skill";
+            obj["value"] = skill;
+            obj["inline"] = false;
+            return obj;
+          });
+
+          skills_list.forEach((skill) => gangerSkills.addFields(skill));
+          interaction.followUp({
+            content: "Here is a list of skills for your ganger:",
+            embeds: [gangerSkills],
+            ephemeral: true,
+          });
         }
-        
+
         // Respond with Gear if the ganger has any
-        if (match_ganger["Gear"].length > 0){
-          const gangerGear = new EmbedBuilder()
-          gangerGear.setTitle(`Gear for ${match_ganger["Name"]}`)
-          gangerGear.setDescription(`A current list of gear for ${match_ganger["Name"]}`)
-          
+        if (match_ganger["Gear"].length > 0) {
+          const gangerGear = new EmbedBuilder();
+          gangerGear.setTitle(`Gear for ${match_ganger["Name"]}`);
+          gangerGear.setDescription(
+            `A current list of gear for ${match_ganger["Name"]}`
+          );
+          let gear_list = match_ganger["Gear"].map((gear) => {
+            let obj = {};
+            obj["name"] = `${gear["name"]}`
+            obj["value"] = `${gear["qty"]}`
+            obj["inline"] = false;
+            return obj;
+          });
+          gear_list.forEach((gear) => gangerGear.addFields(gear));
+          interaction.followUp({content: "Here is a list of gear for your ganger:", embeds: [gangerGear], ephemeral: true});
         }
-        
-
-        
-
-        
-        
-        
       }
     }
   },
