@@ -424,9 +424,33 @@ export const injury = {
     ),
   async execute(interaction, client) {
     const dice = interaction.options.getInteger("dice");
-    const roll = d20.roll(`${dice}d6`, true);
-    const roll_string = roll.toString();
-    console.log(roll);
+    const rolls = d20.roll(`${dice}d6`, true);
+    const roll_string = rolls.toString();
+    // Create a mapping to return different strings based on the roll result
+    const results = rolls.map((roll) => {
+      if (roll <= 2) {
+        return "Flesh Wound";
+      } else if (roll <= 5) {
+        return "Serious Injury";
+      } else {
+        return "Out of Action";
+      }
+    });
+
+    // Log the results and a summary of the counts
+    console.log("Roll Results:", results);
+
+    const summary = {};
+    results.forEach((result) => {
+      if (result in summary) {
+        summary[result]++;
+      } else {
+        summary[result] = 0;
+      }
+    });
+
+    console.log("Summary:", summary);
+
     const responseEmbed = new EmbedBuilder();
     responseEmbed.setTitle(`Injury Roll`);
     responseEmbed.setDescription(`Rolling ${dice}d6 for injury`);
@@ -435,6 +459,22 @@ export const injury = {
       value: `${roll_string}`,
       inline: true,
     });
+    responseEmbed.addFields({
+      name: "Flesh Wound",
+      value: `${summary["Flesh Wound"]}`,
+      inline: true,
+    });
+    responseEmbed.addFields({
+      name: "Serious Injury",
+      value: `${summary["Serious Injury"]}`,
+      inline: true,
+    });
+    responseEmbed.addFields({
+      name: "Out of Action",
+      value: `${summary["Out of Action"]}`,
+      inline: true,
+    });
+    
     await interaction.reply({
       content: "Here are the results of your injury roll.",
       embeds: [responseEmbed],
