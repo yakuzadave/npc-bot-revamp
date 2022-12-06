@@ -280,6 +280,17 @@ export const gangers = {
           gangerSkills.setTitle(`Ganger Skills`)
           gangerSkills.setDescription(`A list of current ganger skills for ${match_ganger["Name"]}`)
           
+          let skills_list = match_ganger["Skills"].map(skill => {
+            let obj = {}
+            obj['name'] = "Skill"
+            obj['value'] = skill
+            obj['inline'] = false
+            return obj
+          })
+          
+          skills_list.forEach(skill => gangerSkills.addFields(skill))
+          interaction.followUp({content: "Here is a list of skills for your ganger:", embeds: [gangerSkills], ephemeral: true})
+          
         }
         
         // Respond with Gear if the ganger has any
