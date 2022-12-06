@@ -150,7 +150,11 @@ export const gangs = {
         let matched = ganger_data.filter(
           (ganger) => ganger["Gang Name"] == gang_target
         );
+        
         console.log(matched);
+        const responseEmbed = new EmbedBuilder().setTitle('Ganger List');
+        responseEmbed.setColor(0x0099FF)
+        responseEmbed
         
       }
     }
