@@ -142,6 +142,7 @@ export const gangs = {
       let gang_target = await command_options.getString("name");
       await interaction.reply({
         content: `Getting results for ${gang_target}`,
+        emphemeral: true
       });
       let ganger_data = await client.db.data["gangers"];
       let gang_list = client.db.data["gangs"];
@@ -156,14 +157,19 @@ export const gangs = {
           obj['name'] = ganger["Name"]
           obj['value'] = `Type: ${ganger['Type']}\nStatus: ${ganger['Status']}`
           obj['inline'] = true
+          return obj
           
         })
         
         console.log(matched);
-        const responseEmbed = new EmbedBuilder().setTitle('Ganger List');
-        await responseEmbed.setColor(0x0099FF)
-        await responseEmbed.setDescription('Matched list of Necromunda Gangers')
-        await responseEmbed.addFields(formatted.join(','))
+        const responseEmbed = {
+          'title' : "Ganger List", 
+          'color' : "0x0099FF",
+          "description" : "Matched list of Necromunda Gangers",
+          "fields" : formatted
+          
+        }
+
         await interaction.followUp({embeds: responseEmbed, content: "Looks like we have a match", ephemeral: true})
         
         
