@@ -244,6 +244,26 @@ export const gangers = {
       if (matched.length > 0) {
         let match_ganger = matched[0];
         console.log(match_ganger)
+        const responseEmbed = new EmbedBuilder();
+        responseEmbed.setTitle(`${match_ganger["Name"]} Stats`);
+        responseEmbed.setDescription(
+          `Stats for ${match_ganger["Name"]}`
+        );
+        responseEmbed.addFields({"name": "Status", "value": `${match_ganger["Status"]}`, "inline": false})
+        responseEmbed.addFields({"name": "Type", "value": `${match_ganger["Type"]}`, "inline": false})
+        responseEmbed.addFields({"name": "Type", "value": `${match_ganger["Type"]}`, "inline": false})
+        responseEmbed.addFields({"name": "Movement", "value": `${match_ganger["Movement"]}`, "inline": false})
+        responseEmbed.addFields({"name": "Type", "value": `${match_ganger["Type"]}`, "inline": false})
+        
+        
+        
+        const gangerGear = new EmbedBuilder()
+        gangerGear.setTitle(`Gear for ${match_ganger["Name"]}`)
+        gangerGear.setDescription(`A current list of gear for ${match_ganger["Name"]}`)
+        
+        const gangerSkills = new EmbedBuilder()
+        gangerSkills.setTitle(`Ganger Skills`)
+        gangerSkills.setDescription(`A list of current ganger skills for ${match_ganger["Name"]}`)
         
         
         
