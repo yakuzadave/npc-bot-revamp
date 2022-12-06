@@ -156,7 +156,7 @@ const discord_init = async (client) => {
       return;
     }
     try {
-      await command.execute(interaction);
+      let command_res = await command.execute(interaction, client);
     } catch (error) {
       console.error(error);
       await interaction.reply({

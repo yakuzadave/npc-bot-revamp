@@ -16,7 +16,7 @@ export const server = {
   data: new SlashCommandBuilder()
     .setName('server')
     .setDescription('Return server information.'),
-  async execute (interaction) {
+  async execute (interaction, client) {
     await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
     
   }
@@ -26,7 +26,7 @@ export const user = {
   data: new SlashCommandBuilder()
     .setName('user')
     .setDescription('Provides you with user info from the Discord server.'),
-  async execute (interaction) {
+  async execute (interaction, client) {
     	await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
   }
 }
@@ -36,13 +36,18 @@ export const fetch = {
     .setName('fetch')
     .setDescription('Refresh the Necromunda Data'),
   async execute (interaction, client) {
-    interaction.reply("Fetching Necromunda data now.")
+    // interaction.reply("Fetching Necromunda data now.")
+    await interaction.reply({ content: 'Fetching data now!', ephemeral: true });
     try{
       // let req = await axios.get("https://yaktribe.games/underhive/json/gang/342438.json")
       let req = await axios.get("https://necromunda-stats-vkrhmvltfqse.runkit.sh/")
-      console.log(req.data)
-      let ganger_data = JSON.stringify
-      client.db.gangers.set()
+      // console.log(req.data)
+      // console.log(client.db)
+      
+      // let ganger_data = await JSON.stringify(req.data)
+      client.db.data['gangers'] = req.data
+      client.db.write()
+      
       
       return req.data
     } catch (e) {
