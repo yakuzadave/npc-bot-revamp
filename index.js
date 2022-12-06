@@ -46,15 +46,15 @@ console.log("Loaded command files");
 // let invoke_register = false;
 let invoke_register = true;
 
-const command_data_list = command_list.map((command) => command.data.toJSON());
-wait(1000)
+
+
 
 
 
 // import Environment Variables
 dotenv.config();
 const token = process.env.TOKEN;
-const client_id = process.env.CLIENT_ID;
+
 
 // init Discord Client
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -63,22 +63,27 @@ const rest = new REST({ version: "10" }).setToken(token);
 
 // Register Slash Commands Function
 const registerCommand = async (command_data_list, rest, Routes) => {
+  
   try {
     await rest;
-    command_data_list = await command_data_list.map(async (command) => {
-      let res = await command;
-      console.log("Command: ", await res);
-      return res;
-    });
     await console.log("Started refreshing application (/) commands.");
-    let req = command_data_list.map(
-      async (command) =>
-        await rest.put(Routes.applicationCommands(client_id), {
-          body: await command,
-        })
-    );
+    const client_id = await process.env.CLIENT_ID;
+    const command_data = await command_data_list.map(async (command) => command.data.toJSON())
+    wait(2000)
+    let req = await rest.put(Routes.applicationCommands(client_id), {body: command_data})
+    // let req = command_data_list.map(
+    //   async (command) =>
+    //     await rest.put(Routes.applicationCommands(client_id), {
+    //       body: await command_data,
+    //     })
+    // );
     
-    console.log(req)
+    console.log(await req)
+    console.log("Discord Command registration complete")
+    
+  
+    
+    
   } catch (e) {
     console.log("An error has been encountered: ", e);
   }
@@ -168,7 +173,6 @@ const discord_init = async (client) => {
 };
 
 
-console.log(command_data_list);
 if (invoke_register == true) {
   registerCommand(command_list, rest, Routes);
 }
