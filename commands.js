@@ -35,11 +35,16 @@ export const fetch = {
   data: new SlashCommandBuilder()
     .setName('fetch')
     .setDescription('Refresh the Necromunda Data'),
-  async execute (interaction) {
+  async execute (interaction, client) {
     interaction.reply("Fetching Necromunda data now.")
     try{
-      let req = await axios.get("https://yaktribe.games/underhive/json/gang/342438.json")
-      console.log(req)
+      // let req = await axios.get("https://yaktribe.games/underhive/json/gang/342438.json")
+      let req = await axios.get("https://necromunda-stats-vkrhmvltfqse.runkit.sh/")
+      console.log(req.data)
+      let ganger_data = JSON.stringify
+      client.db.gangers.set()
+      
+      return req.data
     } catch (e) {
       console.error(e)
       //interaction.reply("There was an error when trying to fetch the data.  Please take a look at the bot logs for more information")

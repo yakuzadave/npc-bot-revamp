@@ -43,8 +43,8 @@ import db_data from "./db_old.json";
 import { ping, server, user, fetch } from "./commands.js";
 let command_list = [ping, server, user, fetch];
 console.log("Loaded command files");
-// let invoke_register = false;
-let invoke_register = true;
+let invoke_register = false;
+// let invoke_register = true;
 
 
 
@@ -68,8 +68,9 @@ const registerCommand = async (command_data_list, rest, Routes) => {
     await rest;
     await console.log("Started refreshing application (/) commands.");
     const client_id = await process.env.CLIENT_ID;
-    const command_data = await command_data_list.map(async (command) => command.data.toJSON())
+    const command_data = await command_data_list.map((command) => command.data.toJSON())
     wait(2000)
+    console.log(await command_data)
     let req = await rest.put(Routes.applicationCommands(client_id), {body: command_data})
     // let req = command_data_list.map(
     //   async (command) =>
