@@ -522,13 +522,20 @@ export const injury = {
         .setName("dice")
         .setDescription("The ganger to roll an injury for")
         .setRequired(true)
-  )
-    .addBooleanOption((option) =>option.setName("ephemeral").setDescription("Should the response be ephemeral?").setRequired(false)),
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName("ephemeral")
+        .setDescription("Should the response be ephemeral?")
+        .setRequired(false)
+    ),
   async execute(interaction, client) {
     const dice = interaction.options.getInteger("dice");
-    let ephemeral = false
-    if (! interaction.options.getBoolean("ephemeral")) {
-      ephemeral = interaction.options.getBoolean("ephemeral")
+    let ephemeral = false;
+    try {
+      ephemeral = interaction.options.getBoolean("ephemeral");
+    } catch (error) {
+      ephemeral = false;
     }
     const rolls = d20.roll(`${dice}d6`, true);
     const roll_string = rolls.toString();
