@@ -36,7 +36,7 @@ import db_data from './db_old.json'
 import {ping, server, user, fetch} from './commands.js'
 let command_list = [ping, server, user, fetch]
 console.log("Loaded command files: ", command_list)
-
+let invoke_register = false
 
 
 
@@ -75,36 +75,18 @@ const registerCommand = async(command_data_list, rest, Routes) => {
   
 }
 
-console.log(command_data_list)
-registerCommand(command_data_list, rest, Routes)
-
-
-
-
-
-
-
-
-let login = Promise.resolve(client.login(token)).then(async (res) => {
-  console.log("Logged into Discord");
-  await db.read();
-  client.events = new Collection();
+const discord_addCommands = async(client, command_list) => {
+  console.log(`Adding ${command_list.length} commands to Discord Client.`)
   client.commands = new Collection();
-  const discord_command_list = command_list.map(async (command) => {
-    let set_command = await client.commands.set(command.data.name, command )
-    return set_command
-  })
-  
-  await console.log("Loading commands into discord client")
-  
-  await discord_command_list.forEach(async command => console.log(await command))
-  
-  await console.log(`${await discord_command_list.length} commmands loaded`)
+  command_list.forEach(async (command) => await client.commands.set(command.data.name, command )) 
+  return client
   
 
   
+}
+
+const init_db = async (client, db) => {
   if (db.data == null) {
-    // db defaults
     db.data = {
       commands: [],
       events: [],
@@ -124,6 +106,34 @@ let login = Promise.resolve(client.login(token)).then(async (res) => {
   }
   console.log(db);
   client.db = db;
+}
+
+const discord_init = async (client) => {
+  
+}
+
+console.log(command_data_list)
+if (invoke_register){
+  registerCommand(command_data_list, rest, Routes)
+  
+}
+
+
+
+
+
+
+
+let login = Promise.resolve(client.login(token)).then(async (res) => {
+  console.log("Logged into Discord");
+  await db.read();
+  client.events = new Collection();
+  
+  
+  
+  
+  
+
   
   // Fire ready event
   client.on("ready", () => {
