@@ -236,12 +236,21 @@ export const gangers = {
         .toString()
         .toLowerCase();
       let query = await command_options.getString("query");
-      let ephemeral = await command_options.getBoolean("ephemeral")
+      let ephemeral = await command_options.getBoolean("ephemeral");
       console.log(ephemeral);
-      let ganger_data = client.db.data["gangers"];
-      let matched = ganger_data.filter(
-        (ganger) => ganger["Name"].toLowerCase() == ganger_target
-      );
+      let ganger_data = await client.db.data["gangers"];
+      // let matched = ganger_data.filter(
+      //   (ganger) => ganger["Name"].toLowerCase() == ganger_target
+      // );
+
+      
+      // Use the filter() method with a regular expression to return all ganger objects
+      // in the ganger_data array whose Name property contains the ganger_target string
+      let matched = ganger_data.filter((ganger) => {
+        let regex = new RegExp(`.*${ganger_target}.*`, "i");
+        return regex.test(ganger["Name"]);
+      });
+
       if (matched.length > 0) {
         let match_ganger = matched[0];
         console.log(match_ganger);
@@ -350,7 +359,7 @@ export const gangers = {
         await interaction.reply({
           content: "Here are the stats for yoour matched ganger.",
           embeds: [responseEmbed],
-          ephemeral: ephemeral,
+          ephemeral: await ephemeral,
         });
 
         // Respond with Skills if the ganger has any
@@ -373,7 +382,7 @@ export const gangers = {
           await interaction.followUp({
             content: "Here is a list of skills for your ganger:",
             embeds: [gangerSkills],
-            ephemeral: ephemeral,
+            ephemeral: await ephemeral,
           });
         }
 
@@ -395,7 +404,7 @@ export const gangers = {
           await interaction.followUp({
             content: "Here is a list of gear for your ganger:",
             embeds: [gangerGear],
-            ephemeral: ephemeral,
+            ephemeral: await ephemeral,
           });
         }
       }
