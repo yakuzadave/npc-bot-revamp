@@ -41,8 +41,8 @@ import db_data from "./db_old.json";
 //console.log(db_data)
 
 // load commands
-import { ping, info, fetch, ganglist } from "./commands.js";
-let command_list = [ping,info, fetch, ganglist];
+import { ping, info, fetch, gangs } from "./commands.js";
+let command_list = [ping,info, fetch, gangs];
 console.log("Loaded command files");
 // let invoke_register = false;
 let invoke_register = true;

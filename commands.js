@@ -26,7 +26,7 @@ export const info = {
                  .setName('server')
                  .setDescription('Info about the server')),
   async execute(interaction, client ) {
-    await interaction.reply({content: "Getting info", ephemeral: true})
+    //await interaction.reply({content: "Getting info", ephemeral: true})
     let command_options = await interaction.options
     let subcommand = command_options.getSubcommand()
     
@@ -35,10 +35,15 @@ export const info = {
     console.log("subcommand: ", subcommand)
     
     if(subcommand == 'user'){
-      let subcommand_options = interaction.options.
-      
-      console.log(subcommand_options)
-      
+      const target = interaction.options.getUser('target');
+      if (target) {
+				await interaction.reply({content: `Username: ${target.username}\nID: ${target.id}`, ephemeral: true});
+			} else {
+				await interaction.reply({content: `Your username: ${interaction.user.username}\nYour ID: ${interaction.user.id}`, ephemeral: true});
+      }
+    }
+    if(subcommand =='server') {
+      await interaction.reply({content: `Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`, ephemeral: true});
     }
     
     
@@ -48,24 +53,7 @@ export const info = {
                 
 }
 
-export const server = {
-  data: new SlashCommandBuilder()
-    .setName('server')
-    .setDescription('Return server information.'),
-  async execute (interaction, client) {
-    await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
-    
-  }
-}
 
-export const user = {
-  data: new SlashCommandBuilder()
-    .setName('user')
-    .setDescription('Provides you with user info from the Discord server.'),
-  async execute (interaction, client) {
-    	await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
-  }
-}
 
 export const fetch = {
   data: new SlashCommandBuilder()
@@ -94,10 +82,14 @@ export const fetch = {
   }
 }
 
-export const ganglist = {
+export const gangs = {
   data: new SlashCommandBuilder()
-    .setName('ganglist')
-    .setDescription('Gets the Gang Info for Necromunda and displays a summary'), 
+    .setName('gangs')
+    .setDescription('Gets the Gang Info for Necromunda')
+    .addSubcommand(subcommand => subcommand
+                   .setName("ganglist")
+                   .setDescription("Get ")
+                  ), 
   async execute (interaction, client) {
     await interaction.reply({content: "Getting Necromunda gang information", ephemeral: true})
     let ganger_data = client.db.data['gangers']
