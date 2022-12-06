@@ -69,10 +69,11 @@ export const ganglist = {
     try{
       let gang_name = ganger_data.map(gang => gang['Gang Name'])
       let unique_gangs = [...new Set(gang_name)];
-      
+      client.db.data['gangs'] = unique_gangs
       let gang_strings = unique_gangs.join(',')
       
       await interaction.followUp({content: `Looks like the following gangs are availible: \n ${gang_strings}`, ephemeral: true})
+      client.db.write()
     } catch(e){
       console.error(e)
     }
@@ -80,7 +81,7 @@ export const ganglist = {
   }
 }
 
-const ganger = {
+export const ganger = {
   data: new SlashCommandBuilder()
     .setName('ganger')
     .setDescription("Query Necromunda Ganger info "),

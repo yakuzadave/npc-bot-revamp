@@ -166,7 +166,7 @@ const discord_init = async (client) => {
     }
   });
 
-  client.on("message", (message) => {
+  client.on(Events.messageCreate, (message) => {
     console.log(message);
   });
   
