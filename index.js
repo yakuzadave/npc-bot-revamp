@@ -45,8 +45,8 @@ console.log("wait: ", wait);
 import db_data from "./db_old.json";
 
 // load commands
-import { ping, info, fetch, gangs, gangers, injury, ammo } from "./commands.js";
-let command_list = [ping, info, fetch, gangs, gangers, injury, ammo];
+import { ping, info, fetch, gangs, gangers, injury } from "./commands.js";
+let command_list = [ping, info, fetch, gangs, gangers, injury];
 console.log("Loaded command files");
 // let invoke_register = false;
 let invoke_register = true;
