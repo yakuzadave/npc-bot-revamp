@@ -529,7 +529,7 @@ export const injury = {
         .setDescription("Should the response be ephemeral?")
         .setRequired(false)
     ),
-  async execute(interaction, client) {
+async execute(interaction, client) {
     const dice = interaction.options.getInteger("dice");
     let ephemeral = false;
     try {
@@ -551,7 +551,7 @@ export const injury = {
     });
 
     // Log the results and a summary of the counts
-    console.log("Roll Results:", results);
+    // console.log("Roll Results:", results);
 
     const summary = {
       "Flesh Wound": 0,
@@ -564,7 +564,7 @@ export const injury = {
       }
     });
 
-    console.log("Summary:", summary);
+    // console.log("Summary:", summary);
 
     const responseEmbed = new EmbedBuilder();
     responseEmbed.setTitle(`Injury Roll`);
@@ -598,6 +598,11 @@ export const injury = {
   },
 };
 
+
+/* Here is the explanation for the code below:
+1. Create a mapping to return different strings based on the roll result
+2. Log the results and a summary of the counts
+3. Create an embed to display the results of the roll */
 export const ammo = {
   data: new SlashCommandBuilder()
     .setName("ammo")
