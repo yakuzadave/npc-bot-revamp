@@ -31,6 +31,7 @@ import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import lodash from "lodash";
+import { commands } from "./commands.js";
 
 // const ready = import("./events/ready.js");
 const { Logger } = import("./modules/Logger.js");
@@ -45,8 +46,8 @@ console.log("wait: ", wait);
 import db_data from "./db_old.json";
 
 // load commands
-import { ping, info, fetch, gangs, gangers, injury } from "./commands.js";
-let command_list = [ping, info, fetch, gangs, gangers, injury];
+const { ping, info, fetch, gangs, gangers, injury, ammo } = commands;
+let command_list = [ping, info, fetch, gangs, gangers, injury, ammo];
 console.log("Loaded command files");
 // let invoke_register = false;
 let invoke_register = true;
