@@ -1,2 +1,4 @@
 .env
 .glitch-assets
+db.json
+db_old.json
