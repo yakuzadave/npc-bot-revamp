@@ -21,12 +21,6 @@ console.log(unique_player_obj)
 db.remove('players').write()
 db.set('players', unique_player_obj).write()
 
-
-
-
-//db.set('members', unique_members).write()
-
-
-
+db.write()
 
 
